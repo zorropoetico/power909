@@ -17,20 +17,3 @@ Landing page oficial de **Radio Power 90.9 FM**, diseñada con estética broadca
 ├── .gitignore       # Configuración de exclusiones Git
 └── assets/          # Directorio para imágenes y logos
 ```
-
-## 🌐 Cómo desplegar en GitHub Pages
-1. Creá un nuevo repositorio en GitHub (ej: `radio-power-909`).
-2. Subí los archivos del proyecto (`index.html`, `README.md`, `.gitignore`, carpeta `assets/`).
-3. En GitHub, andá a **Settings** > **Pages**.
-4. En **Build and deployment**, seleccioná la rama `main` (o `master`) y la carpeta `/ (root)`.
-5. Guardá los cambios. En unos segundos tu web estará en línea con HTTPS.
-
-## ⚡ Despliegue en Vercel o Netlify
-- Simplemente conectá tu repositorio de GitHub en Vercel o Netlify. Al ser un sitio estático puro, se publicará de manera instantánea sin requerir pasos de compilación.
-
-## ⚙️ Personalización
-- **Cambiar enlace de YouTube:** En `index.html`, buscá la etiqueta `<iframe>` y reemplazá el atributo `src` con el ID de tu transmisión o video en vivo:
-  ```html
-  src="https://www.youtube.com/embed/TU_VIDEO_ID?autoplay=0&rel=0"
-  ```
-- **Cambiar número de WhatsApp:** Reemplazá el número `541141976436` por tu número comercial en formato internacional (sin signos `+` ni guiones).
