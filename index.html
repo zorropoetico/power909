@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Power 90.9 | Potencia que trasciende el dial</title>
+  
+  <!-- SEO & Open Graph Meta Tags -->
+  <meta name="description" content="Radio Power 90.9 FM & Streaming Audiovisual. Más de 30 años de trayectoria conectando a la región. Escuchá en vivo y potenciá tu marca con publicidad a medida.">
+  <meta property="og:title" content="Radio Power 90.9 | Potencia que trasciende el dial">
+  <meta property="og:description" content="FM 90.9 MHz y transmisión en vivo por YouTube. Más de 30 años marcando el pulso en el aire y en streaming.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Montserrat', 'sans-serif'],
+            body: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            power: {
+              blue: '#0284C7',
+              navy: '#0B1528',
+              deep: '#070C18',
+              card: '#0F1E38',
+              accent: '#38BDF8',
+              red: '#EF4444',
+              redGlow: '#DC2626',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'wave-bar': 'waveBar 1.2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            waveBar: {
+              '0%': { height: '20%' },
+              '100%': { height: '100%' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #070C18;
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .neon-border-blue {
+      box-shadow: 0 0 25px -5px rgba(2, 132, 199, 0.35);
+    }
+    .neon-border-red {
+      box-shadow: 0 0 25px -5px rgba(239, 68, 68, 0.4);
+    }
+    .gradient-text-power {
+      background: linear-gradient(135deg, #FFFFFF 20%, #38BDF8 60%, #0284C7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gradient-text-red {
+      background: linear-gradient(135deg, #FF6B6B 0%, #EF4444 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .glass-nav {
+      background: rgba(11, 21, 40, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+    }
+    .glass-card {
+      background: rgba(15, 30, 56, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 189, 248, 0.12);
+    }
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      box-shadow: 0 10px 30px -10px rgba(2, 132, 199, 0.3);
+    }
+  </style>
+</head>
+<body class="selection:bg-power-blue selection:text-white antialiased">
+
+  <!-- TOP BAR TICKER -->
+  <aside aria-label="Avisos en vivo" class="bg-gradient-to-r from-power-deep via-power-navy to-power-deep border-b border-white/5 py-1.5 px-4 text-xs font-medium text-slate-400">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-power-red animate-ping"></span>
+        <span class="text-white font-semibold uppercase tracking-wider text-[11px]">Transmisión 24/7</span>
+        <span class="text-slate-500 hidden sm:inline">|</span>
+        <span class="hidden sm:inline text-slate-300">FM 90.9 MHz &bull; YouTube Live Stream para toda la región</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px]">
+        <span class="text-power-accent font-semibold tracking-wide">+30 AÑOS DE TRAYECTORIA</span>
+        <a href="https://www.facebook.com/Power90.9/" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white transition flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span class="hidden md:inline">Facebook</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- NAVIGATION -->
+  <header class="glass-nav sticky top-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- BRAND LOGO -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="relative w-12 h-12 flex items-center justify-center rounded-2xl bg-gradient-to-tr from-blue-700 via-blue-500 to-sky-400 p-0.5 shadow-lg shadow-blue-500/30 group-hover:scale-105 transition-transform duration-300">
+          <div class="w-full h-full bg-power-deep rounded-[14px] flex items-center justify-center overflow-hidden relative">
+            <span class="font-display font-black text-white text-lg tracking-tighter">P<span class="text-power-red font-black">90.9</span></span>
+            <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-power-red/40 rounded-full blur-sm"></div>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-black text-xl tracking-wider text-white uppercase leading-none">
+            POWER <span class="text-power-accent">90.9</span>
+          </span>
+          <span class="text-[10px] tracking-widest text-slate-400 uppercase font-semibold mt-0.5">Multimedia &bull; Señal Regional</span>
+        </div>
+      </a>
+
+      <!-- DESKTOP NAV -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#en-vivo" class="hover:text-power-accent transition-colors flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-power-red animate-ping"></span>
+          <span>En Vivo</span>
+        </a>
+        <a href="#propuesta-comercial" class="hover:text-power-accent transition-colors">Publicidad &amp; Marcas</a>
+        <a href="#programacion" class="hover:text-power-accent transition-colors">Programación</a>
+        <a href="#trayectoria" class="hover:text-power-accent transition-colors">Trayectoria</a>
+      </nav>
+
+      <!-- CTA BUTTON -->
+      <div class="flex items-center gap-3">
+        <a href="#contacto-publicidad" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-power-red to-red-600 text-white shadow-lg shadow-red-500/25 hover:shadow-red-500/40 hover:scale-105 transition-all">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
+          <span>Pautá en Power</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-red-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        
+        <!-- BADGE -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-slate-300 backdrop-blur-md mb-6">
+          <span class="w-2 h-2 rounded-full bg-power-accent animate-pulse"></span>
+          <span>FM 90.9 MHz &bull; Streaming HD en Vivo</span>
+          <span class="text-slate-500">|</span>
+          <span class="text-power-accent font-bold">Desde 1993</span>
+        </div>
+
+        <!-- MAIN HEADLINE -->
+        <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.08] mb-6">
+          <span class="block text-white">POTENCIA QUE</span>
+          <span class="gradient-text-power">TRASCIENDE EL DIAL.</span>
+        </h1>
+
+        <!-- SUBTITLE -->
+        <p class="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto mb-10">
+          Más de tres décadas de aire convertidas en una plataforma multimedia de alto impacto. Transmitiendo en simultáneo por el 90.9 del dial y en video hacia todas las pantallas.
+        </p>
+
+        <!-- ACTION BUTTONS -->
+        <div class="flex flex-wrap items-center justify-center gap-4">
+          <a href="#en-vivo" class="px-8 py-4 rounded-full font-display font-bold text-sm uppercase tracking-wider bg-gradient-to-r from-blue-600 to-sky-500 text-white shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105 transition-all flex items-center gap-2">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <span>Ver y Escuchar en Vivo</span>
+          </a>
+          <a href="#propuesta-comercial" class="px-8 py-4 rounded-full font-display font-bold text-sm uppercase tracking-wider bg-white/5 border border-white/15 text-white hover:bg-white/10 hover:border-power-accent/40 transition-all flex items-center gap-2">
+            <span>Espacio Comercial &amp; Pauta</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+
+        <!-- METRICS ROW -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 pt-10 border-t border-white/10">
+          <div class="p-4 rounded-2xl bg-white/[0.02]">
+            <div class="font-display font-extrabold text-3xl text-white">+30</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Años al Aire</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/[0.02]">
+            <div class="font-display font-extrabold text-3xl text-power-accent">90.9</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Frecuencia Modulada</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/[0.02]">
+            <div class="font-display font-extrabold text-3xl text-power-red">HD</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Video Streaming</div>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/[0.02]">
+            <div class="font-display font-extrabold text-3xl text-white">100%</div>
+            <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Alcance Multiplataforma</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE STREAM SECTION (YOUTUBE EMBED) -->
+  <section id="en-vivo" class="py-16 relative bg-power-deep border-y border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <div class="flex items-center gap-2 text-power-red font-bold text-xs uppercase tracking-widest mb-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-power-red animate-ping"></span>
+            <span>Estudio en Directo</span>
+          </div>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white">
+            SEÑAL EN VIVO <span class="text-power-accent">&bull; YOUTUBE</span>
+          </h2>
+        </div>
+        <p class="text-slate-400 text-sm max-w-md">
+          Sintonizá el streaming audiovisual en tiempo real. Mirá a los conductores, entrevistas y la música que mueve a la región.
+        </p>
+      </div>
+
+      <!-- MAIN PLAYER CONTAINER -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- YOUTUBE VIDEO PLAYER -->
+        <div class="lg:col-span-2 glass-card rounded-3xl p-3 sm:p-4 neon-border-blue relative overflow-hidden">
+          <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl">
+            <iframe 
+              class="w-full h-full object-cover"
+              src="https://www.youtube.com/embed/Kg55HT6YLYc?autoplay=0&rel=0&modestbranding=1" 
+              title="Radio Power 90.9 en Vivo" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <!-- PLAYER CONTROL BAR -->
+          <div class="mt-4 px-2 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <span class="px-3 py-1 rounded-md bg-power-red text-white font-bold text-xs tracking-wider uppercase flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-white"></span>
+                EN EL AIRE
+              </span>
+              <span class="text-sm font-semibold text-white">Transmisión Principal &bull; Power 90.9</span>
+            </div>
+            
+            <div class="flex items-center gap-1 h-5 px-3 py-1 rounded-full bg-white/5">
+              <div class="w-1 bg-power-accent rounded-full animate-wave-bar" style="animation-delay: 0.1s;"></div>
+              <div class="w-1 bg-power-accent rounded-full animate-wave-bar" style="animation-delay: 0.4s;"></div>
+              <div class="w-1 bg-power-accent rounded-full animate-wave-bar" style="animation-delay: 0.2s;"></div>
+              <div class="w-1 bg-power-accent rounded-full animate-wave-bar" style="animation-delay: 0.6s;"></div>
+              <div class="w-1 bg-power-accent rounded-full animate-wave-bar" style="animation-delay: 0.3s;"></div>
+              <span class="text-[10px] text-slate-400 font-mono ml-2">90.9 MHz</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CALL-IN / INTERACTION -->
+        <div class="glass-card rounded-3xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+              <h3 class="font-display font-bold text-lg text-white">Participá del Vivo</h3>
+              <span class="text-xs text-power-accent font-semibold">Línea Directa</span>
+            </div>
+            
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              ¿Querés mandar un saludo, pedir un tema o participar en los debates del día? Conectate directamente con el equipo en piso.
+            </p>
+
+            <div class="space-y-3 mb-6">
+              <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 flex items-start gap-3">
+                <div class="p-2 rounded-lg bg-blue-500/20 text-power-accent mt-0.5">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.8 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-white uppercase tracking-wider">Audio en Segundo Plano</div>
+                  <div class="text-xs text-slate-400">Escuchá la señal mientras navegás o trabajás.</div>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-white/[0.03] border border-white/5 flex items-start gap-3">
+                <div class="p-2 rounded-lg bg-red-500/20 text-power-red mt-0.5">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM9.75 15.02V8.98L15 12l-5.25 3.02z"/></svg>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-white uppercase tracking-wider">Transmisiones Especiales</div>
+                  <div class="text-xs text-slate-400">Móviles en directo, eventos y notas exclusivas.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/541141976436?text=Hola%20Radio%20Power%2090.9!%20Les%20escribo%20escuchando%20el%20vivo." target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl font-display font-bold text-xs uppercase tracking-wider bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2 transition-all">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
+            <span>Enviar Mensaje al Estudio</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMMERCIAL ADVERTISING SECTION -->
+  <section id="propuesta-comercial" class="py-20 lg:py-28 relative overflow-hidden">
+    <div class="absolute -top-24 left-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- HEADER -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-power-red/10 border border-power-red/30 text-xs font-bold text-power-red uppercase tracking-widest mb-4">
+          Espacio Comercial &amp; Crecimiento de Marcas
+        </div>
+        <h2 class="font-display font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
+          HACÉ QUE TU MARCA <span class="gradient-text-power">SUENE Y SE VEA</span> CON POTENCIA.
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg mt-4 leading-relaxed">
+          No limites tu alcance. Combinamos la fuerza y credibilidad del aire radial con el impacto visual del streaming digital para que comercios y empresas logren una visibilidad sin fronteras.
+        </p>
+      </div>
+
+      <!-- VALUE PILLARS CARDS -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        
+        <!-- CARD 1: AIRE TRADICIONAL -->
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-power-accent mb-6">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Potencia en el Aire (FM)</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              Presencia diaria en el dial 90.9 con tandas rotativas de alta frecuencia, auspicio exclusivo de segmentos y menciones en vivo por conductores de confianza.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-300 mb-6">
+              <li class="flex items-center gap-2"><span class="text-power-accent">&check;</span> Rotativos de 15, 20 o 30 segundos</li>
+              <li class="flex items-center gap-2"><span class="text-power-accent">&check;</span> Menciones no tradicionales en vivo (PNT)</li>
+              <li class="flex items-center gap-2"><span class="text-power-accent">&check;</span> Cobertura radial en autos, comercios y hogares</li>
+            </ul>
+          </div>
+          <div class="pt-4 border-t border-white/10 text-xs font-semibold text-power-accent">
+            Ideal para posicionamiento constante y recordación de marca.
+          </div>
+        </div>
+
+        <!-- CARD 2: DIGITAL & STREAMING -->
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 neon-border-blue relative">
+          <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-gradient-to-r from-power-blue to-sky-400 text-white font-bold text-[10px] uppercase tracking-wider shadow">
+            Alta Visibilidad
+          </div>
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-power-accent mb-6">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Visibilidad Digital &amp; Video</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              Tu marca en todas las pantallas. Integración de banners en vivo durante la transmisión de YouTube, presencia en nuestra web y menciones en redes sociales.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-300 mb-6">
+              <li class="flex items-center gap-2"><span class="text-power-accent">&check;</span> Zócalos y placas en vivo por YouTube</li>
+              <li class="flex items-center gap-2"><span class="text-power-accent">&check;</span> Banners publicitarios en la web oficial</li>
+              <li class="flex items-center gap-2"><span class="text-power-accent">&check;</span> Difusión cruzada en canales digitales</li>
+            </ul>
+          </div>
+          <div class="pt-4 border-t border-white/10 text-xs font-semibold text-sky-400">
+            Ideal para marcas con presencia web y conversión digital.
+          </div>
+        </div>
+
+        <!-- CARD 3: PLAN 360° A MEDIDA -->
+        <div class="glass-card rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 border-power-red/40 neon-border-red">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-red-500/15 border border-red-500/30 flex items-center justify-center text-power-red mb-6">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Plan Integral 360°</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              La estrategia completa: presencia sinérgica en aire y plataformas digitales, armada a la medida de los objetivos comerciales y presupuesto de tu negocio.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-300 mb-6">
+              <li class="flex items-center gap-2"><span class="text-power-red">&check;</span> Paquete combinado Radio + Streaming + Web</li>
+              <li class="flex items-center gap-2"><span class="text-power-red">&check;</span> Asesoramiento creativo y producción de spot</li>
+              <li class="flex items-center gap-2"><span class="text-power-red">&check;</span> Presupuestos flexibles y escalables</li>
+            </ul>
+          </div>
+          <div class="pt-4 border-t border-white/10 text-xs font-semibold text-power-red">
+            Máximo impacto para acelerar tus ventas.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- WHATSAPP CTA BOX -->
+      <div id="contacto-publicidad" class="glass-card rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
+          
+          <div class="lg:col-span-3">
+            <span class="text-xs font-bold uppercase tracking-widest text-power-accent">Presupuesto a Medida</span>
+            <h3 class="font-display font-extrabold text-2xl sm:text-4xl text-white mt-2 mb-4 leading-tight">
+              ¿LISTO PARA POTENCIAR LA VISIBILIDAD DE TU COMERCIO?
+            </h3>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Escribinos directamente a nuestro WhatsApp comercial. Diseñamos una propuesta personalizada según tu rubro, metas y presupuesto disponible.
+            </p>
+            
+            <div class="flex flex-wrap items-center gap-4 mt-6 text-xs text-slate-400">
+              <span class="flex items-center gap-1.5"><span class="text-emerald-400 font-bold">&bull;</span> Atención personalizada</span>
+              <span class="flex items-center gap-1.5"><span class="text-emerald-400 font-bold">&bull;</span> Asesoramiento de spot publicitario</span>
+              <span class="flex items-center gap-1.5"><span class="text-emerald-400 font-bold">&bull;</span> Facturación formal</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2 flex flex-col gap-3">
+            <a href="https://wa.me/541141976436?text=Hola%20Radio%20Power%2090.9!%20Quiero%20solicitar%20un%20presupuesto%20a%20medida%20para%20pautar%20publicidad." target="_blank" rel="noopener noreferrer" class="w-full py-5 px-6 rounded-2xl font-display font-extrabold text-sm uppercase tracking-wider bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-xl shadow-emerald-500/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
+              <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
+              <span>Consultar por WhatsApp</span>
+            </a>
+            
+            <div class="text-center text-xs text-slate-400">
+              Línea directa comercial: <span class="text-white font-mono font-medium">+54 11 4197-6436</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROGRAMACIÓN DESTACADA -->
+  <section id="programacion" class="py-16 bg-power-deep border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-power-accent">Contenido Dinámico</span>
+        <h2 class="font-display font-black text-3xl sm:text-4xl text-white mt-1">PROGRAMACIÓN CENTRAL</h2>
+        <p class="text-slate-400 text-sm mt-2">La grilla que combina actualidad, información ágil y la mejor selección musical.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card rounded-2xl p-6">
+          <div class="text-xs font-bold text-power-accent tracking-widest uppercase mb-1">07:00 a 10:00 hs</div>
+          <h3 class="font-display font-bold text-xl text-white mb-2">Primera Edición</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">Arranque informativo con el panorama completo de la mañana, tránsito y entrevistas clave.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 border-power-accent/30">
+          <div class="text-xs font-bold text-power-red tracking-widest uppercase mb-1">10:00 a 13:00 hs</div>
+          <h3 class="font-display font-bold text-xl text-white mb-2">Power Magazine</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">El programa insignia: actualidad, columnistas, invitados en piso, móviles en directo y música.</p>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6">
+          <div class="text-xs font-bold text-power-accent tracking-widest uppercase mb-1">17:00 a 20:00 hs</div>
+          <h3 class="font-display font-bold text-xl text-white mb-2">La Vuelta Power</h3>
+          <p class="text-xs text-slate-300 leading-relaxed">Acompañando el regreso con ritmo, noticias del día, deportes y la mejor energía en el dial.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAYECTORIA SECTION -->
+  <section id="trayectoria" class="py-20 relative border-t border-white/5 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-power-accent">Nuestra Historia</span>
+          <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-2 mb-6 leading-tight">
+            TRES DÉCADAS DE RADIO. <br><span class="gradient-text-power">UNA SEÑAL QUE NO SE DETIENE.</span>
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+            Fundada en 1993, FM Power 90.9 nació con la vocación de informar, dar voz y conectar. Con el paso de los años, supo consolidar una audiencia inquebrantable en Juan María Gutiérrez y expandir su impronta a todo el sur del conurbano bonaerense.
+          </p>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+            Hoy, esa experiencia y credibilidad se proyectan hacia una audiencia sin fronteras mediante streaming audiovisual en YouTube, manteniendo intacto el profesionalismo y el compromiso con cada oyente y cada anunciante.
+          </p>
+          <div class="flex items-center gap-6">
+            <div class="border-l-2 border-power-red pl-4">
+              <div class="font-display font-bold text-white text-lg">1993 - 2026</div>
+              <div class="text-xs text-slate-400">Pioneros en radiodifusión regional</div>
+            </div>
+            <div class="border-l-2 border-power-accent pl-4">
+              <div class="font-display font-bold text-white text-lg">90.9 MHz</div>
+              <div class="text-xs text-slate-400">Potencia de transmisión FM</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="glass-card rounded-3xl p-8 neon-border-blue relative z-10">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+              <span class="font-display font-bold text-white text-lg">Manifiesto de Marca</span>
+              <span class="text-xs font-mono text-power-accent">FM 90.9</span>
+            </div>
+            <blockquote class="text-slate-200 text-base italic leading-relaxed mb-6">
+              "No somos solo una frecuencia en el dial. Somos el punto de encuentro donde la experiencia radial se transforma en potencia digital para impulsar proyectos, marcas y voces sin fronteras."
+            </blockquote>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white text-sm">
+                90.9
+              </div>
+              <div>
+                <div class="font-display font-bold text-sm text-white">Radio Power 90.9</div>
+                <div class="text-[11px] text-slate-400">Dirección General &amp; Equipo Técnico</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-power-deep border-t border-white/10 py-12 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/5">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center font-display font-black text-white text-base">
+            P<span class="text-power-red">90.9</span>
+          </div>
+          <div>
+            <div class="font-display font-bold text-white text-base">RADIO POWER 90.9</div>
+            <div class="text-[11px] text-slate-400">Juan María Gutiérrez &bull; Berazategui, Buenos Aires</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6">
+          <a href="https://www.facebook.com/Power90.9/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition flex items-center gap-2">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span>Facebook Oficial</span>
+          </a>
+          <a href="https://wa.me/541141976436" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition flex items-center gap-2">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
+            <span>WhatsApp Publicidad</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        <div>&copy; 1993 - 2026 Radio Power 90.9 FM. Todos los derechos reservados.</div>
+        <div>Transmisión autorizada &bull; Plataforma Multimedia</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/541141976436?text=Hola%20Radio%20Power%2090.9!%20Quisiera%20consultar%20por%20publicidad%20y%20presupuestos%20a%20medida." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 shadow-2xl shadow-emerald-500/40 hover:scale-110 transition-all flex items-center justify-center group" aria-label="Contactar por WhatsApp">
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
+    <span class="absolute right-16 bg-slate-900 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-white/10">
+      Consultá por Publicidad
+    </span>
+  </a>
+
+</body>
+</html>
