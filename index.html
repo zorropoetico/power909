@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth bg-[#08090D] text-slate-100 selection:bg-blue-600 selection:text-white">
+<html lang="es" class="scroll-smooth bg-[#F8F9FD] text-slate-900 selection:bg-[#FFDE00] selection:text-black">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Radio Power 90.9 | Streaming en Vivo &amp; FM</title>
+  <title>Radio Power 90.9 | Transmisión en Vivo &amp; FM</title>
   
   <!-- SEO & Social Open Graph -->
-  <meta name="description" content="Radio Power 90.9 FM & YouTube Streaming en directo. Tres décadas marcando el pulso en el aire y en todas tus pantallas. Publicidad y visibilidad comercial para marcas y comercios.">
-  <meta property="og:title" content="Radio Power 90.9 | Streaming en Vivo &amp; FM">
-  <meta property="og:description" content="Sintonizá en 90.9 MHz o mirá el streaming en directo. Primavera 2026 en Power.">
+  <meta name="description" content="Radio Power 90.9 FM & YouTube Live Stream. Tres décadas de trayectoria radial combinadas con streaming audiovisual para crear momentos especiales.">
+  <meta property="og:title" content="Radio Power 90.9 | Transmisión en Vivo &amp; FM">
+  <meta property="og:description" content="Sintonizá 90.9 MHz o mirá el streaming en directo. Música, noticias y publicidad comercial.">
   <meta property="og:image" content="assets/logo.png">
   <meta property="og:type" content="website">
 
-  <!-- Favicon fallback -->
+  <!-- Favicon y Web App Manifest para instalación en el celular -->
   <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFDE00">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Power 90.9">
 
-  <!-- Google Fonts: Syne (modern, punchy streaming display font) & Space Grotesk / Inter -->
+  <!-- Google Fonts: Syne, Space Grotesk, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,22 +33,27 @@
       theme: {
         extend: {
           fontFamily: {
-            headline: ['Syne', 'sans-serif'],
+            display: ['Syne', 'sans-serif'],
             mono: ['Space Grotesk', 'monospace'],
             sans: ['Plus Jakarta Sans', 'sans-serif'],
           },
           colors: {
-            power: {
-              bg: '#08090D',
-              surface: '#0E1118',
-              surfaceLight: '#151A24',
-              blue: '#2563EB',
-              cyan: '#06B6D4',
-              red: '#EF4444',
-              pink: '#EC4899',
-              springGreen: '#10B981',
-              springLime: '#84CC16',
+            brand: {
+              yellow: '#FFDE00',
+              yellowLight: '#FFF8B8',
+              blue: '#1A56DB',
+              blueLight: '#EBF2FF',
+              red: '#E02424',
+              pink: '#F72585',
+              pinkLight: '#FDF2F8',
+              green: '#0E9F6E',
+              greenLight: '#DEF7EC',
             }
+          },
+          boxShadow: {
+            'brutal': '4px 4px 0px 0px #000000',
+            'brutal-lg': '6px 6px 0px 0px #000000',
+            'brutal-xl': '8px 8px 0px 0px #000000',
           }
         }
       }
@@ -51,257 +62,315 @@
 
   <style>
     /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #08090D;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1F2937;
-      border-radius: 9999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #2563EB;
-    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F8F9FD; }
+    ::-webkit-scrollbar-thumb { background: #FFDE00; border: 2px solid #000000; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #1A56DB; }
 
-    /* Infinite Marquee */
-    @keyframes marquee {
-      0% { transform: translateX(0%); }
+    /* Infinite Marquee Ticker */
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-    .animate-marquee {
+    .up-ticker {
       display: flex;
       width: 200%;
-      animation: marquee 24s linear infinite;
+      animation: tickerScroll 25s linear infinite;
     }
-    .animate-marquee:hover {
-      animation-play-state: paused;
-    }
+    .up-ticker:hover { animation-play-state: paused; }
 
     /* Equalizer Bars Animation */
-    @keyframes eqBar {
-      0% { height: 15%; }
-      50% { height: 95%; }
-      100% { height: 25%; }
+    @keyframes barPulse {
+      0% { height: 18%; }
+      50% { height: 100%; }
+      100% { height: 30%; }
     }
-    .eq-bar-1 { animation: eqBar 0.8s ease-in-out infinite alternate; }
-    .eq-bar-2 { animation: eqBar 1.2s ease-in-out 0.2s infinite alternate; }
-    .eq-bar-3 { animation: eqBar 0.6s ease-in-out 0.4s infinite alternate; }
-    .eq-bar-4 { animation: eqBar 1.0s ease-in-out 0.1s infinite alternate; }
-    .eq-bar-5 { animation: eqBar 0.9s ease-in-out 0.3s infinite alternate; }
+    .eq-1 { animation: barPulse 0.7s ease-in-out infinite alternate; }
+    .eq-2 { animation: barPulse 1.0s ease-in-out 0.15s infinite alternate; }
+    .eq-3 { animation: barPulse 0.6s ease-in-out 0.3s infinite alternate; }
+    .eq-4 { animation: barPulse 0.9s ease-in-out 0.1s infinite alternate; }
+    .eq-5 { animation: barPulse 0.8s ease-in-out 0.25s infinite alternate; }
 
-    /* Subtle Spring Ambient Glow */
-    .spring-glow {
-      background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.18) 0%, rgba(236, 72, 153, 0.12) 35%, rgba(8, 9, 13, 0) 70%);
+    /* Neo-Brutalist Sticker */
+    .sticker {
+      display: inline-block;
+      border: 2px solid #000000;
+      box-shadow: 2px 2px 0px 0px #000000;
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
-    /* Glass Panels */
-    .glass-panel {
-      background: rgba(14, 17, 24, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Spring Flower Burst Particle */
+    .flower-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 24px;
+      user-select: none;
+      animation: flowerFloat 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
-    .glass-panel:hover {
-      border-color: rgba(37, 99, 235, 0.3);
+    @keyframes flowerFloat {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.6) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--tx, 50px), var(--ty, -120px)) scale(1.4) rotate(var(--tr, 180deg));
+      }
     }
   </style>
 </head>
-<body class="overflow-x-hidden relative">
+<body class="bg-[#F8F9FD] text-slate-900 selection:bg-brand-yellow selection:text-black antialiased">
 
-  <!-- SPRING PROMO MARQUEE (TICKER VIVO) -->
-  <div class="bg-gradient-to-r from-blue-700 via-pink-600 to-amber-500 text-white py-1.5 overflow-hidden text-xs font-mono font-bold tracking-wider relative z-50">
-    <div class="animate-marquee whitespace-nowrap flex items-center gap-8">
-      <span class="flex items-center gap-2">🌸 <span>¡HOLA PRIMAVERA! RENOVAMOS LA ENERGÍA EN EL AIRE</span> &bull; RADIO POWER 90.9</span>
-      <span class="flex items-center gap-2">⚡ <span>STREAMING AUDIOVISUAL HD EN VIVO POR YOUTUBE</span></span>
-      <span class="flex items-center gap-2">📢 <span>PAUTA COMERCIAL PARA MARCAS &bull; CONSULTÁ PRESUPUESTO A MEDIDA POR WHATSAPP</span></span>
-      <span class="flex items-center gap-2">📻 <span>FM 90.9 MHz &bull; MÁS DE 30 AÑOS MARCANDO EL PULSO</span></span>
-      <!-- Duplicate for seamless loop -->
-      <span class="flex items-center gap-2">🌸 <span>¡HOLA PRIMAVERA! RENOVAMOS LA ENERGÍA EN EL AIRE</span> &bull; RADIO POWER 90.9</span>
-      <span class="flex items-center gap-2">⚡ <span>STREAMING AUDIOVISUAL HD EN VIVO POR YOUTUBE</span></span>
-      <span class="flex items-center gap-2">📢 <span>PAUTA COMERCIAL PARA MARCAS &bull; CONSULTÁ PRESUPUESTO A MEDIDA POR WHATSAPP</span></span>
-      <span class="flex items-center gap-2">📻 <span>FM 90.9 MHz &bull; MÁS DE 30 AÑOS MARCANDO EL PULSO</span></span>
+  <!-- TOP VIBRANT TICKER (BRIGHT YELLOW & BLACK) -->
+  <aside aria-label="Aviso en vivo y temporada" class="bg-brand-yellow border-b-2 border-black py-2 overflow-hidden text-xs font-mono font-black tracking-wider uppercase select-none">
+    <div class="up-ticker whitespace-nowrap flex items-center gap-8 text-black">
+      <span class="flex items-center gap-2">🌸 ¡BIENVENIDA PRIMAVERA 2026! RENOVAMOS LA ENERGÍA EN EL AIRE</span>
+      <span>///</span>
+      <span class="flex items-center gap-2">⚡ RADIO POWER 90.9 FM &bull; YOUTUBE STREAMING EN VIVO HD</span>
+      <span>///</span>
+      <span class="flex items-center gap-2">🔥 PAUTÁ TU COMERCIO: PRESUPUESTO A MEDIDA POR WHATSAPP</span>
+      <span>///</span>
+      <span class="flex items-center gap-2">📻 TRANSMITIENDO DESDE JUAN MARÍA GUTIÉRREZ PARA TODO EL MUNDO</span>
+      <span>///</span>
+      <span class="flex items-center gap-2">🌸 ¡BIENVENIDA PRIMAVERA 2026! RENOVAMOS LA ENERGÍA EN EL AIRE</span>
+      <span>///</span>
+      <span class="flex items-center gap-2">⚡ RADIO POWER 90.9 FM &bull; YOUTUBE STREAMING EN VIVO HD</span>
+      <span>///</span>
+      <span class="flex items-center gap-2">🔥 PAUTÁ TU COMERCIO: PRESUPUESTO A MEDIDA POR WHATSAPP</span>
+      <span>///</span>
+      <span class="flex items-center gap-2">📻 TRANSMITIENDO DESDE JUAN MARÍA GUTIÉRREZ PARA TODO EL MUNDO</span>
     </div>
-  </div>
+  </aside>
 
-  <!-- NAVIGATION -->
-  <header class="sticky top-0 z-40 glass-panel border-b border-white/10 px-4 sm:px-8 py-3.5 transition-all">
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-black px-4 sm:px-8 py-3.5">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       
-      <!-- LOGO FROM ASSETS FOLDER -->
+      <!-- BRAND LOGO FROM ASSETS FOLDER -->
       <a href="#inicio" class="flex items-center gap-3.5 group">
-        <div class="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl bg-white/[0.04] border border-white/10 p-1 group-hover:border-blue-500/50 transition">
+        <div class="relative w-12 h-12 flex items-center justify-center rounded-2xl bg-white border-2 border-black p-1 shadow-brutal group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:shadow-none transition-all">
           <img 
             src="assets/logo.png" 
             alt="Radio Power 90.9" 
-            class="w-full h-full object-contain filter drop-shadow" 
+            class="w-full h-full object-contain filter drop-shadow-sm" 
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
           />
-          <!-- High-aesthetic Fallback if logo.png is not yet placed -->
-          <div class="hidden w-full h-full rounded-xl bg-blue-600 flex items-center justify-center font-headline font-black text-white text-base">
-            P<span class="text-red-400 text-xs">90.9</span>
+          <div class="hidden w-full h-full rounded-xl bg-brand-blue flex items-center justify-center font-display font-black text-white text-base">
+            P<span class="text-brand-yellow font-black">90.9</span>
           </div>
         </div>
 
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
-            <span class="font-headline font-black text-xl sm:text-2xl tracking-tighter text-white leading-none">
-              POWER <span class="text-blue-500">90.9</span>
+            <span class="font-display font-black text-2xl tracking-tight text-slate-950 leading-none">
+              POWER<span class="text-brand-blue">90.9</span>
             </span>
-            <span class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-red-500/15 text-red-400 border border-red-500/30">
-              <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping"></span> LIVE
+            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-brand-red text-white border border-black shadow-[1px_1px_0px_0px_#000]">
+              <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> VIVO
             </span>
           </div>
-          <span class="text-[10px] font-mono tracking-widest text-slate-400 uppercase mt-0.5">FM &bull; Digital Streaming</span>
+          <span class="text-[10px] font-mono font-bold tracking-wider text-slate-600 uppercase mt-0.5">FM &bull; Digital &bull; Streaming</span>
         </div>
       </a>
 
-      <!-- DESKTOP MENU -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
-        <a href="#streaming" class="hover:text-white transition flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-red-500"></span>
+      <!-- DESKTOP NAV -->
+      <nav class="hidden md:flex items-center gap-6 text-xs font-mono font-bold uppercase tracking-wider text-slate-800">
+        <a href="#streaming" class="hover:text-brand-blue transition flex items-center gap-1.5 py-1 px-2 rounded-lg hover:bg-slate-100">
+          <span class="w-2 h-2 rounded-full bg-brand-red"></span>
           <span>En Directo</span>
         </a>
-        <a href="#publicidad" class="hover:text-blue-400 transition">Espacio Publicitario</a>
-        <a href="#grilla" class="hover:text-white transition">Programación</a>
-        <a href="#trayectoria" class="hover:text-white transition">Trayectoria</a>
+        <a href="#comercios" class="hover:text-brand-blue transition py-1 px-2 rounded-lg hover:bg-slate-100">Comercios de la Radio</a>
+        <a href="#programacion" class="hover:text-brand-blue transition py-1 px-2 rounded-lg hover:bg-slate-100">24 Hs al Aire</a>
+        <a href="#trayectoria" class="hover:text-brand-blue transition py-1 px-2 rounded-lg hover:bg-slate-100">Historia</a>
       </nav>
 
-      <!-- RIGHT ACTIONS -->
-      <div class="flex items-center gap-3">
-        <a 
-          href="https://wa.me/541141976436?text=Hola%20Radio%20Power%2090.9!%20Quisiera%20consultar%20por%20publicidad%20y%20presupuesto%20a%20medida." 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-wider uppercase bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/25 hover:scale-[1.03] active:scale-95 transition"
+      <!-- RIGHT BUTTONS (INSTALL APP + PAUTAR) -->
+      <div class="flex items-center gap-2.5">
+        
+        <!-- BOTÓN INSTALAR EN EL CELULAR -->
+        <button 
+          id="installAppBtn" 
+          class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-white hover:bg-slate-50 text-slate-900 border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
+          title="Instalar en tu pantalla de inicio o celular"
         >
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
-          <span>Pautá en Radio</span>
-        </a>
+          <svg class="w-4 h-4 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          <span>Instalar App</span>
+        </button>
 
-        <!-- MOBILE HAMBURGER TOGGLE -->
-        <button id="mobileMenuBtn" aria-label="Abrir menú" class="md:hidden p-2 rounded-xl bg-white/[0.05] border border-white/10 text-slate-300 hover:text-white">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        <!-- BOTÓN PAUTAR (ABRE POP-UP DE PUBLICIDAD) -->
+        <button 
+          id="openAdsModalNav" 
+          class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-black uppercase tracking-wider bg-brand-yellow hover:bg-[#ffe833] text-black border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all active:scale-95"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.8 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <span>Pautar en Radio</span>
+        </button>
+
+        <!-- MOBILE HAMBURGER -->
+        <button id="menuBtn" aria-label="Abrir menú" class="md:hidden p-2.5 rounded-xl bg-white border-2 border-black shadow-brutal text-black">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7"/></svg>
         </button>
       </div>
 
     </div>
 
     <!-- MOBILE MENU DRAWER -->
-    <div id="mobileMenu" class="hidden md:hidden pt-4 pb-2 border-t border-white/10 mt-3 space-y-2 text-sm font-semibold">
-      <a href="#streaming" class="block px-3 py-2 rounded-lg bg-white/[0.04] text-white">● En Directo</a>
-      <a href="#publicidad" class="block px-3 py-2 rounded-lg hover:bg-white/[0.04] text-slate-300">Espacio Publicitario</a>
-      <a href="#grilla" class="block px-3 py-2 rounded-lg hover:bg-white/[0.04] text-slate-300">Programación</a>
-      <a href="#trayectoria" class="block px-3 py-2 rounded-lg hover:bg-white/[0.04] text-slate-300">Nuestra Historia</a>
-      <a href="https://wa.me/541141976436" target="_blank" class="block px-3 py-2 text-center rounded-lg bg-blue-600 text-white font-bold font-mono">
-        WhatsApp Comercial
+    <div id="mobileDrawer" class="hidden md:hidden pt-4 pb-2 border-t-2 border-black mt-3 space-y-2 text-xs font-mono font-bold uppercase">
+      <a href="#streaming" class="block px-3 py-2.5 rounded-xl bg-brand-yellow border-2 border-black text-black">● Transmisión en Vivo</a>
+      <a href="#comercios" class="block px-3 py-2.5 rounded-xl bg-white border-2 border-black text-black">Comercios Auspiciantes</a>
+      <a href="#programacion" class="block px-3 py-2.5 rounded-xl bg-white border-2 border-black text-black">24 Horas en el Aire</a>
+      <a href="#trayectoria" class="block px-3 py-2.5 rounded-xl bg-white border-2 border-black text-black">Nuestra Historia</a>
+      <button id="openAdsModalMobile" class="w-full text-left block px-3 py-2.5 rounded-xl bg-brand-yellow border-2 border-black text-black font-black">
+        📢 Ver Planes de Publicidad
+      </button>
+      <button id="installAppMobile" class="w-full text-left block px-3 py-2.5 rounded-xl bg-white border-2 border-black text-brand-blue font-black flex items-center justify-between">
+        <span>📲 Instalar App en el Celular</span>
+        <span>&rarr;</span>
+      </button>
+      <a href="https://wa.me/541141976436" target="_blank" class="block px-3 py-2.5 text-center rounded-xl bg-brand-green text-white font-black border-2 border-black">
+        WhatsApp Comercial Directo
       </a>
     </div>
   </header>
 
-  <!-- HERO & STREAMING EXPERIENCE -->
-  <main id="inicio" class="relative spring-glow pt-8 pb-16 sm:pt-14 sm:pb-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- HERO SECTION -->
+  <main id="inicio" class="pt-8 pb-16 lg:pt-12 lg:pb-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
-      <!-- HERO TAGLINE & SPRING WELCOME -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+      <!-- HERO HEADER -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
         <div>
-          <!-- SPRING PILL -->
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-mono font-bold uppercase tracking-wider mb-3">
-            <span>🌸 Especial Primavera 2026</span>
-            <span class="text-slate-500">&bull;</span>
-            <span class="text-white">Nueva Temporada al Aire</span>
+          <!-- HOLA PRIMAVERA GRANDE CON EFECTO INTERACTIVO DE FLORES -->
+          <div class="mb-4">
+            <button 
+              id="primaveraBadge" 
+              class="sticker px-5 py-2.5 rounded-full bg-brand-yellow hover:bg-[#ffe833] text-black text-sm sm:text-base cursor-pointer transform hover:scale-105 active:scale-95 transition-all select-none flex items-center gap-2.5 shadow-brutal"
+              title="¡Tocá o pasá el mouse para florecer!"
+            >
+              <span class="text-xl">🌸</span>
+              <span class="font-display font-black tracking-wide">¡HOLA PRIMAVERA 2026!</span>
+              <span class="text-xs font-mono font-bold bg-black text-white px-2 py-0.5 rounded-full">FLORECE LA RADIO</span>
+            </button>
           </div>
 
-          <h1 class="font-headline font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.05]">
-            SONIDO EN VIVO. <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-pink-400">
-              IMAGEN EN DIRECTO.
+          <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight text-slate-950 leading-[1.03]">
+            MIRA EL VIVO. <br>
+            <span class="text-brand-blue underline decoration-brand-yellow decoration-wavy decoration-4">
+              SENTÍ LA POTENCIA.
             </span>
           </h1>
         </div>
 
-        <div class="max-w-md text-slate-300 text-sm leading-relaxed">
-          <p>
-            Plataforma de transmisión audiovisual desde Juan María Gutiérrez hacia todo el dial y las pantallas del país. Más de 30 años generando comunidad y visibilidad real para marcas.
+        <!-- USER REQUESTED EXACT TEXT -->
+        <div class="max-w-lg bg-white p-6 rounded-3xl border-2 border-black shadow-brutal">
+          <p class="text-slate-800 text-sm sm:text-base leading-relaxed font-medium">
+            La plataforma multimedia de Juan María Gutiérrez y Berazategui que conecta a todo el mundo. Tres décadas de trayectoria radial combinadas con streaming audiovisual para crear momentos especiales.
           </p>
-          <div class="flex items-center gap-3 mt-3 font-mono text-xs text-slate-400">
-            <span class="px-2 py-0.5 rounded bg-white/[0.05] border border-white/10 text-white font-bold">90.9 FM</span>
-            <span>&bull;</span>
-            <span>YouTube Live HD</span>
-            <span>&bull;</span>
-            <span class="text-emerald-400 font-semibold">24hs en el aire</span>
+          <div class="flex flex-wrap items-center gap-2 mt-4 font-mono text-xs font-bold text-slate-900">
+            <span class="px-2.5 py-1 rounded-lg bg-brand-yellow border border-black">AUDIO 320 KBPS</span>
+            <span class="px-2.5 py-1 rounded-lg bg-brand-blueLight text-brand-blue border border-brand-blue">VIDEO 1080p60</span>
+            <span class="px-2.5 py-1 rounded-lg bg-brand-greenLight text-brand-green border border-brand-green">● AIRE 24/7</span>
           </div>
         </div>
       </div>
 
-      <!-- MAIN STREAMING CONSOLE (YOUTUBE EMBED + CONTROLS) -->
-      <section id="streaming" class="glass-panel rounded-3xl p-3 sm:p-5 shadow-2xl relative overflow-hidden">
+      <!-- MAIN STREAMING CONSOLE -->
+      <section id="streaming" class="bg-white rounded-3xl p-4 sm:p-6 border-2 border-black shadow-brutal-xl relative">
         
-        <!-- PLAYER HEADER BAR -->
-        <div class="flex items-center justify-between px-2 py-2 mb-3 border-b border-white/5 text-xs font-mono">
-          <div class="flex items-center gap-2 sm:gap-3">
-            <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-600 text-white font-bold tracking-wider text-[11px] uppercase">
+        <!-- PLAYER HEADER WITH FREQUENCIES AND LIVE BADGE -->
+        <div class="flex items-center justify-between px-2 py-2 mb-4 border-b-2 border-slate-100 text-xs font-mono">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-full bg-brand-red text-white font-black tracking-wider uppercase text-[11px] border border-black shadow-[2px_2px_0px_0px_#000] flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-              EN VIVO
-            </div>
-            <span class="text-white font-semibold hidden sm:inline">Radio Power 90.9 &bull; Transmisión Oficial</span>
+              EN EL AIRE
+            </span>
+            <span class="font-bold text-slate-900 hidden sm:inline">Radio Power 90.9 &bull; Estudio Central Gutiérrez</span>
           </div>
 
-          <!-- AUDIO FREQUENCY EQUALIZER VISUALIZER -->
-          <div class="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-full border border-white/5">
-            <div class="w-1 bg-cyan-400 rounded-full eq-bar-1 h-3"></div>
-            <div class="w-1 bg-blue-500 rounded-full eq-bar-2 h-4"></div>
-            <div class="w-1 bg-pink-500 rounded-full eq-bar-3 h-2"></div>
-            <div class="w-1 bg-emerald-400 rounded-full eq-bar-4 h-4"></div>
-            <div class="w-1 bg-amber-400 rounded-full eq-bar-5 h-3"></div>
-            <span class="text-[10px] text-slate-400 ml-1">AUDIO HD</span>
+          <!-- EQUALIZER BARS -->
+          <div class="flex items-center gap-1.5 bg-slate-100 px-3.5 py-1.5 rounded-full border border-black">
+            <div class="w-1.5 bg-brand-blue rounded-full eq-1 h-3"></div>
+            <div class="w-1.5 bg-brand-yellow rounded-full eq-2 h-4"></div>
+            <div class="w-1.5 bg-brand-red rounded-full eq-3 h-2"></div>
+            <div class="w-1.5 bg-brand-pink rounded-full eq-4 h-4"></div>
+            <div class="w-1.5 bg-brand-green rounded-full eq-5 h-3"></div>
+            <span class="text-[11px] font-bold text-slate-800 ml-1">90.9 MHz</span>
           </div>
         </div>
 
-        <!-- 16:9 VIDEO CONTAINER -->
-        <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-inner">
+        <!-- 16:9 YOUTUBE VIDEO CONTAINER (REQUESTED URL: T5DobbxmIk4) -->
+        <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black border-2 border-black shadow-inner">
           <iframe 
             class="w-full h-full object-cover"
-            src="https://www.youtube.com/embed/Kg55HT6YLYc?autoplay=0&rel=0&modestbranding=1" 
-            title="Transmisión en Vivo - Radio Power 90.9" 
+            src="https://www.youtube.com/embed/T5DobbxmIk4?list=RDT5DobbxmIk4&autoplay=0&rel=0&modestbranding=1" 
+            title="Radio Power 90.9 en Vivo" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             allowfullscreen>
           </iframe>
         </div>
 
-        <!-- PLAYER FOOTER CONTROLS & INTERACTION -->
-        <div class="mt-4 px-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div class="flex items-center gap-3 w-full sm:w-auto">
-            <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        <!-- PLAYER FOOTER: LOGO GRANDE VISIBLE EN LA ZONA DE RADIO POWER LIVE -->
+        <div class="mt-6 px-2 flex flex-col sm:flex-row items-center justify-between gap-5 pt-2">
+          
+          <div class="flex items-center gap-4 w-full sm:w-auto">
+            <!-- LOGO GRANDE EN LA ZONA RADIO POWER LIVE -->
+            <div class="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-2xl bg-white border-2 border-black p-1.5 shadow-brutal flex items-center justify-center">
+              <img 
+                src="assets/logo.png" 
+                alt="Logo Power 90.9" 
+                class="w-full h-full object-contain filter drop-shadow" 
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="hidden w-full h-full rounded-xl bg-brand-blue items-center justify-center font-display font-black text-white text-lg">
+                P<span class="text-brand-yellow font-black">90.9</span>
+              </div>
             </div>
+
             <div>
-              <div class="text-sm font-bold text-white">Power 90.9 en Todas las Pantallas</div>
-              <div class="text-xs text-slate-400 font-mono">Sintonizá desde tu auto, celular o Smart TV</div>
+              <div class="text-lg sm:text-xl font-display font-black text-slate-950 flex flex-wrap items-center gap-2">
+                <span>Radio Power Live</span>
+                <!-- EXACT REQUESTED TEXT: Temporada Primavera 2026 -->
+                <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-brand-yellow border border-black text-black">
+                  &bull; Temporada Primavera 2026
+                </span>
+              </div>
+              <div class="text-xs text-slate-600 font-mono font-medium mt-1">
+                Desde Juan María Gutiérrez en el dial 90.9 FM y streaming para todo el mundo
+              </div>
             </div>
           </div>
 
-          <!-- SHARING & DIRECT MESSAGING -->
-          <div class="flex items-center gap-2.5 w-full sm:w-auto justify-end">
+          <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+            <!-- BOTÓN PAUTAR DESTACADO -->
             <button 
-              id="copyShareBtn" 
-              class="px-3.5 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 text-xs font-mono font-medium text-slate-200 transition flex items-center gap-1.5"
+              id="openAdsModalPlayer" 
+              class="px-4 py-2.5 rounded-xl bg-brand-yellow hover:bg-[#ffe833] text-black text-xs font-mono font-black uppercase tracking-wider border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-2"
             >
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+              📢 <span>Pautar</span>
+            </button>
+
+            <!-- COMPARTIR -->
+            <button 
+              id="shareBtn" 
+              class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 border-2 border-black text-xs font-mono font-bold text-slate-900 shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-1.5"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
               <span>Compartir</span>
             </button>
 
+            <!-- MENSAJE AL ESTUDIO -->
             <a 
               href="https://wa.me/541141976436?text=Hola%20Radio%20Power%2090.9!%20Les%20escribo%20escuchando%20el%20streaming%20en%20vivo." 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-mono font-bold transition flex items-center gap-1.5 shadow"
+              class="px-5 py-2.5 rounded-xl bg-brand-green hover:bg-emerald-600 text-white text-xs font-mono font-black uppercase tracking-wider border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-2"
             >
-              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
-              <span>Mensaje al Estudio</span>
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
+              <span>Estudio</span>
             </a>
           </div>
         </div>
@@ -311,150 +380,117 @@
     </div>
   </main>
 
-  <!-- COMMERCIAL ADVERTISING SECTION (B2B MEDIA KIT) -->
-  <section id="publicidad" class="py-20 bg-power-surface relative border-t border-white/5">
+  <!-- SECCIÓN PUBLICIDAD-COMERCIOS EN LA HOME (CARGA DINÁMICA DESDE SPONSORS.JSON) -->
+  <section id="comercios" class="py-20 bg-white border-y-2 border-black relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- SECTION HEADER -->
-      <div class="max-w-3xl mb-14">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-400 text-xs font-mono font-bold uppercase tracking-wider mb-3">
-          Visibilidad Comercial &bull; Presupuesto a Medida
-        </div>
-        <h2 class="font-headline font-black text-3xl sm:text-5xl text-white tracking-tight leading-tight">
-          HACÉ QUE TU NEGOCIO SE ESCUCHE Y SE VEA.
-        </h2>
-        <p class="text-slate-300 text-base sm:text-lg mt-3 leading-relaxed">
-          Acompañamos a comercios, marcas y profesionales a generar ventas y presencia real. Combinamos la audiencia fiel del dial con el alcance visual del streaming.
-        </p>
-      </div>
-
-      <!-- 3 FORMAT CARDS -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        
-        <!-- CARD 1: FM TRADICIONAL -->
-        <div class="glass-panel rounded-2xl p-7 flex flex-col justify-between hover:-translate-y-1 transition duration-300">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-blue-600/15 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-5 font-mono font-bold">
-              FM
-            </div>
-            <h3 class="font-headline font-bold text-xl text-white mb-2">Publicidad en Radio (90.9)</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-6">
-              Llegá directo a los autos, hogares y comercios de la región mientras la gente trabaja o viaja.
-            </p>
-            <ul class="space-y-2 text-xs text-slate-300 mb-6 font-medium">
-              <li class="flex items-center gap-2"><span class="text-blue-400 font-bold">&check;</span> Rotativos de alta frecuencia</li>
-              <li class="flex items-center gap-2"><span class="text-blue-400 font-bold">&check;</span> Menciones no tradicionales (PNT)</li>
-              <li class="flex items-center gap-2"><span class="text-blue-400 font-bold">&check;</span> Auspicios de programas temáticos</li>
-            </ul>
-          </div>
-          <a href="https://wa.me/541141976436?text=Hola!%20Quiero%20consultar%20por%20publicidad%20en%20el%20aire%20de%20Radio%20Power%20FM%2090.9" target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-white/[0.05] hover:bg-blue-600 hover:text-white text-slate-200 text-center text-xs font-mono font-bold border border-white/10 transition">
-            Cotizar Pauta en FM &rarr;
-          </a>
-        </div>
-
-        <!-- CARD 2: DIGITAL & STREAMING -->
-        <div class="glass-panel rounded-2xl p-7 flex flex-col justify-between hover:-translate-y-1 transition duration-300 border-blue-500/30">
-          <div>
-            <div class="inline-block px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-mono text-[10px] font-bold mb-4 uppercase">
-              Alta Retención
-            </div>
-            <h3 class="font-headline font-bold text-xl text-white mb-2">Zócalos en Streaming HD</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-6">
-              Tu marca en pantalla mientras miles de personas miran el vivo en YouTube y en la web.
-            </p>
-            <ul class="space-y-2 text-xs text-slate-300 mb-6 font-medium">
-              <li class="flex items-center gap-2"><span class="text-cyan-400 font-bold">&check;</span> Logo y zócalo animado en pantalla</li>
-              <li class="flex items-center gap-2"><span class="text-cyan-400 font-bold">&check;</span> Banners en web oficial</li>
-              <li class="flex items-center gap-2"><span class="text-cyan-400 font-bold">&check;</span> Difusión cruzada en redes sociales</li>
-            </ul>
-          </div>
-          <a href="https://wa.me/541141976436?text=Hola!%20Quiero%20consultar%20por%20publicidad%20en%20Streaming%20de%20YouTube%20y%20Digital." target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-center text-xs font-mono font-bold transition shadow">
-            Cotizar Streaming &rarr;
-          </a>
-        </div>
-
-        <!-- CARD 3: COMBO PRIMAVERA 360° -->
-        <div class="glass-panel rounded-2xl p-7 flex flex-col justify-between hover:-translate-y-1 transition duration-300 border-pink-500/40 relative">
-          <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-gradient-to-r from-pink-500 to-amber-500 text-white font-mono text-[10px] font-bold uppercase shadow">
-            🌸 Combo Primavera
-          </div>
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-pink-500/15 border border-pink-500/30 flex items-center justify-center text-pink-400 mb-5 font-mono font-bold">
-              360°
-            </div>
-            <h3 class="font-headline font-bold text-xl text-white mb-2">Pack Integral a Medida</h3>
-            <p class="text-xs text-slate-300 leading-relaxed mb-6">
-              El paquete completo para potenciar ventas esta primavera: aire, streaming y soporte digital.
-            </p>
-            <ul class="space-y-2 text-xs text-slate-300 mb-6 font-medium">
-              <li class="flex items-center gap-2"><span class="text-pink-400 font-bold">&check;</span> Spot en FM + Presencia en YouTube</li>
-              <li class="flex items-center gap-2"><span class="text-pink-400 font-bold">&check;</span> Asesoramiento creativo y producción</li>
-              <li class="flex items-center gap-2"><span class="text-pink-400 font-bold">&check;</span> Precios accesibles para comercios locales</li>
-            </ul>
-          </div>
-          <a href="https://wa.me/541141976436?text=Hola!%20Quiero%20armar%20un%20Combo%20360%20Primavera%20a%20medida%20para%20mi%20negocio." target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-pink-600 to-amber-600 hover:opacity-90 text-white text-center text-xs font-mono font-bold transition shadow">
-            Pedir Propuesta 360° &rarr;
-          </a>
-        </div>
-
-      </div>
-
-      <!-- WHATSAPP FAST CONTACT BANNER -->
-      <div class="rounded-3xl bg-gradient-to-br from-blue-900/40 via-power-surface to-slate-900 p-8 sm:p-10 border border-blue-500/20 flex flex-col md:flex-row items-center justify-between gap-6">
+      <!-- HEADER SECCIÓN COMERCIOS -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
-          <span class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest">Contacto Directo</span>
-          <h3 class="font-headline font-extrabold text-2xl sm:text-3xl text-white mt-1">
-            Presupuesto inmediato por WhatsApp
-          </h3>
-          <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-xl">
-            Contanos qué vende tu comercio y armamos un esquema publicitario adaptado a tu bolsillo para que salgas al aire esta misma semana.
+          <span class="sticker px-3 py-1 rounded-full bg-brand-yellow text-black text-xs mb-3">
+            [ COMERCIOS &bull; AUSPICIANTES ]
+          </span>
+          <h2 class="font-display font-black text-3xl sm:text-5xl text-slate-950 tracking-tight leading-tight mt-2">
+            COMERCIOS DE LA RADIO
+          </h2>
+          <p class="text-slate-600 text-sm mt-2 max-w-lg font-medium">
+            Los negocios locales que acompañan nuestras transmisiones y confían en Radio Power 90.9 para llegar a toda la comunidad.
           </p>
         </div>
 
-        <a 
-          href="https://wa.me/541141976436?text=Hola%20Radio%20Power!%20Quiero%20un%20presupuesto%20a%20medida%20para%20mi%20comercio." 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-mono font-extrabold text-xs uppercase tracking-wider shadow-xl shadow-emerald-500/25 hover:scale-105 transition flex items-center gap-2.5 whitespace-nowrap"
-        >
-          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
-          <span>Escribinos al WhatsApp</span>
-        </a>
+        <!-- BOTÓN PAUTAR -->
+        <div class="flex flex-wrap items-center gap-3">
+          <button 
+            id="openAdsModalComercios" 
+            class="px-6 py-3.5 rounded-2xl bg-brand-yellow hover:bg-[#ffe833] text-black font-mono font-black text-xs uppercase tracking-wider border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-2"
+          >
+            📢 <span>Sumar mi Comercio (Planes de Pauta)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- GRID DINÁMICO DE COMERCIOS (CARGADO DESDE SPONSORS.JSON CON POP-UP DE FICHA) -->
+      <div id="sponsorsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Renderizado dinámicamente con JavaScript -->
       </div>
 
     </div>
   </section>
 
-  <!-- PROGRAMACIÓN (TIMELINE MINIMALISTA) -->
-  <section id="grilla" class="py-16 bg-power-bg border-t border-white/5">
+  <!-- 24 HORAS EN EL AIRE (REEMPLAZA SHOWS CENTRALES SEGÚN PEDIDO) -->
+  <section id="programacion" class="py-20 bg-[#F8F9FD]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
         <div>
-          <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">Grilla en Vivo</span>
-          <h2 class="font-headline font-black text-2xl sm:text-4xl text-white mt-1">PROGRAMACIÓN CENTRAL</h2>
+          <span class="sticker px-3 py-1 rounded-full bg-brand-yellow text-black text-xs mb-3">
+            [ AIRE PERMANENTE &bull; 24 HORAS ]
+          </span>
+          <h2 class="font-display font-black text-3xl sm:text-4xl text-slate-950 mt-2">
+            MÚSICA BUENA PARA ACOMPAÑARTE EN LA RUTINA
+          </h2>
+          <p class="text-slate-600 text-sm mt-2 max-w-xl font-medium">
+            Las 24 horas del día transmitimos música seleccionada, información al instante, el estado del tiempo y las noticias locales más relevantes de Gutiérrez y Berazategui.
+          </p>
         </div>
-        <div class="text-xs font-mono text-slate-400">Lunes a Viernes &bull; FM 90.9 &amp; Streaming</div>
+        <div class="sticker px-3 py-1 rounded-full bg-white text-slate-800 text-xs">
+          TRANSMISIÓN CONTINUA &bull; 90.9 FM
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- 4 TARJETAS VIVAS DE PROGRAMACIÓN CONTINUA -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
-        <div class="glass-panel rounded-2xl p-5 border-l-4 border-l-blue-500">
-          <div class="text-xs font-mono text-blue-400 font-bold mb-1">07:00 — 10:00</div>
-          <h3 class="font-headline font-bold text-lg text-white">Primera Edición</h3>
-          <p class="text-xs text-slate-400 mt-2">Panorama informativo ágil, reporte de tránsito, clima y entrevistas en piso.</p>
+        <div class="bg-white rounded-3xl p-6 border-2 border-black shadow-brutal">
+          <div class="w-12 h-12 rounded-2xl bg-brand-blueLight border-2 border-black flex items-center justify-center text-xl mb-4">
+            🎵
+          </div>
+          <h3 class="font-display font-black text-xl text-slate-950 mb-2">Música Seleccionada</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-medium">
+            Sonido cuidado y la mejor compañía musical las 24 horas para tus mañanas, jornadas de trabajo y el descanso.
+          </p>
+          <div class="mt-4 pt-3 border-t-2 border-slate-100 text-[11px] font-mono font-bold text-brand-blue">
+            ● Sonando las 24 hs
+          </div>
         </div>
 
-        <div class="glass-panel rounded-2xl p-5 border-l-4 border-l-pink-500 bg-white/[0.02]">
-          <div class="text-xs font-mono text-pink-400 font-bold mb-1">10:00 — 13:00</div>
-          <h3 class="font-headline font-bold text-lg text-white">Power Magazine</h3>
-          <p class="text-xs text-slate-400 mt-2">El show principal: debate, humor, móviles en exteriores, columnistas y música.</p>
+        <div class="bg-white rounded-3xl p-6 border-2 border-black shadow-brutal">
+          <div class="w-12 h-12 rounded-2xl bg-brand-yellowLight border-2 border-black flex items-center justify-center text-xl mb-4">
+            📰
+          </div>
+          <h3 class="font-display font-black text-xl text-slate-950 mb-2">Información Relevante</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-medium">
+            Todo lo que pasa en Juan María Gutiérrez, Berazategui y la región con flashes informativos y actualidad ágil.
+          </p>
+          <div class="mt-4 pt-3 border-t-2 border-slate-100 text-[11px] font-mono font-bold text-slate-800">
+            ● Flashes cada hora
+          </div>
         </div>
 
-        <div class="glass-panel rounded-2xl p-5 border-l-4 border-l-cyan-500">
-          <div class="text-xs font-mono text-cyan-400 font-bold mb-1">17:00 — 20:00</div>
-          <h3 class="font-headline font-bold text-lg text-white">La Vuelta Power</h3>
-          <p class="text-xs text-slate-400 mt-2">El regreso a casa con ritmo, actualidad deportiva, lanzamientos y buena vibra.</p>
+        <div class="bg-white rounded-3xl p-6 border-2 border-black shadow-brutal">
+          <div class="w-12 h-12 rounded-2xl bg-brand-pinkLight border-2 border-black flex items-center justify-center text-xl mb-4">
+            ☀️
+          </div>
+          <h3 class="font-display font-black text-xl text-slate-950 mb-2">Estado del Tiempo</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-medium">
+            Temperatura, pronóstico extendido, alertas meteorológicas y estado de accesos para planificar tu día.
+          </p>
+          <div class="mt-4 pt-3 border-t-2 border-slate-100 text-[11px] font-mono font-bold text-brand-pink">
+            ● Actualización constante
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border-2 border-black shadow-brutal">
+          <div class="w-12 h-12 rounded-2xl bg-brand-greenLight border-2 border-black flex items-center justify-center text-xl mb-4">
+            📢
+          </div>
+          <h3 class="font-display font-black text-xl text-slate-950 mb-2">Comunidad &amp; Comercio</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-medium">
+            Espacio de difusión comunitaria, avisos vecinales y apoyo permanente a los comerciantes que mueven el barrio.
+          </p>
+          <div class="mt-4 pt-3 border-t-2 border-slate-100 text-[11px] font-mono font-bold text-brand-green">
+            ● Espacio de los vecinos
+          </div>
         </div>
 
       </div>
@@ -463,68 +499,84 @@
   </section>
 
   <!-- TRAYECTORIA & HISTORIA -->
-  <section id="trayectoria" class="py-16 bg-power-surface border-t border-white/5">
+  <section id="trayectoria" class="py-20 bg-white border-t-2 border-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <span class="text-xs font-mono font-bold text-blue-400 uppercase tracking-widest">Desde 1993</span>
-          <h2 class="font-headline font-black text-2xl sm:text-4xl text-white mt-2 mb-4 leading-tight">
+          <span class="sticker px-3 py-1 rounded-full bg-brand-yellow text-black text-xs mb-4">
+            [ DESDE 1993 &bull; TRAYECTORIA ]
+          </span>
+          <h2 class="font-display font-black text-3xl sm:text-5xl text-slate-950 mt-2 mb-6 leading-tight">
             MÁS DE 30 AÑOS JUNTO A LA AUDIENCIA.
           </h2>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-            Fundada en 1993 en Juan María Gutiérrez (partido de Berazategui), Radio Power 90.9 nació como un medio comprometido con la expresión y la información comunitaria, dando espacio a los vecinos y a destacadas personalidades públicas.
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed mb-4 font-medium">
+            Fundada en 1993 en Juan María Gutiérrez (partido de Berazategui), Radio Power 90.9 nació como una emisora comprometida con la palabra, la información veraz y el acompañamiento constante a los vecinos y comerciantes de la zona.
           </p>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            Hoy evolucionamos hacia una plataforma multimedia integral: mantenemos nuestra raíz en el dial 90.9 MHz y sumamos streaming en directo para conectar con oyentes y comercios sin importar la distancia.
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-medium">
+            Hoy conectamos esa historia de solvencia con las nuevas plataformas de streaming audiovisual, proyectando nuestras voces y las marcas de nuestros auspiciantes aún más lejos.
           </p>
+
+          <div class="flex items-center gap-6 font-mono text-xs font-bold">
+            <div class="border-l-4 border-brand-yellow pl-4">
+              <div class="font-display font-black text-slate-950 text-xl">1993 &mdash; 2026</div>
+              <div class="text-slate-500">Pioneros en radiodifusión zonal</div>
+            </div>
+            <div class="border-l-4 border-brand-blue pl-4">
+              <div class="font-display font-black text-slate-950 text-xl">90.9 MHz</div>
+              <div class="text-slate-500">Frecuencia en el dial</div>
+            </div>
+          </div>
         </div>
 
         <div class="grid grid-cols-2 gap-4">
-          <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
-            <div class="font-headline font-black text-4xl text-blue-400">+33</div>
-            <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Años de Aire (1993-2026)</div>
+          <div class="p-6 rounded-3xl bg-[#F8F9FD] border-2 border-black shadow-brutal text-center">
+            <div class="font-display font-black text-4xl text-brand-blue">+33</div>
+            <div class="text-xs font-mono font-bold text-slate-600 uppercase tracking-wider mt-2">Años de Aire</div>
           </div>
-          <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
-            <div class="font-headline font-black text-4xl text-pink-400">90.9</div>
-            <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Frecuencia Modulada</div>
+          <div class="p-6 rounded-3xl bg-brand-yellowLight border-2 border-black shadow-brutal text-center">
+            <div class="font-display font-black text-4xl text-black">90.9</div>
+            <div class="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider mt-2">Frecuencia FM</div>
           </div>
-          <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
-            <div class="font-headline font-black text-4xl text-cyan-400">HD</div>
-            <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Streaming Audiovisual</div>
+          <div class="p-6 rounded-3xl bg-brand-pinkLight border-2 border-black shadow-brutal text-center">
+            <div class="font-display font-black text-4xl text-brand-pink">HD</div>
+            <div class="text-xs font-mono font-bold text-slate-600 uppercase tracking-wider mt-2">Video Streaming</div>
           </div>
-          <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 text-center">
-            <div class="font-headline font-black text-4xl text-emerald-400">100%</div>
-            <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Compromiso Comercial</div>
+          <div class="p-6 rounded-3xl bg-brand-greenLight border-2 border-black shadow-brutal text-center">
+            <div class="font-display font-black text-4xl text-brand-green">100%</div>
+            <div class="text-xs font-mono font-bold text-slate-600 uppercase tracking-wider mt-2">Compromiso Local</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER CON CRÉDITOS Y ENLACE INSTAGRAM -->
-  <footer class="bg-[#050608] border-t border-white/10 pt-12 pb-24 sm:pb-12 text-xs text-slate-400">
+  <!-- FOOTER -->
+  <footer class="bg-white border-t-2 border-black pt-12 pb-24 sm:pb-12 text-xs text-slate-600 font-medium">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/5">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b-2 border-slate-100">
         
         <!-- LOGO & LOCATION -->
-        <div class="flex items-center gap-3">
-          <img src="assets/logo.png" alt="Power 90.9" class="w-9 h-9 object-contain" onerror="this.style.display='none'">
+        <div class="flex items-center gap-3.5">
+          <img src="assets/logo.png" alt="Power 90.9" class="w-10 h-10 object-contain" onerror="this.style.display='none'">
           <div>
-            <div class="font-headline font-black text-white text-base">RADIO POWER 90.9</div>
-            <div class="text-[11px] text-slate-500 font-mono">Juan María Gutiérrez &bull; Berazategui, Buenos Aires</div>
+            <div class="font-display font-black text-slate-950 text-base">RADIO POWER 90.9</div>
+            <div class="text-xs text-slate-500 font-mono">Juan María Gutiérrez &bull; Berazategui, Buenos Aires</div>
           </div>
         </div>
 
-        <!-- SOCIAL LINKS -->
-        <div class="flex items-center gap-6 font-mono text-xs">
-          <a href="https://www.facebook.com/Power90.9/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition flex items-center gap-1.5">
+        <!-- ACTIONS & SOCIAL -->
+        <div class="flex flex-wrap items-center gap-6 font-mono text-xs font-bold">
+          <button id="installAppFooter" class="hover:text-brand-blue flex items-center gap-1.5 underline decoration-brand-yellow">
+            📲 Instalar en Celular
+          </button>
+          <a href="https://www.facebook.com/Power90.9/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-blue transition flex items-center gap-1.5">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             <span>Facebook Oficial</span>
           </a>
-          <a href="https://wa.me/541141976436" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition flex items-center gap-1.5">
+          <a href="https://wa.me/541141976436" target="_blank" rel="noopener noreferrer" class="hover:text-brand-green transition flex items-center gap-1.5">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
-            <span>WhatsApp</span>
+            <span>WhatsApp Comercial</span>
           </a>
         </div>
 
@@ -536,14 +588,14 @@
           &copy; 1993 &mdash; 2026 Radio Power 90.9 FM. Todos los derechos reservados.
         </div>
         
-        <!-- EXPLICIT AUTHOR CREDIT AS REQUESTED -->
-        <div class="flex items-center gap-1.5 text-slate-400">
+        <!-- EXACT AUTHOR CREDIT AS REQUESTED -->
+        <div class="flex items-center gap-1.5 text-slate-700">
           <span>Web creada por</span>
           <a 
             href="http://instagram.com/comunicador.cristiano" 
             target="_blank" 
             rel="noopener noreferrer" 
-            class="text-blue-400 hover:text-pink-400 font-bold transition flex items-center gap-1 underline underline-offset-4 decoration-blue-500/30 hover:decoration-pink-400"
+            class="text-brand-blue hover:text-black font-black transition flex items-center gap-1 underline underline-offset-4 decoration-brand-yellow decoration-2"
           >
             <span>@comunicador.cristiano</span>
             <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -555,49 +607,556 @@
     </div>
   </footer>
 
-  <!-- MOBILE FIXED BOTTOM BAR (STREAMING + WHATSAPP QUICK ACCESS) -->
-  <aside aria-label="Acciones rápidas en móviles" class="sm:hidden fixed bottom-0 left-0 right-0 z-50 glass-panel border-t border-white/10 px-4 py-2.5 flex items-center justify-between gap-3">
-    <a href="#streaming" class="flex-1 py-2.5 px-3 rounded-xl bg-blue-600 text-white font-mono font-bold text-xs text-center flex items-center justify-center gap-1.5 shadow">
-      <span>▶ Ver en Vivo</span>
+  <!-- MOBILE STICKY BAR -->
+  <aside aria-label="Acciones en celulares" class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t-2 border-black px-4 py-2.5 flex items-center justify-between gap-3 shadow-lg">
+    <a href="#streaming" class="flex-1 py-2.5 px-3 rounded-xl bg-brand-yellow text-black font-mono font-black text-xs text-center border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+      ▶ Ver en Vivo
     </a>
-    <a href="https://wa.me/541141976436?text=Hola%20Radio%20Power!%20Quiero%20consultar%20por%20publicidad." target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 text-white font-mono font-bold text-xs text-center flex items-center justify-center gap-1.5 shadow">
-      <span>💬 WhatsApp</span>
+    <button id="openAdsModalSticky" class="flex-1 py-2.5 px-3 rounded-xl bg-brand-blue text-white font-mono font-black text-xs text-center border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+      📢 Pautar
+    </button>
+    <a href="https://wa.me/541141976436?text=Hola%20Radio%20Power!%20Quiero%20consultar%20por%20publicidad." target="_blank" rel="noopener noreferrer" class="py-2.5 px-3 rounded-xl bg-brand-green text-white font-mono font-black text-xs text-center border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+      💬
     </a>
   </aside>
 
-  <!-- TOAST NOTIFICATION SCRIPT -->
-  <div id="toast" class="fixed bottom-20 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full bg-slate-900 border border-white/20 text-white text-xs font-mono font-medium shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300">
-    Enlace copiado al portapapeles 📋
+  <!-- ======================================================== -->
+  <!-- MODAL 1: PLANES DE PUBLICIDAD (SE ABRE AL CLIC EN PAUTAR) -->
+  <!-- ======================================================== -->
+  <div id="adsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-3xl border-2 border-black shadow-brutal-xl max-w-4xl w-full max-h-[92vh] overflow-y-auto p-6 sm:p-10 relative">
+      
+      <!-- CLOSE BUTTON -->
+      <button id="closeAdsModal" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-100 hover:bg-brand-yellow border-2 border-black font-mono font-black text-base flex items-center justify-center transition shadow-[2px_2px_0px_0px_#000]">
+        &times;
+      </button>
+
+      <!-- MODAL HEADER -->
+      <div class="mb-8 pr-12">
+        <span class="sticker px-3 py-1 rounded-full bg-brand-yellow text-black text-xs mb-3">
+          [ PLANES PUBLICITARIOS &bull; SIN PRECIO FIJO &bull; A MEDIDA ]
+        </span>
+        <h3 class="font-display font-black text-2xl sm:text-4xl text-slate-950 mt-2">
+          PLANES DE PUBLICIDAD EN RADIO &amp; DIGITAL
+        </h3>
+        <p class="text-slate-600 text-xs sm:text-sm mt-2 font-medium">
+          Seleccioná la opción que mejor se adapta a tus objetivos. Cotizamos una propuesta 100% a medida para tu comercio por WhatsApp.
+        </p>
+      </div>
+
+      <!-- DETAILED PLANS GRID -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        
+        <!-- PLAN 1: AIRE FM -->
+        <div class="bg-[#F8F9FD] rounded-2xl p-6 border-2 border-black shadow-brutal flex flex-col justify-between">
+          <div>
+            <span class="sticker px-2.5 py-0.5 rounded-lg bg-brand-blue text-white text-[11px] mb-3">
+              PLAN AIRE FM
+            </span>
+            <h4 class="font-display font-black text-xl text-slate-950 mb-2">Pauta Tradicional</h4>
+            <p class="text-xs text-slate-600 mb-4 font-medium">
+              Presencia diaria en la frecuencia 90.9 MHz en autos, hogares y negocios.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-800 font-mono mb-6 font-semibold">
+              <li class="flex items-center gap-2"><span class="text-brand-blue font-bold">&check;</span> Rotativos de 15, 20 o 30 seg.</li>
+              <li class="flex items-center gap-2"><span class="text-brand-blue font-bold">&check;</span> Menciones en vivo (PNT)</li>
+              <li class="flex items-center gap-2"><span class="text-brand-blue font-bold">&check;</span> Auspicios de bloques temáticos</li>
+              <li class="flex items-center gap-2"><span class="text-brand-blue font-bold">&check;</span> Asesoramiento de guión de spot</li>
+            </ul>
+          </div>
+          <a 
+            href="https://wa.me/541141976436?text=Hola%20Radio%20Power!%20Quisiera%20solicitar%20un%20presupuesto%20a%20medida%20para%20el%20PLAN%20AIRE%20FM." 
+            target="_blank" 
+            class="w-full py-3 rounded-xl bg-brand-blue hover:bg-blue-700 text-white text-center text-xs font-mono font-bold uppercase tracking-wider border-2 border-black shadow-[2px_2px_0px_0px_#000] transition"
+          >
+            Cotizar Plan FM &rarr;
+          </a>
+        </div>
+
+        <!-- PLAN 2: REDES & DIGITAL -->
+        <div class="bg-[#F8F9FD] rounded-2xl p-6 border-2 border-black shadow-brutal flex flex-col justify-between">
+          <div>
+            <span class="sticker px-2.5 py-0.5 rounded-lg bg-brand-pink text-white text-[11px] mb-3">
+              REDES &amp; STREAMING
+            </span>
+            <h4 class="font-display font-black text-xl text-slate-950 mb-2">Presencia Digital</h4>
+            <p class="text-xs text-slate-600 mb-4 font-medium">
+              Tu marca en pantalla de YouTube, redes sociales y nuestro portal web.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-800 font-mono mb-6 font-semibold">
+              <li class="flex items-center gap-2"><span class="text-brand-pink font-bold">&check;</span> Zócalos en vivo por YouTube</li>
+              <li class="flex items-center gap-2"><span class="text-brand-pink font-bold">&check;</span> Menciones en Instagram / Facebook</li>
+              <li class="flex items-center gap-2"><span class="text-brand-pink font-bold">&check;</span> Ficha y banner en web oficial</li>
+              <li class="flex items-center gap-2"><span class="text-brand-pink font-bold">&check;</span> Enlaces directos a tu WhatsApp</li>
+            </ul>
+          </div>
+          <a 
+            href="https://wa.me/541141976436?text=Hola%20Radio%20Power!%20Quisiera%20solicitar%20un%20presupuesto%20a%20medida%20para%20el%20PLAN%20REDES%20Y%20STREAMING." 
+            target="_blank" 
+            class="w-full py-3 rounded-xl bg-brand-pink hover:bg-pink-600 text-white text-center text-xs font-mono font-bold uppercase tracking-wider border-2 border-black shadow-[2px_2px_0px_0px_#000] transition"
+          >
+            Cotizar Streaming &rarr;
+          </a>
+        </div>
+
+        <!-- PLAN 3: COMBO PRIMAVERA 360° -->
+        <div class="bg-brand-yellowLight rounded-2xl p-6 border-2 border-black shadow-brutal flex flex-col justify-between">
+          <div>
+            <span class="sticker px-2.5 py-0.5 rounded-lg bg-brand-yellow text-black text-[11px] mb-3">
+              🌸 COMBO 360° PRIMAVERA
+            </span>
+            <h4 class="font-display font-black text-xl text-slate-950 mb-2">Máximo Alcance</h4>
+            <p class="text-xs text-slate-700 mb-4 font-medium">
+              Sinergia completa: aire tradicional + video streaming + redes y web.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-900 font-mono mb-6 font-bold">
+              <li class="flex items-center gap-2"><span class="text-black font-bold">&check;</span> Spots diarios en 90.9 FM</li>
+              <li class="flex items-center gap-2"><span class="text-black font-bold">&check;</span> Zócalos en transmisión de YouTube</li>
+              <li class="flex items-center gap-2"><span class="text-black font-bold">&check;</span> Publicaciones y difusión en redes</li>
+              <li class="flex items-center gap-2"><span class="text-black font-bold">&check;</span> Producción de audio y asesoramiento</li>
+            </ul>
+          </div>
+          <a 
+            href="https://wa.me/541141976436?text=Hola%20Radio%20Power!%20Quiero%20solicitar%20el%20presupuesto%20del%20COMBO%20360%20PRIMAVERA%20a%20medida." 
+            target="_blank" 
+            class="w-full py-3 rounded-xl bg-brand-yellow hover:bg-[#ffe51a] text-black text-center text-xs font-mono font-black uppercase tracking-wider border-2 border-black shadow-brutal transition"
+          >
+            Pedir Combo 360° &rarr;
+          </a>
+        </div>
+
+      </div>
+
+      <!-- FOOTER NOTE -->
+      <div class="bg-slate-50 p-4 rounded-2xl border-2 border-black flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
+        <div class="text-slate-700 font-medium">
+          ¿Dudas sobre cuál elegir? Te asesoramos en minutos sin compromiso.
+        </div>
+        <a href="https://wa.me/541141976436?text=Hola%20Radio%20Power!%20Quiero%20asesoramiento%20comercial%20para%20mi%20negocio." target="_blank" class="text-brand-blue font-bold underline decoration-brand-yellow">
+          Hablar con Asesor Comercial &rarr;
+        </a>
+      </div>
+
+    </div>
   </div>
 
+  <!-- ======================================================== -->
+  <!-- MODAL 2: FICHA DEL COMERCIO AUSPICIANTE                   -->
+  <!-- ======================================================== -->
+  <div id="sponsorModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-3xl border-2 border-black shadow-brutal-xl max-w-xl w-full p-6 sm:p-8 relative">
+      
+      <button id="closeSponsorModal" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-brand-yellow border-2 border-black font-mono font-black text-base flex items-center justify-center transition shadow-[2px_2px_0px_0px_#000]">
+        &times;
+      </button>
+
+      <div class="flex items-center gap-4 mb-6 pr-10">
+        <div id="modalSponsorLogo" class="w-16 h-16 rounded-2xl bg-white border-2 border-black p-2 shadow-brutal flex items-center justify-center text-2xl font-display font-black text-brand-blue">
+          🏪
+        </div>
+        <div>
+          <span id="modalSponsorRubro" class="sticker px-2.5 py-0.5 rounded-full bg-brand-yellow text-black text-[10px]">
+            COMERCIO LOCAL
+          </span>
+          <h3 id="modalSponsorNombre" class="font-display font-black text-xl sm:text-2xl text-slate-950 mt-1">
+            Nombre del Comercio
+          </h3>
+        </div>
+      </div>
+
+      <p id="modalSponsorDesc" class="text-slate-700 text-sm leading-relaxed mb-6 font-medium bg-slate-50 p-4 rounded-2xl border-2 border-black">
+        Descripción del comercio...
+      </p>
+
+      <div class="space-y-2.5 text-xs font-mono font-bold text-slate-700 mb-8">
+        <div class="flex items-center gap-2">
+          <span>📍</span> <span id="modalSponsorDireccion">Dirección</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span>📞</span> <span id="modalSponsorTelefono">Teléfono</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center gap-3">
+        <a 
+          id="modalSponsorWhatsApp" 
+          href="#" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="w-full sm:flex-1 py-3 px-4 rounded-xl bg-brand-green hover:bg-emerald-600 text-white text-center text-xs font-mono font-black uppercase tracking-wider border-2 border-black shadow-brutal transition flex items-center justify-center gap-2"
+        >
+          <span>Contactar por WhatsApp</span>
+        </a>
+        <a 
+          id="modalSponsorInstagram" 
+          href="#" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="w-full sm:w-auto py-3 px-4 rounded-xl bg-white hover:bg-slate-50 text-slate-900 text-center text-xs font-mono font-bold border-2 border-black shadow-brutal transition flex items-center justify-center gap-1.5"
+        >
+          <span>Instagram</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL 3: INSTRUCCIONES DE INSTALACIÓN EN EL CELULAR       -->
+  <!-- ======================================================== -->
+  <div id="installModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-3xl border-2 border-black shadow-brutal-xl max-w-lg w-full p-6 sm:p-8 relative">
+      
+      <button id="closeInstallModal" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-brand-yellow border-2 border-black font-mono font-black text-base flex items-center justify-center transition shadow-[2px_2px_0px_0px_#000]">
+        &times;
+      </button>
+
+      <div class="flex items-center gap-3.5 mb-5 pr-8">
+        <div class="w-12 h-12 rounded-2xl bg-brand-yellow border-2 border-black flex items-center justify-center text-2xl shadow-brutal">
+          📲
+        </div>
+        <div>
+          <span class="sticker px-2 py-0.5 rounded-full bg-black text-white text-[10px]">WEB APP</span>
+          <h3 class="font-display font-black text-xl text-slate-950 mt-0.5">
+            Instalar Radio Power 90.9
+          </h3>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-600 mb-6 font-medium">
+        Llevá la radio siempre con vos sin ocupar espacio. Escuchá en vivo y accedé con un solo toque desde tu pantalla de inicio o cajón de aplicaciones:
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <!-- GUÍA ANDROID / CHROME -->
+        <div class="p-4 rounded-2xl bg-brand-blueLight border-2 border-black">
+          <div class="font-mono font-bold text-xs text-brand-blue flex items-center gap-2 mb-1.5">
+            <span>🤖 En Android / Google Chrome:</span>
+          </div>
+          <ol class="text-xs text-slate-800 list-decimal list-inside space-y-1 font-medium">
+            <li>Tocá el menú de opciones (los tres puntos <strong>⋮</strong> arriba a la derecha).</li>
+            <li>Seleccioná <strong>"Instalar aplicación"</strong> o <strong>"Agregar a la pantalla principal"</strong>.</li>
+            <li>¡Listo! Ya podés abrir Power 90.9 como una app nativa.</li>
+          </ol>
+        </div>
+
+        <!-- GUÍA IPHONE / SAFARI -->
+        <div class="p-4 rounded-2xl bg-brand-yellowLight border-2 border-black">
+          <div class="font-mono font-bold text-xs text-slate-900 flex items-center gap-2 mb-1.5">
+            <span>🍎 En iPhone / iPad (Safari):</span>
+          </div>
+          <ol class="text-xs text-slate-800 list-decimal list-inside space-y-1 font-medium">
+            <li>Tocá el botón <strong>Compartir</strong> (el cuadrado con la flecha hacia arriba).</li>
+            <li>Buscá y elegí la opción <strong>"Agregar a pantalla de inicio"</strong>.</li>
+            <li>Confirmá en <strong>"Agregar"</strong> arriba a la derecha.</li>
+          </ol>
+        </div>
+      </div>
+
+      <button id="closeInstallModalBtn" class="w-full py-3 rounded-xl bg-brand-yellow hover:bg-[#ffe833] text-black font-mono font-black text-xs uppercase tracking-wider border-2 border-black shadow-brutal transition">
+        Entendido
+      </button>
+
+    </div>
+  </div>
+
+  <!-- NOTIFICACIÓN TOAST -->
+  <div id="toast" class="fixed bottom-20 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-2.5 rounded-full bg-brand-yellow border-2 border-black text-black text-xs font-mono font-black shadow-brutal opacity-0 pointer-events-none transition-opacity duration-300">
+    ¡Enlace copiado al portapapeles! 📋
+  </div>
+
+  <!-- JAVASCRIPT: LOGICA DE MODALES, SPONSORS.JSON, FLORES Y PWA -->
   <script>
-    // Mobile Hamburger Menu Toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (mobileMenuBtn && mobileMenu) {
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-      // Close on link click
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    // 1. Mobile Menu Toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (menuBtn && mobileDrawer) {
+      menuBtn.addEventListener('click', () => mobileDrawer.classList.toggle('hidden'));
+      mobileDrawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileDrawer.classList.add('hidden')));
+    }
+
+    // 2. Share Button Clipboard Copy
+    const shareBtn = document.getElementById('shareBtn');
+    const toast = document.getElementById('toast');
+    if (shareBtn && toast) {
+      shareBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          toast.classList.remove('opacity-0', 'pointer-events-none');
+          setTimeout(() => toast.classList.add('opacity-0', 'pointer-events-none'), 2500);
+        }).catch(() => alert('¡Enlace de Radio Power 90.9 listo para compartir!'));
       });
     }
 
-    // Copy to clipboard share button
-    const copyShareBtn = document.getElementById('copyShareBtn');
-    const toast = document.getElementById('toast');
-    if (copyShareBtn && toast) {
-      copyShareBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-          toast.classList.remove('opacity-0', 'pointer-events-none');
-          setTimeout(() => {
-            toast.classList.add('opacity-0', 'pointer-events-none');
-          }, 2400);
-        }).catch(() => {
-          alert('¡Enlace de Radio Power 90.9 listo para compartir!');
-        });
+    // 3. Flower Rain / Petal Burst Effect on "¡Hola Primavera!"
+    const primaveraBadge = document.getElementById('primaveraBadge');
+    const flowers = ['🌸', '🌺', '🌼', '🌻', '🌷', '💐', '✨'];
+    
+    function burstFlowers(e) {
+      const rect = primaveraBadge.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+      
+      for (let i = 0; i < 18; i++) {
+        const flower = document.createElement('div');
+        flower.className = 'flower-particle';
+        flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+        
+        flower.style.left = `${originX + (Math.random() - 0.5) * 60}px`;
+        flower.style.top = `${originY + (Math.random() - 0.5) * 30}px`;
+        
+        const tx = (Math.random() - 0.5) * 260;
+        const ty = -(Math.random() * 180 + 60);
+        const tr = (Math.random() - 0.5) * 360;
+        
+        flower.style.setProperty('--tx', `${tx}px`);
+        flower.style.setProperty('--ty', `${ty}px`);
+        flower.style.setProperty('--tr', `${tr}deg`);
+        
+        document.body.appendChild(flower);
+        setTimeout(() => flower.remove(), 1800);
+      }
+    }
+    if (primaveraBadge) {
+      primaveraBadge.addEventListener('mouseenter', burstFlowers);
+      primaveraBadge.addEventListener('click', burstFlowers);
+    }
+
+    // 4. Modal de Publicidad (Pop-Up de Planes)
+    const adsModal = document.getElementById('adsModal');
+    const closeAdsModal = document.getElementById('closeAdsModal');
+    const openAdsTriggers = [
+      document.getElementById('openAdsModalNav'),
+      document.getElementById('openAdsModalPlayer'),
+      document.getElementById('openAdsModalComercios'),
+      document.getElementById('openAdsModalMobile'),
+      document.getElementById('openAdsModalSticky')
+    ].filter(Boolean);
+
+    function toggleAdsModal(show) {
+      if (adsModal) {
+        adsModal.classList.toggle('hidden', !show);
+        document.body.style.overflow = show ? 'hidden' : '';
+      }
+    }
+    openAdsTriggers.forEach(btn => btn.addEventListener('click', () => toggleAdsModal(true)));
+    if (closeAdsModal) closeAdsModal.addEventListener('click', () => toggleAdsModal(false));
+    if (adsModal) {
+      adsModal.addEventListener('click', (e) => {
+        if (e.target === adsModal) toggleAdsModal(false);
       });
+    }
+
+    // 5. Carga Dinámica de Comercios desde sponsors.json + Pop-Up de Ficha
+    const fallbackSponsors = [
+      {
+        "id": "panaderia-la-nueva",
+        "nombre": "Panadería & Confitería La Nueva",
+        "rubro": "Panadería & Pastelería",
+        "logo": "assets/comercios/panaderia.png",
+        "descripcion": "El mejor pan artesanal, medialunas recién horneadas y pastelería fina para tus mañanas y meriendas en Gutiérrez.",
+        "direccion": "Av. Real y Calle 413, Juan María Gutiérrez",
+        "telefono": "+54 11 4197-0101",
+        "whatsapp": "5491141970101",
+        "instagram": "https://instagram.com/"
+      },
+      {
+        "id": "ferreteria-el-puente",
+        "nombre": "Ferretería Industrial El Puente",
+        "rubro": "Ferretería & Construcción",
+        "logo": "assets/comercios/ferreteria.png",
+        "descripcion": "Herramientas, materiales eléctricos, plomería, pinturas y asesoramiento técnico para el hogar y la obra.",
+        "direccion": "Camino General Belgrano Km 38, Gutiérrez",
+        "telefono": "+54 11 4197-0202",
+        "whatsapp": "5491141970202",
+        "instagram": "https://instagram.com/"
+      },
+      {
+        "id": "farmacia-gutierrez",
+        "nombre": "Farmacia & Perfumería Central",
+        "rubro": "Salud & Cuidado Personal",
+        "logo": "assets/comercios/farmacia.png",
+        "descripcion": "Atención profesional, obras sociales, recetas digitales y la más completa línea de perfumería y dermocosmética.",
+        "direccion": "Calle 415 Nº 820, Juan María Gutiérrez",
+        "telefono": "+54 11 4197-0303",
+        "whatsapp": "5491141970303",
+        "instagram": "https://instagram.com/"
+      },
+      {
+        "id": "super-la-estacion",
+        "nombre": "Supermercado La Estación",
+        "rubro": "Supermercado & Almacén",
+        "logo": "assets/comercios/supermercado.png",
+        "descripcion": "Ofertas semanales en carnicería, verdulería, fiambrería y productos de almacén al mejor precio para tu familia.",
+        "direccion": "Frente a Estación Gutiérrez",
+        "telefono": "+54 11 4197-0505",
+        "whatsapp": "5491141970505",
+        "instagram": "https://instagram.com/"
+      },
+      {
+        "id": "muebleria-sur",
+        "nombre": "Muebles & Diseño Zona Sur",
+        "rubro": "Hogar & Decoración",
+        "logo": "assets/comercios/muebles.png",
+        "descripcion": "Fabricación a medida de amoblamientos de cocina, placares, livings y comedores con entrega a domicilio.",
+        "direccion": "Av. Mitre 2450, Berazategui",
+        "telefono": "+54 11 4197-0404",
+        "whatsapp": "5491141970404",
+        "instagram": "https://instagram.com/"
+      },
+      {
+        "id": "mecanica-gutierrez",
+        "nombre": "Taller Mecánico & Gomería Integral",
+        "rubro": "Automotor",
+        "logo": "assets/comercios/mecanica.png",
+        "descripcion": "Alineación, balanceo, frenos, tren delantero y mecánica general computarizada para autos y camionetas.",
+        "direccion": "Calle 411 y Ruta 2, Gutiérrez",
+        "telefono": "+54 11 4197-0606",
+        "whatsapp": "5491141970606",
+        "instagram": "https://instagram.com/"
+      }
+    ];
+
+    const sponsorsGrid = document.getElementById('sponsorsGrid');
+    const sponsorModal = document.getElementById('sponsorModal');
+    const closeSponsorModal = document.getElementById('closeSponsorModal');
+
+    function openSponsorModal(sp) {
+      if (!sponsorModal) return;
+      document.getElementById('modalSponsorNombre').textContent = sp.nombre;
+      document.getElementById('modalSponsorRubro').textContent = sp.rubro;
+      document.getElementById('modalSponsorDesc').textContent = sp.descripcion;
+      document.getElementById('modalSponsorDireccion').textContent = sp.direccion;
+      document.getElementById('modalSponsorTelefono').textContent = sp.telefono;
+      
+      const waLink = document.getElementById('modalSponsorWhatsApp');
+      waLink.href = `https://wa.me/${sp.whatsapp}?text=Hola%20${encodeURIComponent(sp.nombre)}!%20Los%20vi%20en%20Radio%20Power%2090.9%20y%20quiero%20hacerles%20una%20consulta.`;
+      
+      const igLink = document.getElementById('modalSponsorInstagram');
+      igLink.href = sp.instagram || 'https://instagram.com/';
+
+      sponsorModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    if (closeSponsorModal) {
+      closeSponsorModal.addEventListener('click', () => {
+        sponsorModal.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    }
+    if (sponsorModal) {
+      sponsorModal.addEventListener('click', (e) => {
+        if (e.target === sponsorModal) {
+          sponsorModal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    function renderSponsors(list) {
+      if (!sponsorsGrid) return;
+      sponsorsGrid.innerHTML = '';
+      list.forEach(sp => {
+        const card = document.createElement('div');
+        card.className = 'bg-[#F8F9FD] rounded-3xl p-6 border-2 border-black shadow-brutal hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex flex-col justify-between cursor-pointer group';
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="sticker px-2.5 py-0.5 rounded-lg bg-brand-yellow text-black text-[10px]">
+                ${sp.rubro}
+              </span>
+              <span class="text-xs font-mono font-bold text-slate-500 group-hover:text-brand-blue">Ver Ficha &rarr;</span>
+            </div>
+            <div class="flex items-center gap-3.5 mb-3">
+              <div class="w-12 h-12 rounded-xl bg-white border-2 border-black p-1 shadow-[2px_2px_0px_0px_#000] flex items-center justify-center font-display font-black text-sm text-brand-blue overflow-hidden">
+                <img src="${sp.logo}" alt="${sp.nombre}" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="hidden">🏪</span>
+              </div>
+              <div>
+                <h4 class="font-display font-black text-base text-slate-950 group-hover:text-brand-blue transition">${sp.nombre}</h4>
+                <div class="text-[11px] font-mono text-slate-500">📍 ${sp.direccion}</div>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 line-clamp-2 font-medium mb-4">${sp.descripcion}</p>
+          </div>
+          <button class="w-full py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-900 text-center text-xs font-mono font-bold border-2 border-black shadow-[2px_2px_0px_0px_#000] transition">
+            Conocer Comercio &amp; Contacto
+          </button>
+        `;
+        card.addEventListener('click', () => openSponsorModal(sp));
+        sponsorsGrid.appendChild(card);
+      });
+    }
+
+    // Intentamos cargar desde sponsors.json, si falla (ej: file://) usamos fallback local
+    fetch('sponsors.json')
+      .then(res => res.json())
+      .then(data => renderSponsors(data))
+      .catch(() => renderSponsors(fallbackSponsors));
+
+    // 6. Instalación en el Celular (PWA & Modal de Guía)
+    let deferredPrompt = null;
+    const installModal = document.getElementById('installModal');
+    const closeInstallModal = document.getElementById('closeInstallModal');
+    const closeInstallModalBtn = document.getElementById('closeInstallModalBtn');
+    const installTriggers = [
+      document.getElementById('installAppBtn'),
+      document.getElementById('installAppMobile'),
+      document.getElementById('installAppFooter')
+    ].filter(Boolean);
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+
+    function handleInstallApp() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
+      } else {
+        if (installModal) {
+          installModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    }
+
+    installTriggers.forEach(btn => btn.addEventListener('click', handleInstallApp));
+    if (closeInstallModal) {
+      closeInstallModal.addEventListener('click', () => {
+        installModal.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    }
+    if (closeInstallModalBtn) {
+      closeInstallModalBtn.addEventListener('click', () => {
+        installModal.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    }
+    if (installModal) {
+      installModal.addEventListener('click', (e) => {
+        if (e.target === installModal) {
+          installModal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    // Escape Key Handler for All Modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        toggleAdsModal(false);
+        if (sponsorModal) sponsorModal.classList.add('hidden');
+        if (installModal) installModal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Registrar Service Worker para PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
     }
   </script>
 
