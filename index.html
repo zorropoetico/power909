@@ -120,6 +120,10 @@
         transform: translate(var(--tx, 50px), var(--ty, -120px)) scale(1.4) rotate(var(--tr, 180deg));
       }
     }
+  
+    /* Secciones comerciales ocultas, conservadas para una futura activación. */
+    #comercios, a[href="#comercios"], [id^="openAdsModal"],
+    #adsModal, #sponsorModal { display: none !important; }
   </style>
 </head>
 <body class="bg-[#F8F9FD] text-slate-900 selection:bg-brand-yellow selection:text-black antialiased">
@@ -183,7 +187,7 @@
           <span>En Directo</span>
         </a>
         <a href="#comercios" class="hover:text-brand-blue transition py-1 px-2 rounded-lg hover:bg-slate-100">Comercios de la Radio</a>
-        <a href="#programacion" class="hover:text-brand-blue transition py-1 px-2 rounded-lg hover:bg-slate-100">24 Hs al Aire</a>
+        <a href="#programacion" class="hover:text-brand-blue transition py-1 px-2 rounded-lg hover:bg-slate-100">Programación</a>
         <a href="#trayectoria" class="hover:text-brand-blue transition py-1 px-2 rounded-lg hover:bg-slate-100">Historia</a>
       </nav>
 
@@ -221,7 +225,7 @@
     <div id="mobileDrawer" class="hidden md:hidden pt-4 pb-2 border-t-2 border-black mt-3 space-y-2 text-xs font-mono font-bold uppercase">
       <a href="#streaming" class="block px-3 py-2.5 rounded-xl bg-brand-yellow border-2 border-black text-black">● Transmisión en Vivo</a>
       <a href="#comercios" class="block px-3 py-2.5 rounded-xl bg-white border-2 border-black text-black">Comercios Auspiciantes</a>
-      <a href="#programacion" class="block px-3 py-2.5 rounded-xl bg-white border-2 border-black text-black">24 Horas en el Aire</a>
+      <a href="#programacion" class="block px-3 py-2.5 rounded-xl bg-white border-2 border-black text-black">Programación</a>
       <a href="#trayectoria" class="block px-3 py-2.5 rounded-xl bg-white border-2 border-black text-black">Nuestra Historia</a>
       <button id="openAdsModalMobile" class="w-full text-left block px-3 py-2.5 rounded-xl bg-brand-yellow border-2 border-black text-black font-black">
         📢 Ver Planes de Publicidad
@@ -269,11 +273,6 @@
           <p class="text-slate-800 text-sm sm:text-base leading-relaxed font-medium">
             La plataforma multimedia de Juan María Gutiérrez y Berazategui que conecta a todo el mundo. Tres décadas de trayectoria radial combinadas con streaming audiovisual para crear momentos especiales.
           </p>
-          <div class="flex flex-wrap items-center gap-2 mt-4 font-mono text-xs font-bold text-slate-900">
-            <span class="px-2.5 py-1 rounded-lg bg-brand-yellow border border-black">AUDIO 320 KBPS</span>
-            <span class="px-2.5 py-1 rounded-lg bg-brand-blueLight text-brand-blue border border-brand-blue">VIDEO 1080p60</span>
-            <span class="px-2.5 py-1 rounded-lg bg-brand-greenLight text-brand-green border border-brand-green">● AIRE 24/7</span>
-          </div>
         </div>
       </div>
 
@@ -301,17 +300,34 @@
           </div>
         </div>
 
-        <!-- 16:9 YOUTUBE VIDEO CONTAINER (REQUESTED URL: T5DobbxmIk4) -->
+        <!-- 16:9 YOUTUBE VIDEO CONTAINER -->
          <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-black border-2 border-black shadow-inner">
   <iframe 
     class="w-full h-full object-cover"
-    src="https://www.youtube.com/embed/zcvuZx1RKhI" 
+    id="videoPlayer" src="https://www.youtube.com/embed/f0Lk6UXxS3g?enablejsapi=1" 
     title="Radio Power 90.9 en Vivo" 
     frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
     allowfullscreen>
   </iframe>
 </div>
+
+
+        <!-- Reproductor independiente de audio -->
+        <div id="solo-audio" class="mt-6 rounded-2xl border-2 border-black bg-brand-blueLight p-4 sm:p-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+            <div>
+              <h2 id="audioHeading" class="font-display font-black text-xl text-slate-950">Escuchá solo audio</h2>
+              <p class="text-sm text-slate-700 mt-1">Dale play y llevá Radio Power 90.9 con vos.</p>
+            </div>
+            <a href="https://www.youtube.com/watch?v=f0Lk6UXxS3g" target="_blank" rel="noopener noreferrer" class="font-mono text-xs font-bold text-brand-blue underline">Abrir video en YouTube ↗</a>
+          </div>
+          <audio id="radioAudio" controls preload="none" aria-labelledby="audioHeading" style="width:100%;display:block">
+            Tu navegador no admite el reproductor de audio.
+          </audio>
+          <p id="audioStatus" role="status" aria-live="polite" class="text-xs text-slate-700 mt-3">Tocá play para escuchar.</p>
+          <a href="http://play.raddios.com/player_popup.php?r=5324&amp;n=Power%20-%20FM%2090.9&amp;rand=322365707" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 text-xs font-bold text-brand-blue underline">Si no suena, abrí el reproductor alternativo ↗</a>
+        </div>
 
         <!-- PLAYER FOOTER: LOGO GRANDE VISIBLE EN LA ZONA DE RADIO POWER LIVE -->
         <div class="mt-6 px-2 flex flex-col sm:flex-row items-center justify-between gap-5 pt-2">
@@ -417,24 +433,24 @@
     </div>
   </section>
 
-  <!-- 24 HORAS EN EL AIRE (REEMPLAZA SHOWS CENTRALES SEGÚN PEDIDO) -->
+  <!-- PROGRAMACIÓN -->
   <section id="programacion" class="py-20 bg-[#F8F9FD]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
         <div>
           <span class="sticker px-3 py-1 rounded-full bg-brand-yellow text-black text-xs mb-3">
-            [ AIRE PERMANENTE &bull; 24 HORAS ]
+            [ NUESTRA PROGRAMACIÓN ]
           </span>
           <h2 class="font-display font-black text-3xl sm:text-4xl text-slate-950 mt-2">
             MÚSICA BUENA PARA ACOMPAÑARTE EN LA RUTINA
           </h2>
           <p class="text-slate-600 text-sm mt-2 max-w-xl font-medium">
-            Las 24 horas del día transmitimos música seleccionada, información al instante, el estado del tiempo y las noticias locales más relevantes de Gutiérrez y Berazategui.
+            Transmitimos música seleccionada, información al instante, el estado del tiempo y las noticias locales más relevantes de Gutiérrez y Berazategui.
           </p>
         </div>
         <div class="sticker px-3 py-1 rounded-full bg-white text-slate-800 text-xs">
-          TRANSMISIÓN CONTINUA &bull; 90.9 FM
+          RADIO POWER &bull; 90.9 FM
         </div>
       </div>
 
@@ -447,10 +463,10 @@
           </div>
           <h3 class="font-display font-black text-xl text-slate-950 mb-2">Música Seleccionada</h3>
           <p class="text-xs text-slate-600 leading-relaxed font-medium">
-            Sonido cuidado y la mejor compañía musical las 24 horas para tus mañanas, jornadas de trabajo y el descanso.
+            Sonido cuidado y la mejor compañía musical para tus mañanas, jornadas de trabajo y el descanso.
           </p>
           <div class="mt-4 pt-3 border-t-2 border-slate-100 text-[11px] font-mono font-bold text-brand-blue">
-            ● Sonando las 24 hs
+            ● Música para acompañarte
           </div>
         </div>
 
@@ -867,6 +883,38 @@
 
   <!-- JAVASCRIPT: LOGICA DE MODALES, SPONSORS.JSON, FLORES Y PWA -->
   <script>
+
+    // Señal identificada en Raddios, radio 5324. El proxy evita contenido mixto en HTTPS.
+    const radioAudio = document.getElementById('radioAudio');
+    const audioStatus = document.getElementById('audioStatus');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoOrigin = 'https://www.youtube.com';
+    radioAudio.src = location.protocol === 'https:'
+      ? '/api/radio'
+      : 'http://uk15freenew.listen2myradio.com:24406/;stream.mp3';
+    radioAudio.addEventListener('loadstart', () => { audioStatus.textContent = 'Conectando con Radio Power…'; });
+    radioAudio.addEventListener('playing', () => {
+      audioStatus.textContent = 'Estás escuchando Radio Power 90.9.';
+      videoPlayer.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }), videoOrigin);
+    });
+    radioAudio.addEventListener('pause', () => { if (!radioAudio.error) audioStatus.textContent = 'Audio pausado. Tocá play para volver a escuchar.'; });
+    radioAudio.addEventListener('waiting', () => { audioStatus.textContent = 'Cargando la señal…'; });
+    radioAudio.addEventListener('error', () => { audioStatus.textContent = 'No pudimos conectar con la señal. Probá de nuevo o usá el reproductor alternativo.'; });
+    radioAudio.addEventListener('ended', () => { audioStatus.textContent = 'La conexión terminó. Tocá play para reconectar.'; radioAudio.load(); });
+    // Suscribirse al estado de YouTube para evitar dos audios a la vez.
+    const listenToVideo = () => {
+      videoPlayer.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'videoPlayer' }), videoOrigin);
+      videoPlayer.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'addEventListener', args: ['onStateChange'] }), videoOrigin);
+    };
+    videoPlayer.addEventListener('load', listenToVideo);
+    listenToVideo();
+    window.addEventListener('message', (event) => {
+      if (event.origin !== videoOrigin || event.source !== videoPlayer.contentWindow) return;
+      let data;
+      try { data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data; } catch { return; }
+      if (data && ((data.event === 'onStateChange' && data.info === 1) || (data.event === 'infoDelivery' && data.info && data.info.playerState === 1))) radioAudio.pause();
+    });
+
     // 1. Mobile Menu Toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobileDrawer = document.getElementById('mobileDrawer');
@@ -1089,7 +1137,7 @@
     }
 
     // Intentamos cargar desde sponsors.json, si falla (ej: file://) usamos fallback local
-    fetch('sponsors.json')
+    if (sponsorsGrid && getComputedStyle(document.getElementById('comercios')).display !== 'none') fetch('sponsors.json')
       .then(res => res.json())
       .then(data => renderSponsors(data))
       .catch(() => renderSponsors(fallbackSponsors));
