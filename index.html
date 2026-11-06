@@ -334,21 +334,33 @@
               </p>
               
               <!-- Elemento de audio nativo en el DOM -->
-              <audio id="radioAudio" preload="auto" autoplay class="hidden"></audio>
+              <audio id="radioAudio" preload="none" referrerpolicy="no-referrer" class="hidden"></audio>
 
-              <!-- Estado de reproducción -->
+              <!-- Estado de reproducción + Reproductor Alternativo -->
               <div class="mt-4 flex flex-col items-center lg:items-start gap-2 text-xs font-mono w-full">
                 <div class="flex items-center justify-center lg:justify-start gap-2">
                   <span id="heroSignalDot" class="w-3 h-3 rounded-full bg-slate-500 flex-shrink-0"></span>
                   <span id="heroStatusText" class="font-bold text-slate-300 text-[11px] sm:text-xs">Listo para reproducir. Presioná play.</span>
                 </div>
-                <button 
-                  id="popupStreamBtn" 
-                  type="button"
-                  class="hidden mt-1 px-3 py-1.5 rounded-xl bg-brand-yellow text-black font-mono font-black text-[11px] uppercase tracking-wider border-2 border-black shadow-[2px_2px_0px_0px_#000] hover:bg-[#ffe833] transition"
-                >
-                  Abrir reproductor directo en ventana auxiliar
-                </button>
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 mt-1">
+                  <a 
+                    id="altPlayerLink"
+                    href="http://uk3freenew.listen2myradio.com:36227/;?type=http&nocache=12" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/15 hover:bg-brand-yellow text-brand-yellow hover:text-black font-mono font-bold text-[11px] border border-brand-yellow/60 hover:border-black transition"
+                  >
+                    <span>🔊 Reproductor alternativo</span>
+                    <span>↗</span>
+                  </a>
+                  <button 
+                    id="popupStreamBtn" 
+                    type="button"
+                    class="hidden px-3 py-1.5 rounded-xl bg-brand-yellow text-black font-mono font-black text-[11px] uppercase tracking-wider border-2 border-black shadow-[2px_2px_0px_0px_#000] hover:bg-[#ffe833] transition"
+                  >
+                    Abrir en ventana auxiliar ↗
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -1060,30 +1072,53 @@
   <!-- ======================================================== -->
   <script>
     // -------------------------------------------------------------
-    // 1. CONFIGURACIÓN DEL STREAMING DE AUDIO SEGURO (HTTPS)
+    // 1. CONFIGURACIÓN DEL STREAMING DE AUDIO (UK3FREENEW : 36227)
     // -------------------------------------------------------------
-    // URL HTTPS segura extraída directamente de #urladdress (espaciopower.radiostream321.com):
-    const SECURE_STREAM_URL = 'https://uk3freenew.listen2myradio.com/live.mp3?typeportmount=s2_36227_stream_875590042';
-    const DIRECT_STREAM_URL = 'http://37.157.242.101:24406/;?type=http&nocache=175';
+    // Señal HTTPS extraída de #urladdress (espaciopower.radiostream321.com):
+    let dynamicSecureUrl = 'https://uk3freenew.listen2myradio.com/live.mp3?typeportmount=s2_36227_stream_69910812';
+    // Reproductor alternativo directo en puerto 36227:
+    const ALT_STREAM_URL = 'http://uk3freenew.listen2myradio.com:36227/;?type=http&nocache=12';
+
+    // Intentamos refrescar en segundo plano el token de #urladdress desde espaciopower.radiostream321.com
+    // por si Listen2MyRadio rota el número final de sesión
+    function refreshDynamicStreamUrl() {
+      const targetPage = 'https://espaciopower.radiostream321.com/index.php?t=' + Date.now();
+      // Ping no-cors desde el navegador del usuario para autorizar sesión/IP en radiostream321
+      fetch('https://espaciopower.radiostream321.com/index.php', { mode: 'no-cors' }).catch(() => {});
+      // Extracción del nuevo #urladdress vía proxy CORS público si está disponible
+      fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(targetPage))
+        .then(res => res.ok ? res.text() : '')
+        .then(html => {
+          const match = html.match(/id=["']urladdress["'][^>]*>\s*(https?:\/\/[^\s<]+)/i);
+          if (match && match[1]) {
+            dynamicSecureUrl = match[1].trim();
+          }
+        })
+        .catch(() => {});
+    }
+    refreshDynamicStreamUrl();
 
     function getStreamCandidates() {
-      const bust = Math.floor(Math.random() * 900000000) + 100000000;
-      return [
-        SECURE_STREAM_URL,
-        'https://uk3freenew.listen2myradio.com/live.mp3?typeportmount=s2_36227_stream_' + bust,
-        'https://uk15freenew.listen2myradio.com/live.mp3?typeportmount=s1_24406_stream_' + bust,
-        'https://uk15freenew.listen2myradio.com/live.mp3?typeportmount=s2_24406_stream_' + bust,
-        DIRECT_STREAM_URL
+      const bust = Date.now();
+      const list = [
+        dynamicSecureUrl,
+        'https://uk3freenew.listen2myradio.com/live.mp3?typeportmount=s2_36227_stream_69910812',
+        ALT_STREAM_URL,
+        'http://uk3freenew.listen2myradio.com:36227/;?type=http&nocache=' + bust,
+        'http://uk3freenew.listen2myradio.com:36227/stream',
+        'http://uk3freenew.listen2myradio.com:36227/;stream.mp3',
+        '/api/radio?nocache=' + bust
       ];
+      return [...new Set(list)];
     }
 
     const radioAudio = document.getElementById('radioAudio') || new Audio();
     radioAudio.preload = 'none';
 
-    // Estado del reproductor
+    // Estado del reproductor (con control de intento único para evitar condiciones de carrera)
     let isPlaying = false;
     let isConnecting = false;
-    let candidateIndex = 0;
+    let playAttemptId = 0;
     let currentVolume = 0.85;
 
     // Recuperar volumen guardado si está disponible
@@ -1128,12 +1163,12 @@
     if (dockVolumeSlider) dockVolumeSlider.value = currentVolume;
     if (heroVolumeText) heroVolumeText.textContent = `${Math.round(currentVolume * 100)}%`;
 
-    // Función para abrir el stream HTTP directo en ventana auxiliar (evita bloqueo HTTPS del navegador)
+    // Función para abrir el reproductor alternativo en ventana auxiliar
     function openPopupStream() {
       window.open(
-        SECURE_STREAM_URL,
+        ALT_STREAM_URL,
         'RadioPower909Directo',
-        'width=420,height=220,menubar=no,toolbar=no,location=no,status=no'
+        'width=440,height=240,menubar=no,toolbar=no,location=no,status=no'
       );
     }
     if (popupStreamBtn) {
@@ -1190,45 +1225,66 @@
       }
     }
 
-    // Intenta reproducir los candidatos de streaming en orden hasta conectar
-    function tryPlayCandidate(candidates, index) {
+    // Intenta reproducir los candidatos de streaming en orden sin pisarse entre eventos
+    function tryPlayCandidate(candidates, index, attemptId) {
+      if (attemptId !== playAttemptId) return;
+
       if (index >= candidates.length) {
         isConnecting = false;
-        const msg = 'No pudimos conectar con el servidor de audio. Intentá nuevamente o usá el reproductor auxiliar.';
+        const msg = 'Si tu navegador bloquea la señal embebida, tocá "Reproductor alternativo ↗".';
         updatePlayState(false, msg, true);
         return;
       }
 
-      candidateIndex = index;
       const url = candidates[index];
       isConnecting = true;
       setLoadingState('Conectando con Radio Power 90.9 FM...');
 
+      let movedNext = false;
+      const moveNext = () => {
+        if (movedNext || attemptId !== playAttemptId) return;
+        movedNext = true;
+        tryPlayCandidate(candidates, index + 1, attemptId);
+      };
+
+      const onErrorOnce = () => {
+        radioAudio.removeEventListener('error', onErrorOnce);
+        moveNext();
+      };
+
+      radioAudio.addEventListener('error', onErrorOnce, { once: true });
+
       try {
-        radioAudio.pause();
         radioAudio.src = url;
-        radioAudio.load();
         const playPromise = radioAudio.play();
         if (playPromise !== undefined) {
           playPromise.then(() => {
+            if (attemptId !== playAttemptId) return;
+            radioAudio.removeEventListener('error', onErrorOnce);
             isConnecting = false;
             updatePlayState(true, 'Transmitiendo en vivo desde Juan María Gutiérrez • 90.9 FM', false);
-          }).catch(() => {
-            tryPlayCandidate(candidates, index + 1);
+          }).catch((err) => {
+            radioAudio.removeEventListener('error', onErrorOnce);
+            if (err && err.name === 'AbortError' && attemptId !== playAttemptId) return;
+            moveNext();
           });
         }
       } catch (err) {
-        tryPlayCandidate(candidates, index + 1);
+        radioAudio.removeEventListener('error', onErrorOnce);
+        moveNext();
       }
     }
 
     // Toggle Play / Pause con animación de carga y reconexión inteligente
     function toggleAudio() {
       if (!isPlaying && !isConnecting) {
+        playAttemptId++;
+        const currentAttempt = playAttemptId;
         setLoadingState('Conectando con Radio Power 90.9 FM...');
         const candidates = getStreamCandidates();
-        tryPlayCandidate(candidates, 0);
+        tryPlayCandidate(candidates, 0, currentAttempt);
       } else {
+        playAttemptId++;
         isConnecting = false;
         radioAudio.pause();
         radioAudio.removeAttribute('src');
@@ -1254,18 +1310,8 @@
 
     radioAudio.addEventListener('ended', () => {
       if (isPlaying) {
-        updatePlayState(false, 'Reconectando señal...', false);
-        tryPlayCandidate(getStreamCandidates(), 0);
-      }
-    });
-
-    radioAudio.addEventListener('error', () => {
-      if (isConnecting) {
-        const candidates = getStreamCandidates();
-        tryPlayCandidate(candidates, candidateIndex + 1);
-      } else if (isPlaying) {
-        updatePlayState(false, 'Reconectando señal...', false);
-        tryPlayCandidate(getStreamCandidates(), 0);
+        playAttemptId++;
+        tryPlayCandidate(getStreamCandidates(), 0, playAttemptId);
       }
     });
 
