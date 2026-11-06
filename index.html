@@ -131,6 +131,12 @@
       accent-color: #1A56DB;
     }
   </style>
+
+  <!-- Vercel Web Analytics (HTML) -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="bg-[#F8F9FD] text-slate-900 selection:bg-brand-yellow selection:text-black antialiased pb-28 overflow-x-hidden w-full max-w-full">
 
@@ -1100,13 +1106,10 @@
 
     function getStreamCandidates() {
       const bust = Date.now();
+      // Conexión directa exclusivamente por HTTPS para reproducción inmediata sin demoras
       const list = [
         dynamicSecureUrl,
         'https://uk3freenew.listen2myradio.com/live.mp3?typeportmount=s2_36227_stream_69910812',
-        ALT_STREAM_URL,
-        'http://uk3freenew.listen2myradio.com:36227/;?type=http&nocache=' + bust,
-        'http://uk3freenew.listen2myradio.com:36227/stream',
-        'http://uk3freenew.listen2myradio.com:36227/;stream.mp3',
         '/api/radio?nocache=' + bust
       ];
       return [...new Set(list)];
