@@ -250,8 +250,8 @@
       <!-- HERO HEADER -->
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
         <div>
-          <!-- HOLA PRIMAVERA GRANDE CON EFECTO INTERACTIVO DE FLORES -->
-          <div class="mb-4">
+          <!-- HOLA PRIMAVERA GRANDE + SALUDO DINÁMICO POR DÍA DE LA SEMANA -->
+          <div class="mb-5 flex flex-wrap items-center gap-3">
             <button 
               id="primaveraBadge" 
               class="sticker px-5 py-2.5 rounded-full bg-brand-yellow hover:bg-[#ffe833] text-black text-sm sm:text-base cursor-pointer transform hover:scale-105 active:scale-95 transition-all select-none flex items-center gap-2.5 shadow-brutal"
@@ -261,6 +261,14 @@
               <span class="font-display font-black tracking-wide">¡HOLA PRIMAVERA 2026!</span>
               <span class="text-xs font-mono font-bold bg-black text-white px-2 py-0.5 rounded-full">FLORECE LA RADIO</span>
             </button>
+
+            <div 
+              id="dailyGreetingBadge"
+              class="sticker px-4 py-2.5 rounded-full bg-white text-slate-950 text-xs sm:text-sm flex items-center gap-2 shadow-brutal cursor-pointer hover:bg-brand-yellowLight transition"
+            >
+              <span>☀️</span>
+              <span id="dailyGreetingText" class="font-display font-extrabold tracking-tight">¡Feliz lunes! Hoy puede ser un gran día</span>
+            </div>
           </div>
 
           <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight text-slate-950 leading-[1.03]">
@@ -453,10 +461,10 @@
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
           <span class="sticker px-3 py-1 rounded-full bg-brand-yellow text-black text-xs mb-3">
-            [ COMERCIOS DE LA RADIO &bull; AUSPICIANTES OFICIALES ]
+            [ COMERCIOS DE LA RADIO ]
           </span>
           <h2 class="font-display font-black text-3xl sm:text-5xl text-slate-950 tracking-tight leading-tight mt-2">
-            COMERCIOS DE LA RADIO
+            AUSPICIANTES QUE TE ACOMPAÑAN
           </h2>
           <p class="text-slate-600 text-sm mt-2 max-w-2xl font-medium">
             Los negocios locales que acompañan nuestras transmisiones y eligen Radio Power 90.9 para llegar a toda la comunidad
@@ -528,7 +536,7 @@
             Todo lo que pasa en Juan María Gutiérrez, Berazategui y la región con flashes informativos y actualidad ágil.
           </p>
           <div class="mt-4 pt-3 border-t-2 border-slate-100 text-[11px] font-mono font-bold text-slate-800">
-            ● Flashes cada hora
+            ● Flashes durante todo el día
           </div>
         </div>
 
@@ -554,7 +562,7 @@
             Espacio de difusión comunitaria, avisos vecinales y apoyo permanente a los comerciantes que mueven el barrio.
           </p>
           <div class="mt-4 pt-3 border-t-2 border-slate-100 text-[11px] font-mono font-bold text-brand-green">
-            ● Espacio de los vecinos
+            ● Espacio publicitario
           </div>
         </div>
 
@@ -826,13 +834,12 @@
             </span>
             <h4 class="font-display font-black text-xl text-slate-950 mb-2">Pauta en Radio</h4>
             <p class="text-xs text-slate-600 mb-4 font-medium">
-              Presencia diaria en la frecuencia 90.9 MHz con llegada directa a hogares, vehículos y comercios.
+              Presencia diaria en la radio con llegada directa a hogares, vehículos y comercios.
             </p>
             <ul class="space-y-2.5 text-xs text-slate-800 font-mono mb-6 font-semibold">
-              <li class="flex items-center gap-2"><span class="text-brand-blue font-bold">&check;</span> <strong>Locución profesional</strong> personalizada</li>
-              <li class="flex items-center gap-2"><span class="text-brand-blue font-bold">&check;</span> Rotativos de 15, 20 o 30 segundos</li>
-              <li class="flex items-center gap-2"><span class="text-brand-blue font-bold">&check;</span> Menciones en vivo y agradecimientos</li>
-              <li class="flex items-center gap-2"><span class="text-brand-blue font-bold">&check;</span> Auspicios de bloques temáticos y clima</li>
+              <li class="flex items-start gap-2"><span class="text-brand-blue font-bold">&check;</span> <span><strong>Locución profesional</strong> personalizada</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand-blue font-bold">&check;</span> <span>Rotativos comerciales</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand-blue font-bold">&check;</span> <span>Auspicios de bloques temáticos y clima</span></li>
             </ul>
           </div>
           <a 
@@ -844,7 +851,7 @@
           </a>
         </div>
 
-        <!-- PLAN 2: ECOSISTEMA DIGITAL -->
+        <!-- PLAN 2: PRESENCIA DIGITAL -->
         <div class="bg-[#F8F9FD] rounded-2xl p-6 border-2 border-black shadow-brutal flex flex-col justify-between">
           <div>
             <span class="sticker px-2.5 py-0.5 rounded-lg bg-brand-pink text-white text-[11px] mb-3">
@@ -855,14 +862,13 @@
               Posicioná tu negocio en los canales digitales que consultan los clientes todos los días.
             </p>
             <ul class="space-y-2.5 text-xs text-slate-800 font-mono mb-6 font-semibold">
-              <li class="flex items-center gap-2"><span class="text-brand-pink font-bold">&check;</span> Asesoramiento en <strong>Google Mi Negocio</strong></li>
-              <li class="flex items-center gap-2"><span class="text-brand-pink font-bold">&check;</span> Difusión en Instagram y Facebook</li>
-              <li class="flex items-center gap-2"><span class="text-brand-pink font-bold">&check;</span> Ficha y banner en la web oficial</li>
-              <li class="flex items-center gap-2"><span class="text-brand-pink font-bold">&check;</span> Enlaces directos a tu WhatsApp</li>
+              <li class="flex items-start gap-2"><span class="text-brand-pink font-bold">&check;</span> <span>Asesoramiento en <strong>Google Mi Negocio</strong></span></li>
+              <li class="flex items-start gap-2"><span class="text-brand-pink font-bold">&check;</span> <span>Asesoramiento en publicidad digital en redes sociales</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand-pink font-bold">&check;</span> <span>Ficha y banner en la web oficial</span></li>
             </ul>
           </div>
           <a 
-            href="https://wa.me/5491141976436?text=Hola%20Radio%20Power!%20Quisiera%20solicitar%20un%20presupuesto%20para%20el%20plan%20de%20REDES,%20GOOGLE%20MI%20NEGOCIO%20Y%20COMUNICACI%C3%93N%20DIGITAL." 
+            href="https://wa.me/5491141976436?text=Hola%20Radio%20Power!%20Quisiera%20solicitar%20un%20presupuesto%20para%20el%20plan%20de%20PRESENCIA%20DIGITAL." 
             target="_blank" 
             class="w-full py-3 rounded-xl bg-brand-pink hover:bg-pink-600 text-white text-center text-xs font-mono font-bold uppercase tracking-wider border-2 border-black shadow-[2px_2px_0px_0px_#000] transition"
           >
@@ -880,15 +886,16 @@
             <p class="text-xs text-slate-700 mb-4 font-medium">
               Sinergia total: Publicidad en la radio con locución profesional + Redes Sociales + Google Mi Negocio + Web.
             </p>
-            <ul class="space-y-2.5 text-xs text-slate-900 font-mono mb-6 font-bold">
-              <li class="flex items-center gap-2"><span class="text-black font-bold">&check;</span> Spots diarios en la radio 90.9 FM</li>
-              <li class="flex items-center gap-2"><span class="text-black font-bold">&check;</span> <strong>Locución profesional</strong> de alta gama</li>
-              <li class="flex items-center gap-2"><span class="text-black font-bold">&check;</span> Cobertura en <strong>Google Mi Negocio</strong> y redes</li>
-              <li class="flex items-center gap-2"><span class="text-black font-bold">&check;</span> Difusión multimedia y ficha web oficial</li>
+            <ul class="space-y-2 text-xs text-slate-900 font-mono mb-6 font-bold">
+              <li class="flex items-start gap-2"><span class="text-black font-bold">&check;</span> <span>Spots diarios en la radio 90.9 FM</span></li>
+              <li class="flex items-start gap-2"><span class="text-black font-bold">&check;</span> <span><strong>Locución profesional</strong></span></li>
+              <li class="flex items-start gap-2"><span class="text-black font-bold">&check;</span> <span>Cobertura completa en marketing digital</span></li>
+              <li class="flex items-start gap-2"><span class="text-black font-bold">&check;</span> <span>Multimedia en la transmisión y ficha web</span></li>
+              <li class="flex items-start gap-2"><span class="text-black font-bold">&check;</span> <span>Desarrollo de presencia online</span></li>
             </ul>
           </div>
           <a 
-            href="https://wa.me/5491141976436?text=Hola%20Radio%20Power!%20Quiero%20solicitar%20el%20presupuesto%20del%20COMBO%20INTEGRAL%20360%20(Radio%20+%20Locuci%C3%B3n%20+%20Google%20Mi%20Negocio%20+%20Redes)." 
+            href="https://wa.me/5491141976436?text=Hola%20Radio%20Power!%20Quiero%20solicitar%20el%20presupuesto%20del%20COMBO%20INTEGRAL%20360%20(M%C3%A1ximo%20Rendimiento)." 
             target="_blank" 
             class="w-full py-3 rounded-xl bg-brand-yellow hover:bg-[#ffe51a] text-black text-center text-xs font-mono font-black uppercase tracking-wider border-2 border-black shadow-brutal transition"
           >
@@ -901,7 +908,7 @@
       <!-- FOOTER NOTE -->
       <div class="bg-slate-50 p-4 rounded-2xl border-2 border-black flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
         <div class="text-slate-700 font-medium">
-          ¿Dudas sobre cuál plan elegir? Te asesoramos en minutos sin compromiso.
+          ¿Dudas sobre cuál plan elegir? Te asesoramos sin compromiso.
         </div>
         <a href="https://wa.me/5491141976436?text=Hola%20Radio%20Power!%20Quiero%20asesoramiento%20comercial%20para%20mi%20negocio." target="_blank" class="text-brand-blue font-bold underline decoration-brand-yellow">
           Hablar con Asesor Comercial por WhatsApp &rarr;
@@ -912,12 +919,12 @@
   </div>
 
   <!-- ======================================================== -->
-  <!-- MODAL 2: FICHA DEL COMERCIO AUSPICIANTE                  -->
+  <!-- MODAL 2: FICHA DEL COMERCIO AUSPICIANTE (CON SCROLL)     -->
   <!-- ======================================================== -->
   <div id="sponsorModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-3xl border-2 border-black shadow-brutal-xl max-w-xl w-full p-6 sm:p-8 relative">
+    <div class="bg-white rounded-3xl border-2 border-black shadow-brutal-xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative">
       
-      <button id="closeSponsorModal" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-brand-yellow border-2 border-black font-mono font-black text-base flex items-center justify-center transition shadow-[2px_2px_0px_0px_#000]">
+      <button id="closeSponsorModal" class="sticky top-0 float-right z-10 w-9 h-9 rounded-full bg-slate-100 hover:bg-brand-yellow border-2 border-black font-mono font-black text-base flex items-center justify-center transition shadow-[2px_2px_0px_0px_#000]">
         &times;
       </button>
 
@@ -976,7 +983,7 @@
   <!-- MODAL 3: INSTRUCCIONES DE INSTALACIÓN EN EL CELULAR      -->
   <!-- ======================================================== -->
   <div id="installModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-3xl border-2 border-black shadow-brutal-xl max-w-lg w-full p-6 sm:p-8 relative">
+    <div class="bg-white rounded-3xl border-2 border-black shadow-brutal-xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative">
       
       <button id="closeInstallModal" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-brand-yellow border-2 border-black font-mono font-black text-base flex items-center justify-center transition shadow-[2px_2px_0px_0px_#000]">
         &times;
@@ -987,8 +994,7 @@
           📲
         </div>
         <div>
-          <span class="sticker px-2 py-0.5 rounded-full bg-black text-white text-[10px]">WEB APP</span>
-          <h3 class="font-display font-black text-xl text-slate-950 mt-0.5">
+          <h3 class="font-display font-black text-xl text-slate-950">
             Instalar Radio Power 90.9
           </h3>
         </div>
@@ -1028,6 +1034,18 @@
         Entendido
       </button>
 
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL 4: LIGHTBOX PARA AMPLIAR IMÁGENES DE OFERTAS       -->
+  <!-- ======================================================== -->
+  <div id="lightboxModal" class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
+    <div class="relative max-w-2xl w-full max-h-[92vh] flex flex-col items-center justify-center">
+      <button id="closeLightboxModal" aria-label="Cerrar imagen ampliada" class="absolute -top-3 -right-2 sm:top-2 sm:right-2 z-10 w-10 h-10 rounded-full bg-brand-yellow hover:bg-[#ffe833] text-black border-2 border-black font-mono font-black text-lg flex items-center justify-center shadow-brutal transition">
+        &times;
+      </button>
+      <img id="lightboxImg" src="assets/logo.png" alt="Oferta ampliada" class="max-w-full max-h-[86vh] w-auto h-auto object-contain rounded-2xl border-2 border-black shadow-brutal-xl bg-white">
     </div>
   </div>
 
@@ -1324,17 +1342,6 @@
 
     const sponsorsList = [
       {
-        id: "carniceria-aries-2",
-        nombre: "Carnicería Aries 2",
-        rubro: "Carnicería & Granja",
-        descripcion: "Carnicería con amplia trayectoria en la zona. Ofrece carnes de primera calidad de todos los cortes, productos de granja y pescado fresco con ofertas destacadas toda la semana.",
-        direccion: "Avenida 413 esquina 455 (a 400 m de la rotonda de Alpargatas, frente al antiguo Bar de Tota), Juan María Gutiérrez",
-        mapQuery: "Carnicería Aries 2, Av. 413 y 455, Juan María Gutiérrez",
-        telefono: "11 2297-1597 (pedidos) / Sucursal: 11 6195-3500",
-        whatsapp: "5491122971597",
-        tieneOfertas: true
-      },
-      {
         id: "carniceria-aries-central",
         nombre: "Carnicería y Almacén Aries",
         rubro: "Carnicería & Almacén",
@@ -1346,25 +1353,25 @@
         tieneOfertas: true
       },
       {
-        id: "abc-odontologia",
-        nombre: "ABC Odontología",
-        rubro: "Salud Bucal & Estética Dental",
-        descripcion: "Clínica odontológica orientada a la salud y estética bucal. Realiza implantes, cirugías, blanqueamientos, endodoncia, ortodoncia y colocación de prótesis dentales.",
-        direccion: "Avenida 413 N.° 246 (entre 452 y 453, a 250 m de la rotonda de Alpargatas), Juan María Gutiérrez",
-        mapQuery: "ABC Odontología, Av. 413 246, Juan María Gutiérrez",
-        telefono: "11 6546-8375 (solicitud de turnos)",
-        whatsapp: "5491165468375",
-        tieneOfertas: false
+        id: "carniceria-aries-2",
+        nombre: "Carnicería Aries 2",
+        rubro: "Carnicería & Granja",
+        descripcion: "Carnicería con amplia trayectoria en la zona. Ofrece carnes de primera calidad de todos los cortes, productos de granja y pescado fresco con ofertas destacadas toda la semana.",
+        direccion: "Avenida 413 esquina 455 (a 400 m de la rotonda de Alpargatas, frente al antiguo Bar de Tota), Juan María Gutiérrez",
+        mapQuery: "Carnicería Aries 2, Av. 413 y 455, Juan María Gutiérrez",
+        telefono: "11 2297-1597",
+        whatsapp: "5491122971597",
+        tieneOfertas: true
       },
       {
-        id: "oriente-remis",
-        nombre: "Oriente Remís (Transportix S.A.)",
-        rubro: "Transporte & Remís 24 Hs",
-        descripcion: "Empresa de transporte y remises con más de 18 años de trayectoria. Brinda traslados las 24 horas los 365 días del año con choferes profesionales.",
-        direccion: "Calle 459 entre 409 y 410, Juan María Gutiérrez",
-        mapQuery: "Oriente Remis, Calle 459 entre 409 y 410, Juan María Gutiérrez",
-        telefono: "11 3271-5801 (Directas: 02229 44-2083 / 44-1863)",
-        whatsapp: "5491132715801",
+        id: "distribuidora-gutierrez",
+        nombre: "Distribuidora Gutiérrez",
+        rubro: "Distribuidora Mayorista & Minorista de Bebidas",
+        descripcion: "Venta y distribución mayorista y minorista de bebidas de todo tipo para eventos familiares, comercios o consumo cotidiano, con servicio de entrega a domicilio.",
+        direccion: "Avenida 413 esquina 455 (a 400 m de la rotonda de Alpargatas, frente al antiguo Bar de Tota), Juan María Gutiérrez",
+        mapQuery: "Av. 413 esq. 455, Juan María Gutiérrez",
+        telefono: "11 5798-8733 / 11 2297-1597",
+        whatsapp: "5491157988733",
         tieneOfertas: false
       },
       {
@@ -1379,14 +1386,25 @@
         tieneOfertas: false
       },
       {
-        id: "distribuidora-gutierrez",
-        nombre: "Distribuidora Gutiérrez",
-        rubro: "Distribuidora Mayorista & Minorista de Bebidas",
-        descripcion: "Venta y distribución mayorista y minorista de bebidas de todo tipo para eventos familiares, comercios o consumo cotidiano, con servicio de entrega a domicilio.",
-        direccion: "Avenida 413 esquina 455 (a 400 m de la rotonda de Alpargatas, frente al antiguo Bar de Tota), Juan María Gutiérrez",
-        mapQuery: "Av. 413 esq. 455, Juan María Gutiérrez",
-        telefono: "11 5798-8733 / 11 2297-1597",
-        whatsapp: "5491157988733",
+        id: "oriente-remis",
+        nombre: "Oriente Remís",
+        rubro: "Transporte & Remís 24 Hs",
+        descripcion: "Empresa de transporte y remises con más de 18 años de trayectoria. Brinda traslados las 24 horas los 365 días del año con choferes profesionales.",
+        direccion: "Calle 459 entre 409 y 410, Juan María Gutiérrez",
+        mapQuery: "Oriente Remis, Calle 459 entre 409 y 410, Juan María Gutiérrez",
+        telefono: "+549 11 3271 5801",
+        whatsapp: "5491132715801",
+        tieneOfertas: false
+      },
+      {
+        id: "abc-odontologia",
+        nombre: "ABC Odontología",
+        rubro: "Salud Bucal & Estética Dental",
+        descripcion: "Clínica odontológica orientada a la salud y estética bucal. Realiza implantes, cirugías, blanqueamientos, endodoncia, ortodoncia y colocación de prótesis dentales.",
+        direccion: "Avenida 413 N.° 246 (entre 452 y 453, a 250 m de la rotonda de Alpargatas), Juan María Gutiérrez",
+        mapQuery: "ABC Odontología, Av. 413 246, Juan María Gutiérrez",
+        telefono: "11 6546-8375 (solicitud de turnos)",
+        whatsapp: "5491165468375",
         tieneOfertas: false
       }
     ];
@@ -1395,6 +1413,33 @@
     const sponsorModal = document.getElementById('sponsorModal');
     const closeSponsorModal = document.getElementById('closeSponsorModal');
     const modalSponsorOffers = document.getElementById('modalSponsorOffers');
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeLightboxModal = document.getElementById('closeLightboxModal');
+
+    function openLightbox(srcUrl) {
+      if (!lightboxModal || !lightboxImg) return;
+      lightboxImg.src = srcUrl;
+      lightboxModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      if (!lightboxModal) return;
+      lightboxModal.classList.add('hidden');
+      if (sponsorModal && sponsorModal.classList.contains('hidden')) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (closeLightboxModal) {
+      closeLightboxModal.addEventListener('click', closeLightbox);
+    }
+    if (lightboxModal) {
+      lightboxModal.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) closeLightbox();
+      });
+    }
 
     function openSponsorModal(sp) {
       if (!sponsorModal) return;
@@ -1417,98 +1462,29 @@
             <div class="rounded-2xl border-2 border-black bg-brand-yellowLight p-4 sm:p-5">
               <div class="flex items-center justify-between mb-3 border-b-2 border-black/10 pb-2">
                 <span class="sticker px-2.5 py-0.5 rounded-lg bg-brand-red text-white text-[11px] font-black">
-                  OFERTAS DE LA SEMANA
+                  OFERTAS DESTACADAS
                 </span>
-                <span class="text-xs font-mono font-bold text-slate-800">
-                  Precios increíbles y la mejor carne
+                <span class="text-[11px] font-mono font-bold text-slate-800">
+                  Tocá una imagen para ampliar
                 </span>
               </div>
-              
-              <!-- Combos de la semana -->
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-4">
-                <div class="bg-white p-3 rounded-xl border-2 border-black text-center shadow-sm">
-                  <div class="text-xs font-mono text-slate-600 font-bold">3 Kg</div>
-                  <div class="text-xs font-display font-black text-slate-950 my-0.5">Pata y muslo</div>
-                  <div class="text-sm font-mono font-black text-brand-red">$11.999</div>
-                </div>
-                <div class="bg-white p-3 rounded-xl border-2 border-black text-center shadow-sm">
-                  <div class="text-xs font-mono text-slate-600 font-bold">2 Kg</div>
-                  <div class="text-xs font-display font-black text-slate-950 my-0.5">Mila de Pollo</div>
-                  <div class="text-sm font-mono font-black text-brand-red">$13.999</div>
-                </div>
-                <div class="bg-white p-3 rounded-xl border-2 border-black text-center shadow-sm">
-                  <div class="text-xs font-mono text-slate-600 font-bold">2 Kg</div>
-                  <div class="text-xs font-display font-black text-slate-950 my-0.5">Osobuco</div>
-                  <div class="text-sm font-mono font-black text-brand-red">$18.999</div>
-                </div>
-              </div>
 
-              <!-- Lista de cortes destacados -->
-              <div class="bg-white p-3.5 rounded-xl border-2 border-black">
-                <div class="text-[11px] font-mono font-black text-slate-900 uppercase tracking-wider mb-2 border-b border-slate-200 pb-1">
-                  Cortes Vacunos Seleccionados
-                </div>
-                <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs font-mono font-bold">
-                  <div class="flex justify-between border-b border-dashed border-slate-200 py-0.5">
-                    <span class="text-slate-800">Nalga:</span>
-                    <span class="text-brand-red">$19.999</span>
-                  </div>
-                  <div class="flex justify-between border-b border-dashed border-slate-200 py-0.5">
-                    <span class="text-slate-800">Cuadril:</span>
-                    <span class="text-brand-red">$19.999</span>
-                  </div>
-                  <div class="flex justify-between border-b border-dashed border-slate-200 py-0.5">
-                    <span class="text-slate-800">Cuadrada:</span>
-                    <span class="text-brand-red">$18.999</span>
-                  </div>
-                  <div class="flex justify-between border-b border-dashed border-slate-200 py-0.5">
-                    <span class="text-slate-800">Bola de lomo:</span>
-                    <span class="text-brand-red">$18.999</span>
-                  </div>
-                  <div class="flex justify-between border-b border-dashed border-slate-200 py-0.5">
-                    <span class="text-slate-800">Vacío:</span>
-                    <span class="text-brand-red">$17.999</span>
-                  </div>
-                  <div class="flex justify-between border-b border-dashed border-slate-200 py-0.5">
-                    <span class="text-slate-800">Asado:</span>
-                    <span class="text-brand-red">$17.999</span>
-                  </div>
-                  <div class="flex justify-between border-b border-dashed border-slate-200 py-0.5">
-                    <span class="text-slate-800">Paleta:</span>
-                    <span class="text-brand-red">$17.499</span>
-                  </div>
-                  <div class="flex justify-between border-b border-dashed border-slate-200 py-0.5">
-                    <span class="text-slate-800">Roast beef:</span>
-                    <span class="text-brand-red">$17.499</span>
-                  </div>
-                  <div class="flex justify-between border-b border-dashed border-slate-200 py-0.5">
-                    <span class="text-slate-800">Bifes:</span>
-                    <span class="text-brand-red">$16.999</span>
-                  </div>
-                  <div class="flex justify-between border-b border-dashed border-slate-200 py-0.5">
-                    <span class="text-slate-800">Osobuco:</span>
-                    <span class="text-brand-red">$9.999</span>
-                  </div>
-                </div>
+              <div class="grid grid-cols-2 gap-3">
+                <button type="button" data-fullsrc="${flyerImg1}" class="js-offer-zoom rounded-xl overflow-hidden border-2 border-black shadow-sm hover:scale-[1.02] transition cursor-zoom-in block w-full">
+                  <img src="${flyerImg1}" alt="Ofertas de la semana Carnicería Aries" class="w-full h-auto object-cover">
+                </button>
+                <button type="button" data-fullsrc="${flyerImg2}" class="js-offer-zoom rounded-xl overflow-hidden border-2 border-black shadow-sm hover:scale-[1.02] transition cursor-zoom-in block w-full">
+                  <img src="${flyerImg2}" alt="Precios de carne Carnicería Aries" class="w-full h-auto object-cover">
+                </button>
               </div>
-
-              <!-- Carteles oficiales de ofertas -->
-              <div class="mt-4 pt-3 border-t-2 border-black/10">
-                <div class="text-[11px] font-mono font-bold text-slate-800 uppercase mb-2">
-                  Carteleras Oficiales de Ofertas
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                  <div class="rounded-xl overflow-hidden border-2 border-black shadow-sm">
-                    <img src="${flyerImg1}" alt="Ofertas de la semana Carnicería Aries" class="w-full h-auto object-cover">
-                  </div>
-                  <div class="rounded-xl overflow-hidden border-2 border-black shadow-sm">
-                    <img src="${flyerImg2}" alt="Precios de carne Carnicería Aries" class="w-full h-auto object-cover">
-                  </div>
-                </div>
-              </div>
-
             </div>
           `;
+          modalSponsorOffers.querySelectorAll('.js-offer-zoom').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              openLightbox(btn.getAttribute('data-fullsrc'));
+            });
+          });
         } else {
           modalSponsorOffers.className = 'hidden';
           modalSponsorOffers.innerHTML = '';
@@ -1544,27 +1520,18 @@
         let offersHtml = '';
         if (sp.tieneOfertas) {
           offersHtml = `
-            <div class="my-3 p-3.5 rounded-2xl bg-brand-yellowLight border-2 border-black">
+            <div class="my-3 p-3 rounded-2xl bg-brand-yellowLight border-2 border-black">
               <div class="text-[10px] font-mono font-black text-black uppercase tracking-wider mb-2 flex items-center justify-between">
                 <span>OFERTAS DESTACADAS</span>
-                <span class="text-brand-red font-bold">PRECIOS ESPECIALES</span>
+                <span class="text-brand-red font-bold">VER PLACAS</span>
               </div>
-              <div class="space-y-1.5 text-xs font-mono font-bold text-slate-900">
-                <div class="flex justify-between items-center bg-white px-2.5 py-1 rounded-lg border border-black">
-                  <span>3 Kg Pata y muslo</span>
-                  <span class="text-brand-red font-black">$11.999</span>
+              <div class="grid grid-cols-2 gap-2">
+                <div class="rounded-lg overflow-hidden border border-black bg-white shadow-sm">
+                  <img src="${flyerImg1}" alt="Oferta 1 ${sp.nombre}" class="w-full h-24 object-cover object-top">
                 </div>
-                <div class="flex justify-between items-center bg-white px-2.5 py-1 rounded-lg border border-black">
-                  <span>2 Kg Mila de Pollo</span>
-                  <span class="text-brand-red font-black">$13.999</span>
+                <div class="rounded-lg overflow-hidden border border-black bg-white shadow-sm">
+                  <img src="${flyerImg2}" alt="Oferta 2 ${sp.nombre}" class="w-full h-24 object-cover object-top">
                 </div>
-                <div class="flex justify-between items-center bg-white px-2.5 py-1 rounded-lg border border-black">
-                  <span>2 Kg Osobuco</span>
-                  <span class="text-brand-red font-black">$18.999</span>
-                </div>
-              </div>
-              <div class="text-[11px] font-mono text-slate-700 mt-2 font-medium text-center">
-                Asado y Vacío $17.999 &bull; Nalga y Cuadril $19.999
               </div>
             </div>
           `;
@@ -1572,11 +1539,10 @@
 
         card.innerHTML = `
           <div>
-            <div class="flex items-center justify-between mb-4">
+            <div class="mb-4">
               <span class="sticker px-2.5 py-0.5 rounded-lg bg-brand-yellow text-black text-[10px]">
                 ${sp.rubro}
               </span>
-              <span class="text-xs font-mono font-bold text-slate-500 group-hover:text-brand-blue">Ver más</span>
             </div>
             
             <div class="mb-3">
@@ -1593,7 +1559,10 @@
             </button>
           </div>
         `;
-        card.addEventListener('click', () => openSponsorModal(sp));
+        card.addEventListener('click', (e) => {
+          burstFlowers(e);
+          openSponsorModal(sp);
+        });
         sponsorsGrid.appendChild(card);
       });
     }
@@ -1649,16 +1618,35 @@
     }
 
     // -------------------------------------------------------------
-    // 6. BURST DE FLORES "HOLA PRIMAVERA"
+    // 6. BURST DE FLORES & SALUDO DINÁMICO POR DÍA DE LA SEMANA
     // -------------------------------------------------------------
     const primaveraBadge = document.getElementById('primaveraBadge');
+    const dailyGreetingBadge = document.getElementById('dailyGreetingBadge');
+    const dailyGreetingText = document.getElementById('dailyGreetingText');
     const flowers = ['🌸', '🌺', '🌼', '🌻', '🌷', '💐', '✨'];
+
+    const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    const diaActual = diasSemana[new Date().getDay()];
+    if (dailyGreetingText) {
+      dailyGreetingText.textContent = `¡Feliz ${diaActual}! Hoy puede ser un gran día`;
+    }
     
     function burstFlowers(e) {
-      if (!primaveraBadge) return;
-      const rect = primaveraBadge.getBoundingClientRect();
-      const originX = rect.left + rect.width / 2;
-      const originY = rect.top + rect.height / 2;
+      let originX = window.innerWidth / 2;
+      let originY = window.innerHeight / 2;
+
+      if (e && typeof e.clientX === 'number' && e.clientX > 0) {
+        originX = e.clientX;
+        originY = e.clientY;
+      } else if (e && e.currentTarget && e.currentTarget.getBoundingClientRect) {
+        const rect = e.currentTarget.getBoundingClientRect();
+        originX = rect.left + rect.width / 2;
+        originY = rect.top + rect.height / 2;
+      } else if (primaveraBadge) {
+        const rect = primaveraBadge.getBoundingClientRect();
+        originX = rect.left + rect.width / 2;
+        originY = rect.top + rect.height / 2;
+      }
       
       for (let i = 0; i < 16; i++) {
         const flower = document.createElement('div');
@@ -1683,6 +1671,9 @@
     if (primaveraBadge) {
       primaveraBadge.addEventListener('mouseenter', burstFlowers);
       primaveraBadge.addEventListener('click', burstFlowers);
+    }
+    if (dailyGreetingBadge) {
+      dailyGreetingBadge.addEventListener('click', burstFlowers);
     }
 
     // -------------------------------------------------------------
@@ -1750,6 +1741,10 @@
     // Escape Key Handler para todos los modales
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
+        if (lightboxModal && !lightboxModal.classList.contains('hidden')) {
+          closeLightbox();
+          return;
+        }
         toggleAdsModal(false);
         if (sponsorModal) {
           sponsorModal.classList.add('hidden');
