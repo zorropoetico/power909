@@ -311,10 +311,22 @@
                 Transmitiendo de forma ininterrumpida música de primer nivel, actualidad zonal e información las 24 horas.
               </p>
               
+              <!-- Elemento de audio nativo en el DOM -->
+              <audio id="radioAudio" preload="none" class="hidden"></audio>
+
               <!-- Estado de reproducción -->
-              <div class="mt-4 flex items-center gap-2 text-xs font-mono">
-                <span id="heroSignalDot" class="w-3 h-3 rounded-full bg-slate-500"></span>
-                <span id="heroStatusText" class="font-bold text-slate-300">Listo para reproducir. Presioná play.</span>
+              <div class="mt-4 flex flex-col items-center lg:items-start gap-2 text-xs font-mono">
+                <div class="flex items-center gap-2">
+                  <span id="heroSignalDot" class="w-3 h-3 rounded-full bg-slate-500 flex-shrink-0"></span>
+                  <span id="heroStatusText" class="font-bold text-slate-300">Listo para reproducir. Presioná play.</span>
+                </div>
+                <button 
+                  id="popupStreamBtn" 
+                  type="button"
+                  class="hidden mt-1 px-3.5 py-1.5 rounded-xl bg-brand-yellow text-black font-mono font-black text-[11px] uppercase tracking-wider border-2 border-black shadow-[2px_2px_0px_0px_#000] hover:bg-[#ffe833] transition"
+                >
+                  Abrir reproductor directo en ventana auxiliar
+                </button>
               </div>
             </div>
 
@@ -997,18 +1009,30 @@
   <!-- ======================================================== -->
   <script>
     // -------------------------------------------------------------
-    // 1. CONFIGURACIÓN DEL STREAMING DE AUDIO SHOUTCAST
+    // 1. CONFIGURACIÓN DEL STREAMING DE AUDIO SEGURO (HTTPS)
     // -------------------------------------------------------------
-    // Enlace de audio directo de la transmisión
-    const STREAM_SOURCE = 'http://37.157.242.101:24406/;?type=http&nocache=175';
+    // URL HTTPS segura extraída directamente de #urladdress (espaciopower.radiostream321.com):
+    const SECURE_STREAM_URL = 'https://uk3freenew.listen2myradio.com/live.mp3?typeportmount=s2_36227_stream_875590042';
+    const DIRECT_STREAM_URL = 'http://37.157.242.101:24406/;?type=http&nocache=175';
 
-    // Instancia única y persistente de Audio para reproducción continua
-    const radioAudio = new Audio();
+    function getStreamCandidates() {
+      const bust = Math.floor(Math.random() * 900000000) + 100000000;
+      return [
+        SECURE_STREAM_URL,
+        'https://uk3freenew.listen2myradio.com/live.mp3?typeportmount=s2_36227_stream_' + bust,
+        'https://uk15freenew.listen2myradio.com/live.mp3?typeportmount=s1_24406_stream_' + bust,
+        'https://uk15freenew.listen2myradio.com/live.mp3?typeportmount=s2_24406_stream_' + bust,
+        DIRECT_STREAM_URL
+      ];
+    }
+
+    const radioAudio = document.getElementById('radioAudio') || new Audio();
     radioAudio.preload = 'none';
-    radioAudio.src = STREAM_SOURCE;
 
     // Estado del reproductor
     let isPlaying = false;
+    let isConnecting = false;
+    let candidateIndex = 0;
     let currentVolume = 0.85;
 
     // Recuperar volumen guardado si está disponible
@@ -1034,6 +1058,7 @@
     const heroVolumeSlider = document.getElementById('heroVolumeSlider');
     const heroVolumeText = document.getElementById('heroVolumeText');
     const heroMuteBtn = document.getElementById('heroMuteBtn');
+    const popupStreamBtn = document.getElementById('popupStreamBtn');
 
     // Elementos del reproductor anclado (Bottom Dock)
     const bottomPlayerBar = document.getElementById('bottomPlayerBar');
@@ -1052,8 +1077,20 @@
     if (dockVolumeSlider) dockVolumeSlider.value = currentVolume;
     if (heroVolumeText) heroVolumeText.textContent = `${Math.round(currentVolume * 100)}%`;
 
+    // Función para abrir el stream HTTP directo en ventana auxiliar (evita bloqueo HTTPS del navegador)
+    function openPopupStream() {
+      window.open(
+        SECURE_STREAM_URL,
+        'RadioPower909Directo',
+        'width=420,height=220,menubar=no,toolbar=no,location=no,status=no'
+      );
+    }
+    if (popupStreamBtn) {
+      popupStreamBtn.addEventListener('click', openPopupStream);
+    }
+
     // Función unificada para actualizar el estado visual de reproducción
-    function updatePlayState(playing, statusMessage = '') {
+    function updatePlayState(playing, statusMessage = '', showFallbackPopup = false) {
       isPlaying = playing;
 
       // Actualizar Consola Hero
@@ -1065,11 +1102,14 @@
       }
       if (heroSignalDot) {
         heroSignalDot.className = playing 
-          ? 'w-3 h-3 rounded-full bg-brand-green animate-pulse shadow-[0_0_8px_#0E9F6E]' 
-          : 'w-3 h-3 rounded-full bg-slate-500';
+          ? 'w-3 h-3 rounded-full bg-brand-green animate-pulse shadow-[0_0_8px_#0E9F6E] flex-shrink-0' 
+          : 'w-3 h-3 rounded-full bg-slate-500 flex-shrink-0';
       }
       if (heroStatusText && statusMessage) {
         heroStatusText.textContent = statusMessage;
+      }
+      if (popupStreamBtn) {
+        popupStreamBtn.classList.toggle('hidden', !showFallbackPopup);
       }
 
       // Actualizar Barra Anclada (Bottom Dock)
@@ -1083,25 +1123,52 @@
       }
     }
 
-    // Toggle Play / Pause con manejo de reconexión continua
-    function toggleAudio() {
-      if (!isPlaying) {
-        updatePlayState(false, 'Conectando con Radio Power 90.9 FM...');
-        // Si el stream se había detenido, refrescar la fuente para evitar buffer acumulado
-        if (!radioAudio.src || radioAudio.src === '') {
-          radioAudio.src = STREAM_SOURCE;
-        }
+    // Intenta reproducir los candidatos de streaming en orden hasta conectar
+    function tryPlayCandidate(candidates, index) {
+      if (index >= candidates.length) {
+        isConnecting = false;
+        const isHttps = window.location.protocol === 'https:';
+        const msg = isHttps
+          ? 'El navegador bloqueó el audio HTTP en HTTPS. Usá el botón amarillo para abrir la señal directa.'
+          : 'No pudimos conectar con el servidor de audio. Intentá nuevamente.';
+        updatePlayState(false, msg, true);
+        return;
+      }
+
+      candidateIndex = index;
+      const url = candidates[index];
+      isConnecting = true;
+
+      try {
+        radioAudio.pause();
+        radioAudio.src = url;
+        radioAudio.load();
         const playPromise = radioAudio.play();
         if (playPromise !== undefined) {
           playPromise.then(() => {
-            updatePlayState(true, 'Transmitiendo en vivo desde Juan María Gutiérrez • 90.9 FM');
+            isConnecting = false;
+            updatePlayState(true, 'Transmitiendo en vivo desde Juan María Gutiérrez • 90.9 FM', false);
           }).catch(() => {
-            updatePlayState(false, 'Tocá play para escuchar la transmisión en vivo.');
+            tryPlayCandidate(candidates, index + 1);
           });
         }
+      } catch (err) {
+        tryPlayCandidate(candidates, index + 1);
+      }
+    }
+
+    // Toggle Play / Pause con reconexión inteligente
+    function toggleAudio() {
+      if (!isPlaying && !isConnecting) {
+        updatePlayState(false, 'Conectando con Radio Power 90.9 FM...', false);
+        const candidates = getStreamCandidates();
+        tryPlayCandidate(candidates, 0);
       } else {
+        isConnecting = false;
         radioAudio.pause();
-        updatePlayState(false, 'Audio pausado. Tocá play para volver a escuchar.');
+        radioAudio.removeAttribute('src');
+        radioAudio.load();
+        updatePlayState(false, 'Audio pausado. Tocá play para volver a escuchar.', false);
       }
     }
 
@@ -1110,22 +1177,32 @@
 
     // Eventos nativos de Audio
     radioAudio.addEventListener('playing', () => {
-      updatePlayState(true, 'Transmitiendo en vivo desde Juan María Gutiérrez • 90.9 FM');
+      isConnecting = false;
+      updatePlayState(true, 'Transmitiendo en vivo desde Juan María Gutiérrez • 90.9 FM', false);
     });
 
     radioAudio.addEventListener('waiting', () => {
-      if (heroStatusText) heroStatusText.textContent = 'Cargando señal...';
-      if (bottomStatusTrack) bottomStatusTrack.textContent = 'Cargando señal...';
+      if (isPlaying) {
+        if (heroStatusText) heroStatusText.textContent = 'Cargando señal en vivo...';
+        if (bottomStatusTrack) bottomStatusTrack.textContent = 'Cargando señal en vivo...';
+      }
     });
 
     radioAudio.addEventListener('ended', () => {
-      updatePlayState(false, 'Señal finalizada. Reconectando...');
-      radioAudio.load();
-      radioAudio.play().catch(() => updatePlayState(false, 'Pausado. Tocá play para reconectar.'));
+      if (isPlaying) {
+        updatePlayState(false, 'Reconectando señal...', false);
+        tryPlayCandidate(getStreamCandidates(), 0);
+      }
     });
 
     radioAudio.addEventListener('error', () => {
-      updatePlayState(false, 'Error de conexión. Tocá play para reintentar.');
+      if (isConnecting) {
+        const candidates = getStreamCandidates();
+        tryPlayCandidate(candidates, candidateIndex + 1);
+      } else if (isPlaying) {
+        updatePlayState(false, 'Reconectando señal...', false);
+        tryPlayCandidate(getStreamCandidates(), 0);
+      }
     });
 
     // Control de Volumen sincronizado
