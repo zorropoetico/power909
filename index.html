@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth bg-[#F8F9FD] text-slate-900 selection:bg-[#FFDE00] selection:text-black">
+<html lang="es" class="scroll-smooth bg-[#F8F9FD] text-slate-900 selection:bg-[#FFDE00] selection:text-black overflow-x-hidden">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -96,6 +96,9 @@
     /* Neo-Brutalist Sticker */
     .sticker {
       display: inline-block;
+      max-width: 100%;
+      white-space: normal;
+      word-break: break-word;
       border: 2px solid #000000;
       box-shadow: 2px 2px 0px 0px #000000;
       font-family: 'Space Grotesk', monospace;
@@ -129,7 +132,7 @@
     }
   </style>
 </head>
-<body class="bg-[#F8F9FD] text-slate-900 selection:bg-brand-yellow selection:text-black antialiased pb-28">
+<body class="bg-[#F8F9FD] text-slate-900 selection:bg-brand-yellow selection:text-black antialiased pb-28 overflow-x-hidden w-full max-w-full">
 
   <!-- TOP VIBRANT TICKER (BRIGHT YELLOW & BLACK) -->
   <aside aria-label="Aviso en vivo y temporada" class="bg-brand-yellow border-b-2 border-black py-2 overflow-hidden text-xs font-mono font-black tracking-wider uppercase select-none">
@@ -153,38 +156,38 @@
   </aside>
 
   <!-- NAVIGATION HEADER -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-black px-4 sm:px-8 py-3.5">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-black px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 w-full">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
       
       <!-- BRAND LOGO FROM ASSETS FOLDER -->
-      <a href="#inicio" class="flex items-center gap-3.5 group">
-        <div class="relative w-12 h-12 flex items-center justify-center rounded-2xl bg-white border-2 border-black p-1 shadow-brutal group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:shadow-none transition-all">
+      <a href="#inicio" class="flex items-center gap-2.5 sm:gap-3.5 min-w-0 group">
+        <div class="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 flex items-center justify-center rounded-xl sm:rounded-2xl bg-white border-2 border-black p-1 shadow-brutal-sm sm:shadow-brutal group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:shadow-none transition-all">
           <img 
             src="assets/logo.png" 
             alt="Radio Power 90.9" 
             class="w-full h-full object-contain filter drop-shadow-sm" 
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
           />
-          <div class="hidden w-full h-full rounded-xl bg-brand-blue items-center justify-center font-display font-black text-white text-base">
+          <div class="hidden w-full h-full rounded-lg sm:rounded-xl bg-brand-blue items-center justify-center font-display font-black text-white text-xs sm:text-base">
             P<span class="text-brand-yellow font-black">90.9</span>
           </div>
         </div>
 
-        <div class="flex flex-col">
-          <div class="flex items-center gap-2">
-            <span class="font-display font-black text-2xl tracking-tight text-slate-950 leading-none">
+        <div class="flex flex-col min-w-0">
+          <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+            <span class="font-display font-black text-lg sm:text-2xl tracking-tight text-slate-950 leading-none truncate">
               POWER<span class="text-brand-blue">90.9</span>
             </span>
-            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-brand-red text-white border border-black shadow-[1px_1px_0px_0px_#000]">
+            <span class="inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-mono font-bold bg-brand-red text-white border border-black shadow-[1px_1px_0px_0px_#000] flex-shrink-0">
               <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> VIVO
             </span>
           </div>
-          <span class="text-[10px] font-mono font-bold tracking-wider text-slate-600 uppercase mt-0.5">FM &bull; Digital &bull; Streaming</span>
+          <span class="text-[9px] sm:text-[10px] font-mono font-bold tracking-wider text-slate-600 uppercase mt-0.5 truncate">FM &bull; Digital &bull; Streaming</span>
         </div>
       </a>
 
       <!-- DESKTOP NAV -->
-      <nav class="hidden md:flex items-center gap-6 text-xs font-mono font-bold uppercase tracking-wider text-slate-800">
+      <nav class="hidden lg:flex items-center gap-5 text-xs font-mono font-bold uppercase tracking-wider text-slate-800 flex-shrink-0">
         <a href="#streaming" class="hover:text-brand-blue transition flex items-center gap-1.5 py-1 px-2 rounded-lg hover:bg-slate-100">
           <span class="w-2 h-2 rounded-full bg-brand-red animate-ping"></span>
           <span>En Directo</span>
@@ -195,12 +198,12 @@
       </nav>
 
       <!-- RIGHT BUTTONS (INSTALL APP + PAUTAR) -->
-      <div class="flex items-center gap-2.5">
+      <div class="flex items-center gap-2 flex-shrink-0">
         
         <!-- BOTÓN INSTALAR EN EL CELULAR -->
         <button 
           id="installAppBtn" 
-          class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-white hover:bg-slate-50 text-slate-900 border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
+          class="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-mono font-bold uppercase tracking-wider bg-white hover:bg-slate-50 text-slate-900 border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all"
           title="Instalar en tu pantalla de inicio o celular"
         >
           <svg class="w-4 h-4 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
@@ -210,14 +213,14 @@
         <!-- BOTÓN PAUTAR -->
         <button 
           id="openAdsModalNav" 
-          class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-mono font-black uppercase tracking-wider bg-brand-yellow hover:bg-[#ffe833] text-black border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all active:scale-95"
+          class="hidden md:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-black uppercase tracking-wider bg-brand-yellow hover:bg-[#ffe833] text-black border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all active:scale-95"
         >
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.8 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
           <span>Pautar en la Radio</span>
         </button>
 
         <!-- MOBILE HAMBURGER -->
-        <button id="menuBtn" aria-label="Abrir menú" class="md:hidden p-2.5 rounded-xl bg-white border-2 border-black shadow-brutal text-black">
+        <button id="menuBtn" aria-label="Abrir menú" class="lg:hidden p-2 sm:p-2.5 rounded-xl bg-white border-2 border-black shadow-brutal-sm text-black">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7"/></svg>
         </button>
       </div>
@@ -225,7 +228,7 @@
     </div>
 
     <!-- MOBILE MENU DRAWER -->
-    <div id="mobileDrawer" class="hidden md:hidden pt-4 pb-2 border-t-2 border-black mt-3 space-y-2 text-xs font-mono font-bold uppercase">
+    <div id="mobileDrawer" class="hidden lg:hidden pt-4 pb-2 border-t-2 border-black mt-3 space-y-2 text-xs font-mono font-bold uppercase">
       <a href="#streaming" class="block px-3 py-2.5 rounded-xl bg-brand-yellow border-2 border-black text-black">● Transmisión en Vivo</a>
       <a href="#comercios" class="block px-3 py-2.5 rounded-xl bg-white border-2 border-black text-black">Comercios de la Radio</a>
       <a href="#programacion" class="block px-3 py-2.5 rounded-xl bg-white border-2 border-black text-black">Programación</a>
@@ -244,105 +247,105 @@
   </header>
 
   <!-- HERO SECTION -->
-  <main id="inicio" class="pt-8 pb-16 lg:pt-12 lg:pb-20 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <main id="inicio" class="pt-6 pb-12 sm:pt-8 sm:pb-16 lg:pt-12 lg:pb-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
       
       <!-- HERO HEADER -->
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
-        <div>
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 mb-8 sm:mb-10">
+        <div class="min-w-0">
           <!-- HOLA PRIMAVERA GRANDE + SALUDO DINÁMICO POR DÍA DE LA SEMANA -->
-          <div class="mb-5 flex flex-wrap items-center gap-3">
+          <div class="mb-4 sm:mb-5 flex flex-wrap items-center gap-2.5 sm:gap-3">
             <button 
               id="primaveraBadge" 
-              class="sticker px-5 py-2.5 rounded-full bg-brand-yellow hover:bg-[#ffe833] text-black text-sm sm:text-base cursor-pointer transform hover:scale-105 active:scale-95 transition-all select-none flex items-center gap-2.5 shadow-brutal"
+              class="sticker px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-2xl sm:rounded-full bg-brand-yellow hover:bg-[#ffe833] text-black text-xs sm:text-base cursor-pointer transform hover:scale-105 active:scale-95 transition-all select-none flex flex-wrap items-center gap-2 shadow-brutal-sm sm:shadow-brutal text-left"
               title="¡Tocá o pasá el mouse para florecer!"
             >
-              <span class="text-xl">🌸</span>
+              <span class="text-base sm:text-xl">🌸</span>
               <span class="font-display font-black tracking-wide">¡HOLA PRIMAVERA 2026!</span>
-              <span class="text-xs font-mono font-bold bg-black text-white px-2 py-0.5 rounded-full">FLORECE LA RADIO</span>
+              <span class="text-[10px] sm:text-xs font-mono font-bold bg-black text-white px-2 py-0.5 rounded-full">FLORECE LA RADIO</span>
             </button>
 
             <div 
               id="dailyGreetingBadge"
-              class="sticker px-4 py-2.5 rounded-full bg-white text-slate-950 text-xs sm:text-sm flex items-center gap-2 shadow-brutal cursor-pointer hover:bg-brand-yellowLight transition"
+              class="sticker px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl sm:rounded-full bg-white text-slate-950 text-xs sm:text-sm flex items-center gap-2 shadow-brutal-sm sm:shadow-brutal cursor-pointer hover:bg-brand-yellowLight transition"
             >
               <span>☀️</span>
               <span id="dailyGreetingText" class="font-display font-extrabold tracking-tight">¡Feliz lunes! Hoy puede ser un gran día</span>
             </div>
           </div>
 
-          <h1 class="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight text-slate-950 leading-[1.03]">
+          <h1 class="font-display font-black text-3xl sm:text-6xl lg:text-7xl tracking-tight text-slate-950 leading-[1.06] break-words">
             ESCUCHÁ EN VIVO. <br>
-            <span class="text-brand-blue underline decoration-brand-yellow decoration-wavy decoration-4">
+            <span class="text-brand-blue underline decoration-brand-yellow decoration-wavy decoration-2 sm:decoration-4">
               SENTÍ LA POTENCIA.
             </span>
           </h1>
         </div>
 
-        <div class="max-w-lg bg-white p-6 rounded-3xl border-2 border-black shadow-brutal">
-          <p class="text-slate-800 text-sm sm:text-base leading-relaxed font-medium">
+        <div class="w-full lg:max-w-lg bg-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl border-2 border-black shadow-brutal">
+          <p class="text-slate-800 text-xs sm:text-base leading-relaxed font-medium">
             La plataforma de comunicación de Juan María Gutiérrez y Berazategui que conecta a todo el mundo. Más de tres décadas de trayectoria radial con transmisión en vivo digital para acompañar cada momento de tu día.
           </p>
         </div>
       </div>
 
       <!-- MAIN STREAMING CONSOLE (AUDIO UPGRADE) -->
-      <section id="streaming" class="bg-white rounded-3xl p-5 sm:p-8 border-2 border-black shadow-brutal-xl relative">
+      <section id="streaming" class="bg-white rounded-2xl sm:rounded-3xl p-3.5 sm:p-8 border-2 border-black shadow-brutal sm:shadow-brutal-xl relative w-full overflow-hidden">
         
         <!-- PLAYER HEADER WITH FREQUENCIES AND LIVE BADGE -->
-        <div class="flex flex-wrap items-center justify-between gap-3 px-2 py-2 mb-6 border-b-2 border-slate-100 text-xs font-mono">
-          <div class="flex items-center gap-3">
-            <span class="px-3 py-1 rounded-full bg-brand-red text-white font-black tracking-wider uppercase text-[11px] border border-black shadow-[2px_2px_0px_0px_#000] flex items-center gap-1.5">
+        <div class="flex flex-wrap items-center justify-between gap-2 px-1 sm:px-2 py-2 mb-4 sm:mb-6 border-b-2 border-slate-100 text-xs font-mono">
+          <div class="flex items-center gap-2 sm:gap-3">
+            <span class="px-2.5 sm:px-3 py-1 rounded-full bg-brand-red text-white font-black tracking-wider uppercase text-[10px] sm:text-[11px] border border-black shadow-[2px_2px_0px_0px_#000] flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
               EN EL AIRE
             </span>
-            <span class="font-bold text-slate-900 hidden sm:inline">Radio Power 90.9 &bull; Estudio Central Juan María Gutiérrez</span>
+            <span class="font-bold text-slate-900 hidden md:inline">Radio Power 90.9 &bull; Estudio Central Juan María Gutiérrez</span>
           </div>
 
           <!-- EQUALIZER BARS -->
-          <div id="heroEqContainer" class="flex items-center gap-1.5 bg-slate-100 px-3.5 py-1.5 rounded-full border border-black eq-paused">
-            <div class="w-1.5 bg-brand-blue rounded-full eq-bar eq-1 h-3 transition-all duration-300"></div>
-            <div class="w-1.5 bg-brand-yellow rounded-full eq-bar eq-2 h-4 transition-all duration-300"></div>
-            <div class="w-1.5 bg-brand-red rounded-full eq-bar eq-3 h-2 transition-all duration-300"></div>
-            <div class="w-1.5 bg-brand-pink rounded-full eq-bar eq-4 h-4 transition-all duration-300"></div>
-            <div class="w-1.5 bg-brand-green rounded-full eq-bar eq-5 h-3 transition-all duration-300"></div>
-            <span class="text-[11px] font-bold text-slate-800 ml-1">90.9 MHz</span>
+          <div id="heroEqContainer" class="flex items-center gap-1 sm:gap-1.5 bg-slate-100 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full border border-black eq-paused">
+            <div class="w-1 sm:w-1.5 bg-brand-blue rounded-full eq-bar eq-1 h-3 transition-all duration-300"></div>
+            <div class="w-1 sm:w-1.5 bg-brand-yellow rounded-full eq-bar eq-2 h-4 transition-all duration-300"></div>
+            <div class="w-1 sm:w-1.5 bg-brand-red rounded-full eq-bar eq-3 h-2 transition-all duration-300"></div>
+            <div class="w-1 sm:w-1.5 bg-brand-pink rounded-full eq-bar eq-4 h-4 transition-all duration-300"></div>
+            <div class="w-1 sm:w-1.5 bg-brand-green rounded-full eq-bar eq-5 h-3 transition-all duration-300"></div>
+            <span class="text-[10px] sm:text-[11px] font-bold text-slate-800 ml-1">90.9 MHz</span>
           </div>
         </div>
 
         <!-- CONSOLA CENTRAL DEL REPRODUCTOR (DISEÑO NEO-BRUTALISTA HD) -->
-        <div class="bg-gradient-to-br from-slate-950 via-slate-900 to-brand-blue/90 rounded-2xl border-2 border-black p-6 sm:p-10 text-white shadow-inner relative overflow-hidden">
+        <div class="bg-gradient-to-br from-slate-950 via-slate-900 to-brand-blue/90 rounded-2xl border-2 border-black p-4 sm:p-10 text-white shadow-inner relative overflow-hidden">
           
           <!-- Fondo decorativo con ondas y cuadrícula técnica -->
           <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#FFDE00_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
-          <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8">
             
             <!-- Left block: Frecuencia & Identidad -->
-            <div class="text-center lg:text-left flex flex-col items-center lg:items-start">
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-brand-yellow text-brand-yellow font-mono text-xs font-bold mb-3 shadow-[2px_2px_0px_0px_#FFDE00]">
+            <div class="text-center lg:text-left flex flex-col items-center lg:items-start w-full lg:w-auto">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-brand-yellow text-brand-yellow font-mono text-[10px] sm:text-xs font-bold mb-3 shadow-[2px_2px_0px_0px_#FFDE00]">
                 <span>⚡ SEÑAL OFICIAL EN VIVO</span>
               </div>
-              <div class="font-display font-black text-5xl sm:text-7xl tracking-tight text-white leading-none">
+              <div class="font-display font-black text-4xl sm:text-7xl tracking-tight text-white leading-none">
                 FM <span class="text-brand-yellow">90.9</span>
               </div>
-              <p class="text-slate-300 text-sm font-medium mt-2 max-w-md">
+              <p class="text-slate-300 text-xs sm:text-sm font-medium mt-2 max-w-md">
                 Transmitiendo de forma ininterrumpida música de primer nivel, actualidad zonal e información las 24 horas.
               </p>
               
               <!-- Elemento de audio nativo en el DOM -->
-              <audio id="radioAudio" preload="none" class="hidden"></audio>
+              <audio id="radioAudio" preload="auto" autoplay class="hidden"></audio>
 
               <!-- Estado de reproducción -->
-              <div class="mt-4 flex flex-col items-center lg:items-start gap-2 text-xs font-mono">
-                <div class="flex items-center gap-2">
+              <div class="mt-4 flex flex-col items-center lg:items-start gap-2 text-xs font-mono w-full">
+                <div class="flex items-center justify-center lg:justify-start gap-2">
                   <span id="heroSignalDot" class="w-3 h-3 rounded-full bg-slate-500 flex-shrink-0"></span>
-                  <span id="heroStatusText" class="font-bold text-slate-300">Listo para reproducir. Presioná play.</span>
+                  <span id="heroStatusText" class="font-bold text-slate-300 text-[11px] sm:text-xs">Listo para reproducir. Presioná play.</span>
                 </div>
                 <button 
                   id="popupStreamBtn" 
                   type="button"
-                  class="hidden mt-1 px-3.5 py-1.5 rounded-xl bg-brand-yellow text-black font-mono font-black text-[11px] uppercase tracking-wider border-2 border-black shadow-[2px_2px_0px_0px_#000] hover:bg-[#ffe833] transition"
+                  class="hidden mt-1 px-3 py-1.5 rounded-xl bg-brand-yellow text-black font-mono font-black text-[11px] uppercase tracking-wider border-2 border-black shadow-[2px_2px_0px_0px_#000] hover:bg-[#ffe833] transition"
                 >
                   Abrir reproductor directo en ventana auxiliar
                 </button>
@@ -350,21 +353,21 @@
             </div>
 
             <!-- Center block: Controles táctiles principales -->
-            <div class="flex flex-col items-center gap-4 w-full sm:w-auto">
+            <div class="flex flex-col items-center gap-3.5 sm:gap-4 w-full sm:w-auto">
               
               <!-- Botón Maestro Play/Pause -->
               <button 
                 id="mainPlayBtn" 
-                class="group relative px-8 py-5 rounded-2xl bg-brand-yellow hover:bg-[#ffe833] text-black font-display font-black text-xl sm:text-2xl uppercase tracking-wider border-3 border-black shadow-brutal-xl hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-4 active:scale-95"
+                class="group relative w-full sm:w-auto justify-center px-5 py-4 sm:px-8 sm:py-5 rounded-2xl bg-brand-yellow hover:bg-[#ffe833] text-black font-display font-black text-base sm:text-2xl uppercase tracking-wider border-2 sm:border-3 border-black shadow-brutal sm:shadow-brutal-xl hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center gap-3 sm:gap-4 active:scale-95"
                 aria-label="Reproducir o pausar transmisión"
               >
-                <span id="mainPlayIcon" class="text-3xl leading-none">▶</span>
+                <span id="mainPlayIcon" class="text-2xl sm:text-3xl leading-none flex items-center justify-center">▶</span>
                 <span id="mainPlayLabel">Escuchar en Vivo</span>
               </button>
 
               <!-- Control de Volumen integrado en consola -->
-              <div class="flex items-center gap-3 bg-black/50 border border-white/20 rounded-xl px-4 py-2 w-full sm:w-64">
-                <button id="heroMuteBtn" class="text-lg text-slate-300 hover:text-brand-yellow transition" aria-label="Silenciar o activar sonido">
+              <div class="flex items-center gap-3 bg-black/50 border border-white/20 rounded-xl px-3.5 py-2 w-full sm:w-64">
+                <button id="heroMuteBtn" class="text-base sm:text-lg text-slate-300 hover:text-brand-yellow transition flex-shrink-0" aria-label="Silenciar o activar sonido">
                   🔊
                 </button>
                 <input 
@@ -377,51 +380,49 @@
                   class="w-full h-2 bg-slate-700 rounded-lg cursor-pointer"
                   aria-label="Control de volumen"
                 >
-                <span id="heroVolumeText" class="text-xs font-mono font-bold text-slate-300 w-8 text-right">85%</span>
+                <span id="heroVolumeText" class="text-xs font-mono font-bold text-slate-300 w-8 text-right flex-shrink-0">85%</span>
               </div>
             </div>
-
-
 
           </div>
 
         </div>
 
         <!-- PLAYER FOOTER: IDENTIDAD Y ACCIONES -->
-        <div class="mt-6 px-2 flex flex-col sm:flex-row items-center justify-between gap-5 pt-2">
+        <div class="mt-5 sm:mt-6 px-1 sm:px-2 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-5 pt-2">
           
-          <div class="flex items-center gap-4 w-full sm:w-auto">
+          <div class="flex items-center gap-3 sm:gap-4 w-full lg:w-auto min-w-0">
             <!-- LOGO GRANDE EN LA ZONA RADIO POWER LIVE -->
-            <div class="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-2xl bg-white border-2 border-black p-1.5 shadow-brutal flex items-center justify-center">
+            <div class="relative w-12 h-12 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl sm:rounded-2xl bg-white border-2 border-black p-1 sm:p-1.5 shadow-brutal-sm sm:shadow-brutal flex items-center justify-center">
               <img 
                 src="assets/logo.png" 
                 alt="Logo Power 90.9" 
                 class="w-full h-full object-contain filter drop-shadow" 
                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
               />
-              <div class="hidden w-full h-full rounded-xl bg-brand-blue items-center justify-center font-display font-black text-white text-lg">
+              <div class="hidden w-full h-full rounded-lg sm:rounded-xl bg-brand-blue items-center justify-center font-display font-black text-white text-sm sm:text-lg">
                 P<span class="text-brand-yellow font-black">90.9</span>
               </div>
             </div>
 
-            <div>
-              <div class="text-lg sm:text-xl font-display font-black text-slate-950 flex flex-wrap items-center gap-2">
+            <div class="min-w-0">
+              <div class="text-base sm:text-xl font-display font-black text-slate-950 flex flex-wrap items-center gap-1.5 sm:gap-2">
                 <span>Radio Power Live</span>
-                <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-brand-yellow border border-black text-black">
+                <span class="text-[10px] sm:text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-brand-yellow border border-black text-black">
                   &bull; Temporada Primavera 2026
                 </span>
               </div>
-              <div class="text-xs text-slate-600 font-mono font-medium mt-0.5">
+              <div class="text-[11px] sm:text-xs text-slate-600 font-mono font-medium mt-0.5">
                 Desde Juan María Gutiérrez en el dial 90.9 FM y streaming para todo el mundo
               </div>
             </div>
           </div>
 
-          <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+          <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-3 w-full lg:w-auto lg:justify-end">
             <!-- BOTÓN PAUTAR DESTACADO -->
             <button 
               id="openAdsModalPlayer" 
-              class="px-4 py-2.5 rounded-xl bg-brand-yellow hover:bg-[#ffe833] text-black text-xs font-mono font-black uppercase tracking-wider border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-2"
+              class="col-span-2 sm:col-span-1 justify-center px-4 py-2.5 rounded-xl bg-brand-yellow hover:bg-[#ffe833] text-black text-xs font-mono font-black uppercase tracking-wider border-2 border-black shadow-brutal-sm sm:shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-2"
             >
               📢 <span>Pautar en Radio</span>
             </button>
@@ -429,9 +430,9 @@
             <!-- COMPARTIR -->
             <button 
               id="shareBtn" 
-              class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 border-2 border-black text-xs font-mono font-bold text-slate-900 shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-1.5"
+              class="justify-center px-3.5 sm:px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 border-2 border-black text-xs font-mono font-bold text-slate-900 shadow-brutal-sm sm:shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-1.5"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+              <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
               <span>Compartir</span>
             </button>
 
@@ -440,9 +441,9 @@
               href="https://wa.me/5491141976436?text=Hola%20Radio%20Power%2090.9!%20Les%20escribo%20escuchando%20el%20streaming%20en%20vivo." 
               target="_blank" 
               rel="noopener noreferrer" 
-              class="px-5 py-2.5 rounded-xl bg-brand-green hover:bg-emerald-600 text-white text-xs font-mono font-black uppercase tracking-wider border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-2"
+              class="justify-center px-3.5 sm:px-5 py-2.5 rounded-xl bg-brand-green hover:bg-emerald-600 text-white text-xs font-mono font-black uppercase tracking-wider border-2 border-black shadow-brutal-sm sm:shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-1.5 sm:gap-2"
             >
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
+              <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
               <span>Estudio</span>
             </a>
           </div>
@@ -472,12 +473,12 @@
         </div>
 
         <!-- BOTÓN PAUTAR -->
-        <div class="flex flex-wrap items-center gap-3">
+        <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
           <button 
             id="openAdsModalComercios" 
-            class="px-6 py-3.5 rounded-2xl bg-brand-yellow hover:bg-[#ffe833] text-black font-mono font-black text-xs uppercase tracking-wider border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-2"
+            class="w-full md:w-auto justify-center px-4 sm:px-6 py-3.5 rounded-2xl bg-brand-yellow hover:bg-[#ffe833] text-black font-mono font-black text-xs uppercase tracking-wider border-2 border-black shadow-brutal-sm sm:shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-2 text-center"
           >
-            📢 <span>Sumar mi Comercio (Planes de Publicidad)</span>
+            <span>📢 Sumar mi Comercio (Planes)</span>
           </button>
         </div>
       </div>
@@ -693,12 +694,12 @@
   <aside 
     id="bottomPlayerBar" 
     aria-label="Reproductor persistente de Radio Power" 
-    class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t-3 border-black shadow-[0_-4px_0_0_#000000] transition-transform duration-300 ease-out"
+    class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t-2 sm:border-t-3 border-black shadow-[0_-3px_0_0_#000000] transition-transform duration-300 ease-out w-full"
   >
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto px-3 sm:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2.5 sm:gap-4">
       
       <!-- IZQUIERDA: Estación, Logo & Equalizador -->
-      <div class="flex items-center gap-3.5 min-w-0">
+      <div class="flex items-center gap-2.5 sm:gap-3.5 flex-1 min-w-0">
         <div class="relative w-10 h-10 rounded-xl bg-white border-2 border-black p-1 flex items-center justify-center font-display font-black text-black text-xs shadow-brutal-sm flex-shrink-0">
           <img 
             src="assets/logo.png" 
@@ -802,8 +803,8 @@
   <!-- ======================================================== -->
   <!-- MODAL 1: PLANES DE PUBLICIDAD EN LA RADIO                -->
   <!-- ======================================================== -->
-  <div id="adsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-3xl border-2 border-black shadow-brutal-xl max-w-4xl w-full max-h-[92vh] overflow-y-auto p-6 sm:p-10 relative">
+  <div id="adsModal" class="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/60 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-2xl sm:rounded-3xl border-2 border-black shadow-brutal sm:shadow-brutal-xl max-w-4xl w-full max-h-[88vh] max-h-[88dvh] overflow-y-auto p-4 sm:p-10 relative">
       
       <!-- CLOSE BUTTON -->
       <button id="closeAdsModal" class="absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-100 hover:bg-brand-yellow border-2 border-black font-mono font-black text-base flex items-center justify-center transition shadow-[2px_2px_0px_0px_#000]">
@@ -921,30 +922,30 @@
   <!-- ======================================================== -->
   <!-- MODAL 2: FICHA DEL COMERCIO AUSPICIANTE (CON SCROLL)     -->
   <!-- ======================================================== -->
-  <div id="sponsorModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-3xl border-2 border-black shadow-brutal-xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative">
+  <div id="sponsorModal" class="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/60 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-2xl sm:rounded-3xl border-2 border-black shadow-brutal sm:shadow-brutal-xl max-w-lg w-full max-h-[86vh] max-h-[86dvh] overflow-y-auto p-4 sm:p-7 relative">
       
-      <button id="closeSponsorModal" class="sticky top-0 float-right z-10 w-9 h-9 rounded-full bg-slate-100 hover:bg-brand-yellow border-2 border-black font-mono font-black text-base flex items-center justify-center transition shadow-[2px_2px_0px_0px_#000]">
+      <button id="closeSponsorModal" aria-label="Cerrar ficha" class="sticky top-0 float-right z-10 w-9 h-9 rounded-full bg-brand-yellow hover:bg-[#ffe833] border-2 border-black font-mono font-black text-base flex items-center justify-center transition shadow-[2px_2px_0px_0px_#000]">
         &times;
       </button>
 
-      <div class="mb-5 pr-10">
-        <span id="modalSponsorRubro" class="sticker px-2.5 py-0.5 rounded-full bg-brand-yellow text-black text-[10px]">
+      <div class="mb-3 sm:mb-4 pr-10">
+        <span id="modalSponsorRubro" class="sticker px-2.5 py-0.5 rounded-lg bg-brand-yellow text-black text-[10px]">
           COMERCIO LOCAL
         </span>
-        <h3 id="modalSponsorNombre" class="font-display font-black text-xl sm:text-2xl text-slate-950 mt-2 leading-snug">
+        <h3 id="modalSponsorNombre" class="font-display font-black text-lg sm:text-2xl text-slate-950 mt-1.5 leading-snug break-words">
           Nombre del Comercio
         </h3>
       </div>
 
-      <p id="modalSponsorDesc" class="text-slate-700 text-sm leading-relaxed mb-5 font-medium bg-slate-50 p-4 rounded-2xl border-2 border-black">
+      <p id="modalSponsorDesc" class="text-slate-700 text-xs sm:text-sm leading-relaxed mb-3.5 sm:mb-4 font-medium bg-slate-50 p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-black">
         Descripción del comercio...
       </p>
 
       <!-- SECCIÓN DINÁMICA DE OFERTAS SEMANALES -->
-      <div id="modalSponsorOffers" class="hidden mb-5"></div>
+      <div id="modalSponsorOffers" class="hidden mb-3.5 sm:mb-4"></div>
 
-      <div class="space-y-3 text-xs font-mono font-bold text-slate-700 mb-6 bg-brand-blueLight/50 p-4 rounded-2xl border-2 border-black">
+      <div class="space-y-2.5 text-xs font-mono font-bold text-slate-700 mb-4 sm:mb-5 bg-brand-blueLight/50 p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 border-black">
         <div>
           <div class="text-[10px] text-slate-500 uppercase tracking-wider">Dirección</div>
           <div id="modalSponsorDireccion" class="text-slate-900 mt-0.5">Dirección</div>
@@ -1139,12 +1140,28 @@
       popupStreamBtn.addEventListener('click', openPopupStream);
     }
 
+    const SPINNER_MAIN_HTML = '<svg class="w-6 h-6 sm:w-7 sm:h-7 animate-spin text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3.5"></circle><path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
+    const SPINNER_DOCK_HTML = '<svg class="w-5 h-5 animate-spin text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3.5"></circle><path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
+
+    // Función para mostrar animación de carga mientras procesa la señal
+    function setLoadingState(statusMessage = 'Conectando con Radio Power 90.9 FM...') {
+      if (mainPlayIcon) mainPlayIcon.innerHTML = SPINNER_MAIN_HTML;
+      if (mainPlayLabel) mainPlayLabel.textContent = 'Cargando señal...';
+      if (dockPlayIcon) dockPlayIcon.innerHTML = SPINNER_DOCK_HTML;
+      if (heroSignalDot) {
+        heroSignalDot.className = 'w-3 h-3 rounded-full bg-brand-yellow animate-ping flex-shrink-0';
+      }
+      if (heroStatusText) heroStatusText.textContent = statusMessage;
+      if (bottomStatusTrack) bottomStatusTrack.textContent = statusMessage;
+      if (popupStreamBtn) popupStreamBtn.classList.add('hidden');
+    }
+
     // Función unificada para actualizar el estado visual de reproducción
     function updatePlayState(playing, statusMessage = '', showFallbackPopup = false) {
       isPlaying = playing;
 
       // Actualizar Consola Hero
-      if (mainPlayIcon) mainPlayIcon.textContent = playing ? '⏸' : '▶';
+      if (mainPlayIcon) mainPlayIcon.innerHTML = playing ? '⏸' : '▶';
       if (mainPlayLabel) mainPlayLabel.textContent = playing ? 'Pausar Señal' : 'Escuchar en Vivo';
       if (heroEqContainer) {
         heroEqContainer.classList.toggle('eq-playing', playing);
@@ -1163,7 +1180,7 @@
       }
 
       // Actualizar Barra Anclada (Bottom Dock)
-      if (dockPlayIcon) dockPlayIcon.textContent = playing ? '⏸' : '▶';
+      if (dockPlayIcon) dockPlayIcon.innerHTML = playing ? '⏸' : '▶';
       if (bottomEq) {
         bottomEq.classList.toggle('eq-playing', playing);
         bottomEq.classList.toggle('eq-paused', !playing);
@@ -1177,10 +1194,7 @@
     function tryPlayCandidate(candidates, index) {
       if (index >= candidates.length) {
         isConnecting = false;
-        const isHttps = window.location.protocol === 'https:';
-        const msg = isHttps
-          ? 'El navegador bloqueó el audio HTTP en HTTPS. Usá el botón amarillo para abrir la señal directa.'
-          : 'No pudimos conectar con el servidor de audio. Intentá nuevamente.';
+        const msg = 'No pudimos conectar con el servidor de audio. Intentá nuevamente o usá el reproductor auxiliar.';
         updatePlayState(false, msg, true);
         return;
       }
@@ -1188,6 +1202,7 @@
       candidateIndex = index;
       const url = candidates[index];
       isConnecting = true;
+      setLoadingState('Conectando con Radio Power 90.9 FM...');
 
       try {
         radioAudio.pause();
@@ -1207,10 +1222,10 @@
       }
     }
 
-    // Toggle Play / Pause con reconexión inteligente
+    // Toggle Play / Pause con animación de carga y reconexión inteligente
     function toggleAudio() {
       if (!isPlaying && !isConnecting) {
-        updatePlayState(false, 'Conectando con Radio Power 90.9 FM...', false);
+        setLoadingState('Conectando con Radio Power 90.9 FM...');
         const candidates = getStreamCandidates();
         tryPlayCandidate(candidates, 0);
       } else {
@@ -1232,9 +1247,8 @@
     });
 
     radioAudio.addEventListener('waiting', () => {
-      if (isPlaying) {
-        if (heroStatusText) heroStatusText.textContent = 'Cargando señal en vivo...';
-        if (bottomStatusTrack) bottomStatusTrack.textContent = 'Cargando señal en vivo...';
+      if (isPlaying || isConnecting) {
+        setLoadingState('Cargando señal en vivo...');
       }
     });
 
@@ -1457,24 +1471,24 @@
 
       if (modalSponsorOffers) {
         if (sp.tieneOfertas) {
-          modalSponsorOffers.className = 'block mb-6';
+          modalSponsorOffers.className = 'block mb-4';
           modalSponsorOffers.innerHTML = `
-            <div class="rounded-2xl border-2 border-black bg-brand-yellowLight p-4 sm:p-5">
-              <div class="flex items-center justify-between mb-3 border-b-2 border-black/10 pb-2">
-                <span class="sticker px-2.5 py-0.5 rounded-lg bg-brand-red text-white text-[11px] font-black">
+            <div class="rounded-xl sm:rounded-2xl border-2 border-black bg-brand-yellowLight p-3 sm:p-4">
+              <div class="flex flex-wrap items-center justify-between gap-1.5 mb-2.5 border-b-2 border-black/10 pb-2">
+                <span class="sticker px-2 py-0.5 rounded-lg bg-brand-red text-white text-[10px] font-black">
                   OFERTAS DESTACADAS
                 </span>
-                <span class="text-[11px] font-mono font-bold text-slate-800">
-                  Tocá una imagen para ampliar
+                <span class="text-[10px] sm:text-[11px] font-mono font-bold text-slate-800">
+                  Tocá una imagen para ampliar 🔍
                 </span>
               </div>
 
-              <div class="grid grid-cols-2 gap-3">
-                <button type="button" data-fullsrc="${flyerImg1}" class="js-offer-zoom rounded-xl overflow-hidden border-2 border-black shadow-sm hover:scale-[1.02] transition cursor-zoom-in block w-full">
-                  <img src="${flyerImg1}" alt="Ofertas de la semana Carnicería Aries" class="w-full h-auto object-cover">
+              <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+                <button type="button" data-fullsrc="${flyerImg1}" class="js-offer-zoom rounded-xl overflow-hidden border-2 border-black bg-white shadow-sm hover:scale-[1.02] transition cursor-zoom-in block w-full">
+                  <img src="${flyerImg1}" alt="Ofertas de la semana Carnicería Aries" class="w-full max-h-44 sm:max-h-56 object-contain mx-auto">
                 </button>
-                <button type="button" data-fullsrc="${flyerImg2}" class="js-offer-zoom rounded-xl overflow-hidden border-2 border-black shadow-sm hover:scale-[1.02] transition cursor-zoom-in block w-full">
-                  <img src="${flyerImg2}" alt="Precios de carne Carnicería Aries" class="w-full h-auto object-cover">
+                <button type="button" data-fullsrc="${flyerImg2}" class="js-offer-zoom rounded-xl overflow-hidden border-2 border-black bg-white shadow-sm hover:scale-[1.02] transition cursor-zoom-in block w-full">
+                  <img src="${flyerImg2}" alt="Precios de carne Carnicería Aries" class="w-full max-h-44 sm:max-h-56 object-contain mx-auto">
                 </button>
               </div>
             </div>
@@ -1515,7 +1529,7 @@
       sponsorsGrid.innerHTML = '';
       list.forEach(sp => {
         const card = document.createElement('div');
-        card.className = 'bg-[#F8F9FD] rounded-3xl p-6 border-2 border-black shadow-brutal hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex flex-col justify-between cursor-pointer group';
+        card.className = 'bg-[#F8F9FD] rounded-2xl sm:rounded-3xl p-4 sm:p-6 border-2 border-black shadow-brutal-sm sm:shadow-brutal hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex flex-col justify-between cursor-pointer group min-w-0 w-full overflow-hidden';
         
         let offersHtml = '';
         if (sp.tieneOfertas) {
