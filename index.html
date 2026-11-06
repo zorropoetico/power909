@@ -9,8 +9,13 @@
   <meta name="description" content="Radio Power 90.9 FM en vivo. Más de 30 años de trayectoria radial en Juan María Gutiérrez, Berazategui, transmitiendo música, información y publicidad comercial.">
   <meta property="og:title" content="Radio Power 90.9 | Transmisión en Vivo & FM">
   <meta property="og:description" content="Sintonizá 90.9 MHz o escuchá la transmisión online en vivo. Música, noticias locales y publicidad con locución profesional.">
+  <meta property="og:image" content="assets/logo.png">
   <meta property="og:type" content="website">
 
+  <!-- Favicon y Web App Manifest para instalación en el celular -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+  <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#FFDE00">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -151,10 +156,16 @@
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-black px-4 sm:px-8 py-3.5">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       
-      <!-- BRAND LOGO -->
+      <!-- BRAND LOGO FROM ASSETS FOLDER -->
       <a href="#inicio" class="flex items-center gap-3.5 group">
-        <div class="relative w-12 h-12 flex items-center justify-center rounded-2xl bg-brand-yellow border-2 border-black p-1 shadow-brutal group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:shadow-none transition-all">
-          <div class="w-full h-full rounded-xl bg-brand-blue flex items-center justify-center font-display font-black text-white text-base">
+        <div class="relative w-12 h-12 flex items-center justify-center rounded-2xl bg-white border-2 border-black p-1 shadow-brutal group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:shadow-none transition-all">
+          <img 
+            src="assets/logo.png" 
+            alt="Radio Power 90.9" 
+            class="w-full h-full object-contain filter drop-shadow-sm" 
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="hidden w-full h-full rounded-xl bg-brand-blue items-center justify-center font-display font-black text-white text-base">
             P<span class="text-brand-yellow font-black">90.9</span>
           </div>
         </div>
@@ -372,8 +383,15 @@
         <div class="mt-6 px-2 flex flex-col sm:flex-row items-center justify-between gap-5 pt-2">
           
           <div class="flex items-center gap-4 w-full sm:w-auto">
-            <div class="relative w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0 rounded-2xl bg-white border-2 border-black p-1 shadow-brutal flex items-center justify-center">
-              <div class="w-full h-full rounded-xl bg-brand-blue flex items-center justify-center font-display font-black text-white text-base">
+            <!-- LOGO GRANDE EN LA ZONA RADIO POWER LIVE -->
+            <div class="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-2xl bg-white border-2 border-black p-1.5 shadow-brutal flex items-center justify-center">
+              <img 
+                src="assets/logo.png" 
+                alt="Logo Power 90.9" 
+                class="w-full h-full object-contain filter drop-shadow" 
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="hidden w-full h-full rounded-xl bg-brand-blue items-center justify-center font-display font-black text-white text-lg">
                 P<span class="text-brand-yellow font-black">90.9</span>
               </div>
             </div>
@@ -605,7 +623,13 @@
         
         <!-- LOGO & LOCATION -->
         <div class="flex items-center gap-3.5">
-          <div class="w-10 h-10 rounded-xl bg-brand-blue border-2 border-black flex items-center justify-center font-display font-black text-white text-xs shadow-brutal-sm">
+          <img 
+            src="assets/logo.png" 
+            alt="Power 90.9" 
+            class="w-10 h-10 object-contain" 
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="hidden w-10 h-10 rounded-xl bg-brand-blue border-2 border-black items-center justify-center font-display font-black text-white text-xs shadow-brutal-sm">
             P<span class="text-brand-yellow font-black">90.9</span>
           </div>
           <div>
@@ -667,8 +691,16 @@
       
       <!-- IZQUIERDA: Estación, Logo & Equalizador -->
       <div class="flex items-center gap-3.5 min-w-0">
-        <div class="relative w-10 h-10 rounded-xl bg-brand-yellow border-2 border-black flex items-center justify-center font-display font-black text-black text-xs shadow-brutal-sm flex-shrink-0">
-          90.9
+        <div class="relative w-10 h-10 rounded-xl bg-white border-2 border-black p-1 flex items-center justify-center font-display font-black text-black text-xs shadow-brutal-sm flex-shrink-0">
+          <img 
+            src="assets/logo.png" 
+            alt="Radio Power 90.9" 
+            class="w-full h-full object-contain" 
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="hidden w-full h-full rounded-lg bg-brand-yellow items-center justify-center font-display font-black text-black text-[10px]">
+            90.9
+          </div>
         </div>
 
         <div class="min-w-0">
