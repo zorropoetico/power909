@@ -1,0 +1,25 @@
+{
+  "name": "Radio Power 90.9 FM",
+  "short_name": "Power 90.9",
+  "description": "Radio Power 90.9 FM - Transmisión en Vivo desde Juan María Gutiérrez, Berazategui.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F8F9FD",
+  "theme_color": "#FFDE00",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
