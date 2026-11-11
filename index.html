@@ -342,31 +342,10 @@
               <!-- Elemento de audio nativo en el DOM -->
               <audio id="radioAudio" preload="none" referrerpolicy="no-referrer" class="hidden"></audio>
 
-              <!-- Estado de reproducción + Reproductor Alternativo -->
-              <div class="mt-4 flex flex-col items-center lg:items-start gap-2 text-xs font-mono w-full">
-                <div class="flex items-center justify-center lg:justify-start gap-2">
-                  <span id="heroSignalDot" class="w-3 h-3 rounded-full bg-slate-500 flex-shrink-0"></span>
-                  <span id="heroStatusText" class="font-bold text-slate-300 text-[11px] sm:text-xs">Listo para reproducir. Presioná play.</span>
-                </div>
-                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 mt-1">
-                  <a 
-                    id="altPlayerLink"
-                    href="http://uk3freenew.listen2myradio.com:36227/;?type=http&nocache=12" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/15 hover:bg-brand-yellow text-brand-yellow hover:text-black font-mono font-bold text-[11px] border border-brand-yellow/60 hover:border-black transition"
-                  >
-                    <span>🔊 Reproductor alternativo</span>
-                    <span>↗</span>
-                  </a>
-                  <button 
-                    id="popupStreamBtn" 
-                    type="button"
-                    class="hidden px-3 py-1.5 rounded-xl bg-brand-yellow text-black font-mono font-black text-[11px] uppercase tracking-wider border-2 border-black shadow-[2px_2px_0px_0px_#000] hover:bg-[#ffe833] transition"
-                  >
-                    Abrir en ventana auxiliar ↗
-                  </button>
-                </div>
+              <!-- Estado de reproducción -->
+              <div class="mt-4 flex items-center justify-center lg:justify-start gap-2 text-xs font-mono w-full">
+                <span id="heroSignalDot" class="w-3 h-3 rounded-full bg-slate-500 flex-shrink-0"></span>
+                <span id="heroStatusText" class="font-bold text-slate-300 text-[11px] sm:text-xs">Listo para reproducir. Presioná play.</span>
               </div>
             </div>
 
@@ -454,7 +433,7 @@
               <span>Compartir</span>
             </button>
 
-            <!-- MENSAJE AL ESTUDIO -->
+            <!-- MENSAJE POR WHATSAPP -->
             <a 
               href="https://wa.me/5491141976436?text=Hola%20Radio%20Power%2090.9!%20Les%20escribo%20escuchando%20el%20streaming%20en%20vivo." 
               target="_blank" 
@@ -462,7 +441,7 @@
               class="justify-center px-3.5 sm:px-5 py-2.5 rounded-xl bg-brand-green hover:bg-emerald-600 text-white text-xs font-mono font-black uppercase tracking-wider border-2 border-black shadow-brutal-sm sm:shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition flex items-center gap-1.5 sm:gap-2"
             >
               <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.087-.179.182-.077.357.101.174.453.747.973 1.21.669.596 1.233.781 1.408.868.174.087.276.073.378-.044.101-.116.433-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.203c.044.072.044.419-.1.824z"/></svg>
-              <span>Estudio</span>
+              <span>WhatsApp</span>
             </a>
           </div>
         </div>
@@ -754,16 +733,16 @@
       </div>
 
       <!-- CENTRO: Controles Principales (Play/Pause Grande) -->
-      <div class="flex items-center gap-3 flex-shrink-0">
+      <div class="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
         <button 
           id="dockPlayBtn" 
-          class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-brand-yellow hover:bg-[#ffe833] text-black border-2 border-black shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-center font-display font-black text-lg sm:text-xl active:scale-95"
+          class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-brand-yellow hover:bg-[#ffe833] text-black border-2 border-black shadow-brutal-sm sm:shadow-brutal hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all flex items-center justify-center font-display font-black text-base sm:text-xl active:scale-95"
           aria-label="Reproducir o pausar señal"
         >
           <span id="dockPlayIcon">▶</span>
         </button>
 
-        <!-- Botón rápido pautar en pantallas pequeñas -->
+        <!-- Botón rápido pautar en pantallas medianas/grandes -->
         <button 
           id="dockAdsBtn" 
           class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-brand-blueLight hover:bg-blue-100 text-brand-blue font-mono font-bold text-xs border-2 border-black shadow-brutal-sm transition"
@@ -1068,6 +1047,56 @@
     </div>
   </div>
 
+  <!-- ======================================================== -->
+  <!-- MODAL 5: CARTEL EMERGENTE DE REPRODUCTOR ALTERNATIVO     -->
+  <!-- ======================================================== -->
+  <div id="altPlayerModal" class="fixed inset-0 z-[55] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-2xl sm:rounded-3xl border-2 border-black shadow-brutal sm:shadow-brutal-xl max-w-md w-full p-5 sm:p-7 relative">
+      
+      <button 
+        id="closeAltModalIconBtn" 
+        type="button"
+        aria-label="Cerrar ventana"
+        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-brand-yellow border-2 border-black font-mono font-black text-base flex items-center justify-center transition shadow-[2px_2px_0px_0px_#000]"
+      >
+        &times;
+      </button>
+
+      <div class="pr-8 mb-4">
+        <span class="sticker px-2.5 py-0.5 rounded-full bg-brand-yellow text-black text-[10px]">
+          90.9 FM EN VIVO
+        </span>
+        <h3 class="font-display font-black text-xl sm:text-2xl text-slate-950 mt-2 leading-snug">
+          Transmisión en Vivo
+        </h3>
+      </div>
+
+      <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-6 font-medium">
+        Para escuchar la radio sin demoras desde tu dispositivo, abrí el reproductor alternativo directamente en una nueva pestaña.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center gap-3">
+        <a 
+          id="openAltPlayerTabBtn" 
+          href="http://uk14freenew.listen2myradio.com:28150/;?type=http&nocache=20" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="w-full sm:flex-1 py-3 px-4 rounded-xl bg-brand-yellow hover:bg-[#ffe833] text-black text-center text-xs font-mono font-black uppercase tracking-wider border-2 border-black shadow-brutal-sm sm:shadow-brutal transition flex items-center justify-center"
+        >
+          Abrir reproductor alternativo
+        </a>
+        <button 
+          id="closeAltModalBtn" 
+          type="button"
+          class="w-full sm:w-auto py-3 px-5 rounded-xl bg-white hover:bg-slate-100 text-slate-900 text-center text-xs font-mono font-bold border-2 border-black shadow-brutal-sm sm:shadow-brutal transition"
+        >
+          Cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+
   <!-- NOTIFICACIÓN TOAST -->
   <div id="toast" class="fixed bottom-24 sm:bottom-20 left-1/2 -translate-x-1/2 z-50 px-5 py-2.5 rounded-full bg-brand-yellow border-2 border-black text-black text-xs font-mono font-black shadow-brutal opacity-0 pointer-events-none transition-opacity duration-300">
     ¡Enlace copiado al portapapeles! 📋
@@ -1078,20 +1107,18 @@
   <!-- ======================================================== -->
   <script>
     // -------------------------------------------------------------
-    // 1. CONFIGURACIÓN DEL STREAMING DE AUDIO (UK3FREENEW : 36227)
+    // 1. CONFIGURACIÓN DEL STREAMING DE AUDIO (UK14FREENEW : 28150)
     // -------------------------------------------------------------
     // Señal HTTPS extraída de #urladdress (espaciopower.radiostream321.com):
-    let dynamicSecureUrl = 'https://uk3freenew.listen2myradio.com/live.mp3?typeportmount=s2_36227_stream_69910812';
-    // Reproductor alternativo directo en puerto 36227:
-    const ALT_STREAM_URL = 'http://uk3freenew.listen2myradio.com:36227/;?type=http&nocache=12';
+    let dynamicSecureUrl = 'https://uk14freenew.listen2myradio.com/live.mp3?typeportmount=s2_28150_stream_914584271';
+    // Enlace directo de respaldo en puerto 28150:
+    const ALT_STREAM_URL = 'http://uk14freenew.listen2myradio.com:28150/;?type=http&nocache=20';
+    const OFFICIAL_RADIO_PAGE = 'https://espaciopower.radiostream321.com/index.php';
 
     // Intentamos refrescar en segundo plano el token de #urladdress desde espaciopower.radiostream321.com
-    // por si Listen2MyRadio rota el número final de sesión
     function refreshDynamicStreamUrl() {
-      const targetPage = 'https://espaciopower.radiostream321.com/index.php?t=' + Date.now();
-      // Ping no-cors desde el navegador del usuario para autorizar sesión/IP en radiostream321
-      fetch('https://espaciopower.radiostream321.com/index.php', { mode: 'no-cors' }).catch(() => {});
-      // Extracción del nuevo #urladdress vía proxy CORS público si está disponible
+      const targetPage = OFFICIAL_RADIO_PAGE + '?t=' + Date.now();
+      fetch(OFFICIAL_RADIO_PAGE, { mode: 'no-cors' }).catch(() => {});
       fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(targetPage))
         .then(res => res.ok ? res.text() : '')
         .then(html => {
@@ -1106,10 +1133,9 @@
 
     function getStreamCandidates() {
       const bust = Date.now();
-      // Conexión directa exclusivamente por HTTPS para reproducción inmediata sin demoras
       const list = [
         dynamicSecureUrl,
-        'https://uk3freenew.listen2myradio.com/live.mp3?typeportmount=s2_36227_stream_69910812',
+        'https://uk14freenew.listen2myradio.com/live.mp3?typeportmount=s2_28150_stream_914584271',
         '/api/radio?nocache=' + bust
       ];
       return [...new Set(list)];
@@ -1118,7 +1144,7 @@
     const radioAudio = document.getElementById('radioAudio') || new Audio();
     radioAudio.preload = 'none';
 
-    // Estado del reproductor (con control de intento único para evitar condiciones de carrera)
+    // Estado del reproductor
     let isPlaying = false;
     let isConnecting = false;
     let playAttemptId = 0;
@@ -1147,7 +1173,6 @@
     const heroVolumeSlider = document.getElementById('heroVolumeSlider');
     const heroVolumeText = document.getElementById('heroVolumeText');
     const heroMuteBtn = document.getElementById('heroMuteBtn');
-    const popupStreamBtn = document.getElementById('popupStreamBtn');
 
     // Elementos del reproductor anclado (Bottom Dock)
     const bottomPlayerBar = document.getElementById('bottomPlayerBar');
@@ -1161,21 +1186,43 @@
     const restorePlayerBtn = document.getElementById('restorePlayerBtn');
     const dockAdsBtn = document.getElementById('dockAdsBtn');
 
+    // Elementos de la ventana emergente de Reproductor Alternativo
+    const altPlayerModal = document.getElementById('altPlayerModal');
+    const openAltPlayerTabBtn = document.getElementById('openAltPlayerTabBtn');
+    const closeAltModalBtn = document.getElementById('closeAltModalBtn');
+    const closeAltModalIconBtn = document.getElementById('closeAltModalIconBtn');
+
     // Sincronizar Sliders de Volumen iniciales
     if (heroVolumeSlider) heroVolumeSlider.value = currentVolume;
     if (dockVolumeSlider) dockVolumeSlider.value = currentVolume;
     if (heroVolumeText) heroVolumeText.textContent = `${Math.round(currentVolume * 100)}%`;
 
-    // Función para abrir el reproductor alternativo en ventana auxiliar
-    function openPopupStream() {
-      window.open(
-        ALT_STREAM_URL,
-        'RadioPower909Directo',
-        'width=440,height=240,menubar=no,toolbar=no,location=no,status=no'
-      );
+    function openAltPlayerModal() {
+      if (!altPlayerModal) return;
+      if (openAltPlayerTabBtn) {
+        openAltPlayerTabBtn.href = ALT_STREAM_URL;
+      }
+      altPlayerModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     }
-    if (popupStreamBtn) {
-      popupStreamBtn.addEventListener('click', openPopupStream);
+
+    function closeAltPlayerModal() {
+      if (!altPlayerModal) return;
+      altPlayerModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    if (closeAltModalBtn) closeAltModalBtn.addEventListener('click', closeAltPlayerModal);
+    if (closeAltModalIconBtn) closeAltModalIconBtn.addEventListener('click', closeAltPlayerModal);
+    if (openAltPlayerTabBtn) {
+      openAltPlayerTabBtn.addEventListener('click', () => {
+        closeAltPlayerModal();
+      });
+    }
+    if (altPlayerModal) {
+      altPlayerModal.addEventListener('click', (e) => {
+        if (e.target === altPlayerModal) closeAltPlayerModal();
+      });
     }
 
     const SPINNER_MAIN_HTML = '<svg class="w-6 h-6 sm:w-7 sm:h-7 animate-spin text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3.5"></circle><path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
@@ -1191,11 +1238,10 @@
       }
       if (heroStatusText) heroStatusText.textContent = statusMessage;
       if (bottomStatusTrack) bottomStatusTrack.textContent = statusMessage;
-      if (popupStreamBtn) popupStreamBtn.classList.add('hidden');
     }
 
     // Función unificada para actualizar el estado visual de reproducción
-    function updatePlayState(playing, statusMessage = '', showFallbackPopup = false) {
+    function updatePlayState(playing, statusMessage = '') {
       isPlaying = playing;
 
       // Actualizar Consola Hero
@@ -1213,9 +1259,6 @@
       if (heroStatusText && statusMessage) {
         heroStatusText.textContent = statusMessage;
       }
-      if (popupStreamBtn) {
-        popupStreamBtn.classList.toggle('hidden', !showFallbackPopup);
-      }
 
       // Actualizar Barra Anclada (Bottom Dock)
       if (dockPlayIcon) dockPlayIcon.innerHTML = playing ? '⏸' : '▶';
@@ -1228,14 +1271,14 @@
       }
     }
 
-    // Intenta reproducir los candidatos de streaming en orden sin pisarse entre eventos
+    // Intenta reproducir los candidatos HTTPS; si no carga a la primera, abre automáticamente el Sintonizador en primer plano
     function tryPlayCandidate(candidates, index, attemptId) {
       if (attemptId !== playAttemptId) return;
 
       if (index >= candidates.length) {
         isConnecting = false;
-        const msg = 'Si tu navegador bloquea la señal embebida, tocá "Reproductor alternativo ↗".';
-        updatePlayState(false, msg, true);
+        updatePlayState(false, 'Listo para reproducir. Presioná play.');
+        openAltPlayerModal();
         return;
       }
 
@@ -1808,6 +1851,10 @@
           closeLightbox();
           return;
         }
+        if (altPlayerModal && !altPlayerModal.classList.contains('hidden')) {
+          closeAltPlayerModal();
+          return;
+        }
         toggleAdsModal(false);
         if (sponsorModal) {
           sponsorModal.classList.add('hidden');
@@ -1819,6 +1866,13 @@
         }
       }
     });
+
+    // Registrar Service Worker para instalación PWA en Chrome y celulares
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
   </script>
 
 </body>
