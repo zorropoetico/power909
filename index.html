@@ -340,7 +340,7 @@
               </p>
               
               <!-- Elemento de audio nativo en el DOM -->
-              <audio id="radioAudio" preload="none" referrerpolicy="no-referrer" class="hidden"></audio>
+              <audio id="radioAudio" preload="none" class="hidden"></audio>
 
               <!-- Estado de reproducción -->
               <div class="mt-4 flex items-center justify-center lg:justify-start gap-2 text-xs font-mono w-full">
@@ -1134,9 +1134,12 @@
     function getStreamCandidates() {
       const bust = Date.now();
       const list = [
+        '/api/radio?nocache=' + bust,
         dynamicSecureUrl,
         'https://uk14freenew.listen2myradio.com/live.mp3?typeportmount=s2_28150_stream_914584271',
-        '/api/radio?nocache=' + bust
+        ALT_STREAM_URL,
+        'http://uk14freenew.listen2myradio.com:28150/;?type=http&nocache=' + bust,
+        'http://uk14freenew.listen2myradio.com:28150/;stream.mp3'
       ];
       return [...new Set(list)];
     }
